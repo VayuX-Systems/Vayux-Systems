@@ -110,6 +110,33 @@ export default function App() {
     });
   };
 
+  // Theme state with localStorage and OS preference detection
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    try {
+      const storedTheme = localStorage.getItem('vayux_theme');
+      if (storedTheme === 'light' || storedTheme === 'dark') {
+        return storedTheme;
+      }
+      return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
+
+  // Apply theme data attribute to document root
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('vayux_theme', theme);
+    } catch {
+      // ignore storage errors
+    }
+  }, [theme]);
+
+  const handleToggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[var(--color-bg-primary)] text-[var(--color-text-secondary)] selection:bg-[var(--color-brand-primary)] selection:text-white font-sans antialiased">
       {/* Structural Header & Bottom Navigation for Mobile */}
@@ -118,6 +145,8 @@ export default function App() {
         onNavigate={handleNavigate}
         onOpenContact={() => handleOpenContact('General Inquiry')}
         onOpenIncident={() => setIncidentOpen(true)}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
       />
 
       {/* Main Screen Layout Container */}

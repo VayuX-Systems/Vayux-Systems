@@ -109,7 +109,7 @@ export const LoopScreen: React.FC<LoopScreenProps> = ({
         </div>
 
         {/* Central Diagram: Interactive VayuX Loop */}
-        <div className="flex-1 w-full min-h-[420px] sm:min-h-[460px] relative rounded-3xl overflow-hidden border border-[var(--color-brand-primary)]/20 bg-gradient-to-b from-[#0b1419] to-[#060c10] flex flex-col items-center justify-center p-4 sm:p-6 shadow-2xl">
+        <div className="flex-1 w-full min-h-[460px] sm:min-h-[500px] relative rounded-3xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-bg-secondary)] flex flex-col items-center justify-center p-4 sm:p-8 pb-10 sm:pb-12 shadow-2xl transition-colors duration-300">
           <VayuXLoopAnimation
             activeStage={selectedStage}
             onSelectStage={(idx) => setSelectedStage(idx)}
@@ -152,8 +152,8 @@ export const LoopScreen: React.FC<LoopScreenProps> = ({
                 onClick={() => setSelectedStage(idx)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer focus-visible:outline-2 ${
                   selectedStage === idx
-                    ? 'bg-[var(--color-brand-light)] text-[#003736] font-bold'
-                    : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] hover:text-white'
+                    ? 'bg-[var(--color-brand-primary)] text-white font-bold shadow-md shadow-[var(--color-brand-primary)]/25'
+                    : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-brand-primary)]/10'
                 }`}
               >
                 {s.step} {s.label && `• ${s.label}`}
@@ -165,14 +165,14 @@ export const LoopScreen: React.FC<LoopScreenProps> = ({
         <div className="pt-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-3">
             <div className="flex items-center justify-between">
-              <div className="text-xs font-mono text-[var(--color-brand-light)]/85 uppercase tracking-wider">
+              <div className="text-xs font-mono text-[var(--color-brand-light)] font-semibold uppercase tracking-wider">
                 {LOOP_STAGES[selectedStage].subtitle}
               </div>
 
               {LOOP_STAGES[selectedStage]?.route && (
                 <button
                   onClick={() => onNavigate(LOOP_STAGES[selectedStage].route!)}
-                  className="text-xs font-semibold text-[var(--color-brand-light)] hover:text-white flex items-center gap-1.5 bg-[var(--color-brand-primary)]/20 hover:bg-[var(--color-brand-primary)]/40 px-2.5 py-1 rounded transition-all cursor-pointer"
+                  className="text-xs font-semibold text-[var(--color-brand-light)] hover:text-[var(--color-text-primary)] flex items-center gap-1.5 bg-[var(--color-brand-primary)]/10 hover:bg-[var(--color-brand-primary)]/20 border border-[var(--color-brand-light)]/30 px-3 py-1.5 rounded-lg transition-all cursor-pointer"
                 >
                   <span>Go to {LOOP_STAGES[selectedStage].title} page</span>
                   <ArrowRight size={13} />
@@ -183,9 +183,9 @@ export const LoopScreen: React.FC<LoopScreenProps> = ({
             <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
               {LOOP_STAGES[selectedStage].description}
             </p>
-            <div className="bg-[var(--color-bg-primary)] p-3.5 rounded-xl border border-[var(--color-brand-primary)]/10 font-mono text-xs text-[var(--color-brand-light)] space-y-1">
-              <span className="text-[var(--color-text-muted)]">// Live Telemetry Buffer</span>
-              <p className="text-[#c3fffd] select-all font-mono">{LOOP_STAGES[selectedStage].telemetryOutput}</p>
+            <div className="bg-[var(--color-bg-primary)] p-4 rounded-xl border border-[var(--color-border)] font-mono text-xs space-y-1.5">
+              <span className="text-[var(--color-text-muted)] block font-semibold text-[11px]">// Live Telemetry Buffer</span>
+              <p className="text-[var(--color-brand-light)] select-all font-mono font-medium leading-relaxed break-all">{LOOP_STAGES[selectedStage].telemetryOutput}</p>
             </div>
           </div>
 

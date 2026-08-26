@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
-import { Menu, X, ShieldAlert, Mail } from 'lucide-react';
+import { Menu, X, ShieldAlert, Mail, Sun, Moon } from 'lucide-react';
 
 interface NavigationProps {
   currentPage: PageId;
   onNavigate: (page: PageId) => void;
   onOpenContact: () => void;
   onOpenIncident: () => void;
+  theme?: 'dark' | 'light';
+  onToggleTheme?: () => void;
 }
 
 export const Navigation: React.FC<NavigationProps> = ({
@@ -14,6 +16,8 @@ export const Navigation: React.FC<NavigationProps> = ({
   onNavigate,
   onOpenContact,
   onOpenIncident,
+  theme = 'dark',
+  onToggleTheme,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -79,7 +83,7 @@ export const Navigation: React.FC<NavigationProps> = ({
               className="font-bold text-2xl text-[var(--color-brand-light)] tracking-tight flex items-center gap-2.5 group cursor-pointer focus-visible:outline-none"
             >
               <img src="/logo.png" alt="VayuX Logo" className="w-7 h-7 rounded-full object-contain drop-shadow-[0_0_8px_rgba(124,213,211,0.4)]" />
-              <span className="text-white font-semibold">
+              <span className="text-[var(--color-text-primary)] font-semibold">
                 Vayu<span className="text-[var(--color-brand-light)]">X</span>
               </span>
             </button>
@@ -112,7 +116,19 @@ export const Navigation: React.FC<NavigationProps> = ({
           </nav>
 
           {/* Action CTAs */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
+            {/* Theme Toggle Button */}
+            {onToggleTheme && (
+              <button
+                onClick={onToggleTheme}
+                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                className="p-2 rounded-lg bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-brand-primary)]/20 text-[var(--color-brand-light)] border border-[var(--color-border)] transition-all cursor-pointer focus-visible:outline-2"
+                title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+              >
+                {theme === 'dark' ? <Sun size={16} className="text-amber-300" /> : <Moon size={16} className="text-sky-600" />}
+              </button>
+            )}
+
             <button
               onClick={onOpenIncident}
               className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-mono text-[var(--color-brand-danger)] bg-[var(--color-brand-danger-dark)]/15 border border-[var(--color-brand-danger)]/30 rounded hover:bg-[var(--color-brand-danger-dark)]/30 transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--color-brand-danger)]"
@@ -163,6 +179,19 @@ export const Navigation: React.FC<NavigationProps> = ({
             </div>
 
             <div className="pt-3 border-t border-[var(--color-text-muted)]/20 flex flex-col gap-2">
+              {onToggleTheme && (
+                <button
+                  onClick={onToggleTheme}
+                  className="w-full py-2 px-3 text-xs font-semibold rounded bg-[var(--color-bg-tertiary)] border border-[var(--color-border)] text-[var(--color-text-primary)] flex items-center justify-between cursor-pointer"
+                >
+                  <span className="flex items-center gap-2">
+                    {theme === 'dark' ? <Sun size={15} className="text-amber-400" /> : <Moon size={15} className="text-sky-600" />}
+                    <span>Theme: {theme === 'dark' ? 'Dark Mode' : 'Light Mode'}</span>
+                  </span>
+                  <span className="text-[10px] uppercase font-mono text-[var(--color-brand-light)]">Switch</span>
+                </button>
+              )}
+
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);

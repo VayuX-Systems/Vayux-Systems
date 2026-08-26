@@ -31,15 +31,15 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
 
   const isPaused = hoveredNode !== null || hoveredCenter;
 
-  // 6 Orbital Nodes matching the user diagram layout
-  // Positions calculated on radius = 38% around center (50%, 50%)
+  // 6 Orbital Nodes spaced at equal 60-degree increments (radius = 33%)
+  // Leaves comfortable margins around all 4 edges to prevent any clipping
   const nodes = [
     {
       id: 'training',
       label: 'Training',
       stageIndex: 4, // Maps to Stage 05 (Security Training)
       icon: GraduationCap,
-      pos: { left: '38%', top: '10%' },
+      pos: { left: '33.5%', top: '21.4%' },
       tooltipPos: 'bottom',
     },
     {
@@ -47,15 +47,15 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
       label: 'GRC',
       stageIndex: 5, // Maps to Stage 06 (GRC Recalibration)
       icon: ShieldCheck,
-      pos: { left: '80%', top: '22%' },
-      tooltipPos: 'left',
+      pos: { left: '66.5%', top: '21.4%' },
+      tooltipPos: 'bottom',
     },
     {
       id: 'threat',
       label: 'Threat',
       stageIndex: 0, // Maps to Stage 01 (Threat Detection)
       icon: AlertTriangle,
-      pos: { left: '88%', top: '56%' },
+      pos: { left: '83%', top: '50%' },
       tooltipPos: 'left',
     },
     {
@@ -63,7 +63,7 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
       label: 'DFIR',
       stageIndex: 1, // Maps to Stage 02 (DFIR Containment)
       icon: Search,
-      pos: { left: '68%', top: '86%' },
+      pos: { left: '66.5%', top: '78.6%' },
       tooltipPos: 'top',
     },
     {
@@ -71,7 +71,7 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
       label: 'R&D Lab',
       stageIndex: 2, // Maps to Stage 03 (R&D Lab Analysis)
       icon: FlaskConical,
-      pos: { left: '26%', top: '80%' },
+      pos: { left: '33.5%', top: '78.6%' },
       tooltipPos: 'top',
     },
     {
@@ -79,7 +79,7 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
       label: 'SOC',
       stageIndex: 3, // Maps to Stage 04 (SOC Receives Rules)
       icon: Radar,
-      pos: { left: '12%', top: '44%' },
+      pos: { left: '17%', top: '50%' },
       tooltipPos: 'right',
     },
   ];
@@ -98,7 +98,7 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
   };
 
   return (
-    <div className={`relative flex items-center justify-center select-none aspect-square w-full max-w-[480px] mx-auto ${className}`}>
+    <div className={`relative flex items-center justify-center select-none aspect-square w-full max-w-[460px] mx-auto p-4 ${className}`}>
       {/* Background SVG Orbital Track */}
       <svg
         viewBox="0 0 400 400"
@@ -123,7 +123,7 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
         <circle
           cx="200"
           cy="200"
-          r="152"
+          r="132"
           stroke="#38bdf8"
           strokeWidth="1.5"
           strokeOpacity="0.2"
@@ -134,7 +134,7 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
         <circle
           cx="200"
           cy="200"
-          r="152"
+          r="132"
           stroke="#93c5fd"
           strokeWidth="2.5"
           strokeDasharray="6 8"
@@ -142,21 +142,21 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
         />
 
         {/* Flowing animated glowing particle along the orbit */}
-        <circle cx="200" cy="48" fill="#38bdf8" r="4.5" filter="url(#trackGlow)">
+        <circle cx="200" cy="68" fill="#38bdf8" r="4.5" filter="url(#trackGlow)">
           <animateMotion
             dur="8s"
             repeatCount="indefinite"
-            path="M 0 0 A 152 152 0 1 1 0.0001 0"
+            path="M 0 0 A 132 132 0 1 1 0.0001 0"
           />
         </circle>
 
         {/* Secondary trailing particle */}
-        <circle cx="200" cy="48" fill="#ffffff" r="3" opacity="0.85">
+        <circle cx="200" cy="68" fill="#ffffff" r="3" opacity="0.85">
           <animateMotion
             dur="8s"
             begin="-4s"
             repeatCount="indefinite"
-            path="M 0 0 A 152 152 0 1 1 0.0001 0"
+            path="M 0 0 A 132 132 0 1 1 0.0001 0"
           />
         </circle>
       </svg>
@@ -188,7 +188,7 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
 
         {/* Center Hover Tooltip - Positioned safely above the center hub */}
         {hoveredCenter && (
-          <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-50 bg-[#0c161d]/95 text-left border border-[#38bdf8]/50 rounded-xl px-3 py-2 shadow-2xl backdrop-blur-md w-52 text-xs animate-in fade-in zoom-in-95 duration-200 pointer-events-auto">
+          <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-bg-secondary)] text-left border border-[var(--color-brand-light)]/40 rounded-xl px-3 py-2 shadow-2xl backdrop-blur-md w-52 text-xs animate-in fade-in zoom-in-95 duration-200 pointer-events-auto">
             <div className="text-[var(--color-brand-light)] font-bold text-xs">
               VAYUX Continuous Loop
             </div>
@@ -251,13 +251,13 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
               {/* Hover Tooltip / Definition Card with Top Elevation (z-50) */}
               {isHovered && (
                 <div
-                  className="absolute z-50 w-64 p-3.5 rounded-xl bg-[#081218]/98 backdrop-blur-xl border border-[var(--color-brand-light)]/60 shadow-[0_15px_35px_rgba(0,0,0,0.85)] text-left animate-in fade-in zoom-in-95 duration-150 pointer-events-auto top-full mt-2 left-1/2 -translate-x-1/2"
+                  className="absolute z-50 w-64 p-3.5 rounded-xl bg-[var(--color-bg-secondary)] backdrop-blur-xl border border-[var(--color-brand-light)]/60 shadow-[0_15px_35px_rgba(0,0,0,0.35)] text-left animate-in fade-in zoom-in-95 duration-150 pointer-events-auto top-full mt-2 left-1/2 -translate-x-1/2"
                 >
                   <div className="flex items-center justify-between gap-2 mb-1.5">
-                    <div className="text-xs font-bold text-white">
+                    <div className="text-xs font-bold text-[var(--color-text-primary)]">
                       {stageData.title}
                     </div>
-                    <span className="text-[10px] font-mono text-[var(--color-brand-light)] bg-[var(--color-brand-primary)]/30 px-1.5 py-0.5 rounded">
+                    <span className="text-[10px] font-mono text-[var(--color-brand-light)] bg-[var(--color-brand-primary)]/20 px-1.5 py-0.5 rounded">
                       Stage {stageData.step}
                     </span>
                   </div>
@@ -269,7 +269,7 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
                   {stageData.route && onNavigate && (
                     <button
                       onClick={(e) => handleNavigateClick(e, stageData.route)}
-                      className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-[var(--color-brand-primary)]/40 hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-[var(--color-brand-light)] text-[11px] font-semibold transition-all cursor-pointer group"
+                      className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-[var(--color-brand-primary)]/20 hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-[var(--color-brand-light)] text-[11px] font-semibold transition-all cursor-pointer group"
                     >
                       <span>Detailed Definition</span>
                       <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
