@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+
+  --color-bg-primary: #07151e;
+  --color-bg-secondary: #0c1a25;
+  --color-bg-tertiary: #132431;
+
+  --color-brand-primary: #0e7c7b;
+  --color-brand-light: #7cd5d3;
+  --color-brand-accent: #71dba2;
+  --color-brand-muted: #173b43;
+
+  --color-brand-danger: #ffb4ab;
+  --color-brand-danger-dark: #93000a;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #bdc9c8;
+  --color-text-muted: #627271;
+
+  --animate-spin-slow: loopSpinSlow 40s linear infinite;
+  --animate-pulse-glow: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes loopSpinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes vayuxOrbitSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes vayuxOrbitCounterSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-secondary);
+    overflow-x: hidden;
+  }
+
+  /* Accessible Focus Rings */
+  *:focus-visible {
+    outline: 2px solid var(--color-brand-light);
+    outline-offset: 4px;
+  }
+}
+
+@layer utilities {
+  /* Unified Technical Card Styles */
+  .tech-card {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid rgba(227, 233, 232, 0.1);
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tech-card-glow {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid rgba(227, 233, 232, 0.1);
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Hover transitions respecting prefers-reduced-motion */
+  @media (prefers-reduced-motion: no-preference) {
+    .card-hover {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-2px);
+      border-color: rgba(124, 213, 211, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4),
+                  0 0 20px rgba(14, 124, 123, 0.15);
+    }
+
+    .tech-card-glow:hover {
+      border-color: rgba(14, 124, 123, 0.5);
+      box-shadow: 0 0 25px rgba(14, 124, 123, 0.25),
+                  inset 0 0 12px rgba(14, 124, 123, 0.1);
+      transition: all 0.3s ease;
+    }
+  }
+
+  /* Technical Input Design */
+  .tech-input {
+    background-color: var(--color-bg-primary);
+    border: 1px solid rgba(98, 114, 113, 0.4);
+    color: var(--color-text-primary);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .tech-input:focus {
+    border-color: var(--color-brand-light);
+    box-shadow: 0 0 0 2px rgba(14, 124, 123, 0.25);
+    outline: none;
+  }
+
+  /* Custom safe bottom utility for iOS notch devices */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Hide scrollbars cleanly */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
