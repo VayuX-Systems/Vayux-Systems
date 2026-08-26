@@ -70,37 +70,64 @@
   --color-card-bg: #ffffff;
 }
 
-/* Light mode high-contrast text adaptation */
+/* Light mode high-contrast typography */
 [data-theme="light"] h1,
 [data-theme="light"] h2,
 [data-theme="light"] h3,
 [data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6,
 [data-theme="light"] .heading-text {
   color: var(--color-text-primary) !important;
 }
 
-[data-theme="light"] span.text-white:not([class*="bg-[var(--color-brand-primary)]"] *):not([class*="bg-[#0284c7]"] *),
-[data-theme="light"] p.text-white,
-[data-theme="light"] div.text-white:not([class*="bg-[var(--color-brand-primary)]"]):not([class*="bg-[#0284c7]"]) {
+/* Convert general text-white to dark text in light mode */
+[data-theme="light"] .text-white {
   color: var(--color-text-primary);
 }
 
-/* Maintain bright white text inside vibrant buttons and hubs */
-.text-white-force,
-[class*="bg-[#0284c7]"] *,
-[class*="bg-[var(--color-brand-primary)]"] {
+/* Maintain crisp white text strictly on solid colored buttons & central hub */
+[data-theme="light"] button.bg-\[var\(--color-brand-primary\)\],
+[data-theme="light"] .bg-\[var\(--color-brand-primary\)\].text-white,
+[data-theme="light"] .text-white-force,
+[data-theme="light"] [class*="bg-[#0284c7]"] * {
   color: #ffffff !important;
 }
 
-/* Pill badge readability in light mode */
-[data-theme="light"] .rounded-full.bg-\[var\(--color-brand-primary\)\]\/20 {
+/* Fix capability card icon containers in light mode */
+[data-theme="light"] .tech-card .w-12.h-12,
+[data-theme="light"] .tech-card .w-10.h-10,
+[data-theme="light"] .tech-card .rounded-lg.bg-\[var\(--color-bg-tertiary\)\] {
+  background-color: #f1f5f9 !important;
+  color: #0d6b6a !important;
+}
+
+[data-theme="light"] .tech-card .w-12.h-12 svg,
+[data-theme="light"] .tech-card .w-10.h-10 svg,
+[data-theme="light"] .tech-card .rounded-lg.bg-\[var\(--color-bg-tertiary\)\] svg {
+  color: #0d6b6a !important;
+}
+
+/* Flagship and pill badges in light mode */
+[data-theme="light"] [class*="rounded-full"][class*="bg-\[var\(--color-brand-primary\)\]"] {
   background-color: rgba(14, 124, 123, 0.12) !important;
+  color: #0d6b6a !important;
   border-color: rgba(14, 124, 123, 0.3) !important;
 }
 
-[data-theme="light"] .rounded-full.bg-\[var\(--color-brand-primary\)\]\/20 span,
-[data-theme="light"] .rounded-full.bg-\[var\(--color-brand-primary\)\]\/20 svg {
+[data-theme="light"] [class*="rounded-full"][class*="bg-\[var\(--color-brand-primary\)\]"] * {
   color: #0d6b6a !important;
+}
+
+/* Inactive button tabs in light mode (e.g. Telemetry stage switcher) */
+[data-theme="light"] button.bg-\[var\(--color-bg-tertiary\)\] {
+  background-color: #f1f5f9 !important;
+  color: #334155 !important;
+}
+
+[data-theme="light"] button.bg-\[var\(--color-bg-tertiary\)\]:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
 }
 
 [data-theme="light"] .bg-\[\#12202c\] {
