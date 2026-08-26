@@ -52,7 +52,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
                 onClick={() => onOpenContact('Managed SOC')}
-                className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-6 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20 focus-visible:outline-2"
+                className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-6 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20 focus-visible:outline-2"
               >
                 Get a quote
               </button>
@@ -232,7 +232,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-2">
             <button
               onClick={() => onOpenContact('General Inquiry')}
-              className="bg-[var(--color-brand-primary)] text-white hover:bg-[var(--color-brand-light)] hover:text-[#003736] px-8 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md"
+              className="bg-[var(--color-brand-primary)] text-white hover:bg-[var(--color-brand-light)] hover:text-[#010203] px-8 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-md"
             >
               Contact Us
             </button>

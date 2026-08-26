@@ -90,7 +90,7 @@ export const LoopScreen: React.FC<LoopScreenProps> = ({
           <div className="pt-2 flex flex-wrap gap-4 items-center justify-center md:justify-start">
             <button
               onClick={() => onOpenContact('The VayuX Loop Integration')}
-              className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-7 py-3.5 rounded font-semibold text-xs uppercase tracking-wider inline-flex items-center gap-2 transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20 focus-visible:outline-2"
+              className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-7 py-3.5 rounded font-semibold text-xs uppercase tracking-wider inline-flex items-center gap-2 transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20 focus-visible:outline-2"
             >
               <span>Put your security in a loop</span>
               <ArrowRight size={15} />
@@ -240,7 +240,7 @@ export const LoopScreen: React.FC<LoopScreenProps> = ({
                 <div
                   className={`z-25 flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all shadow-xl ${
                     isCurrent
-                      ? 'bg-[var(--color-brand-light)] border-white text-[#003736] scale-110'
+                      ? 'bg-[var(--color-brand-light)] border-white text-[#010203] scale-110'
                       : 'bg-[var(--color-bg-secondary)] border-[var(--color-brand-primary)]/50 text-[var(--color-brand-light)] group-hover:scale-105'
                   }`}
                 >

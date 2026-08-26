@@ -13,6 +13,9 @@
   --color-brand-accent: var(--color-brand-accent);
   --color-brand-muted: var(--color-brand-muted);
 
+  --color-platinum: var(--color-platinum);
+  --color-gunmetal: var(--color-gunmetal);
+
   --color-brand-danger: var(--color-brand-danger);
   --color-brand-danger-dark: var(--color-brand-danger-dark);
 
@@ -25,26 +28,39 @@
 }
 
 :root, [data-theme="dark"] {
-  --color-bg-primary: #07151e;
-  --color-bg-secondary: #0c1a25;
-  --color-bg-tertiary: #132431;
+  /* Obsidian Black: #010203 (Background, website, dark mode) */
+  --color-bg-primary: #010203;
+  --color-bg-secondary: #080a0f;
+  --color-bg-tertiary: #10141d;
 
-  --color-brand-primary: #0e7c7b;
-  --color-brand-light: #7cd5d3;
-  --color-brand-accent: #71dba2;
-  --color-brand-muted: #173b43;
+  /* Electric Blue: #328FDF (Eye, X letter, glow, circuit accents) */
+  --color-brand-primary: #328FDF;
+  --color-brand-light: #5cb3fa;
+  --color-brand-accent: #328FDF;
+  --color-brand-muted: #0d2238;
 
-  --color-brand-danger: #ffb4ab;
+  /* Platinum Silver: #DCDCDF (Eagle, logo text, premium metallic finish) */
+  --color-platinum: #DCDCDF;
+  --color-platinum-light: #ECECEE;
+
+  /* Gunmetal Gray: #5B5C5F (Metal shadows and depth) */
+  --color-gunmetal: #5B5C5F;
+  --color-gunmetal-dark: #38393C;
+
+  /* Pure White: #FFFFFF (Monochrome/inverted logo & crisp contrast) */
+  --color-pure-white: #FFFFFF;
+
+  --color-brand-danger: #ff6b6b;
   --color-brand-danger-dark: #93000a;
 
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #bdc9c8;
-  --color-text-muted: #627271;
-  --color-border: rgba(227, 233, 232, 0.1);
-  --color-input-bg: #07151e;
-  --color-header-bg: rgba(7, 21, 30, 0.85);
-  --color-header-scrolled: rgba(12, 26, 37, 0.95);
-  --color-card-bg: #0c1a25;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #DCDCDF;
+  --color-text-muted: #8c8e94;
+  --color-border: rgba(91, 92, 95, 0.28);
+  --color-input-bg: #010203;
+  --color-header-bg: rgba(1, 2, 3, 0.88);
+  --color-header-scrolled: rgba(8, 10, 15, 0.95);
+  --color-card-bg: #080a0f;
 }
 
 [data-theme="light"] {
@@ -52,18 +68,26 @@
   --color-bg-secondary: #ffffff;
   --color-bg-tertiary: #f1f5f9;
 
-  --color-brand-primary: #0e7c7b;
-  --color-brand-light: #0d6b6a;
-  --color-brand-accent: #059669;
-  --color-brand-muted: #e2f1f1;
+  --color-brand-primary: #328FDF;
+  --color-brand-light: #1d70be;
+  --color-brand-accent: #2563eb;
+  --color-brand-muted: #e8f4fc;
+
+  --color-platinum: #2a2b2e;
+  --color-platinum-light: #5B5C5F;
+
+  --color-gunmetal: #5B5C5F;
+  --color-gunmetal-dark: #38393C;
+
+  --color-pure-white: #010203;
 
   --color-brand-danger: #dc2626;
   --color-brand-danger-dark: #fee2e2;
 
-  --color-text-primary: #0f172a;
+  --color-text-primary: #010203;
   --color-text-secondary: #334155;
-  --color-text-muted: #64748b;
-  --color-border: rgba(14, 124, 123, 0.18);
+  --color-text-muted: #5B5C5F;
+  --color-border: rgba(91, 92, 95, 0.2);
   --color-input-bg: #ffffff;
   --color-header-bg: rgba(248, 250, 252, 0.92);
   --color-header-scrolled: rgba(255, 255, 255, 0.98);
@@ -81,7 +105,7 @@
   color: var(--color-text-primary) !important;
 }
 
-/* Convert general text-white to dark text in light mode */
+/* Convert general text-white to dark text in light mode where appropriate */
 [data-theme="light"] .text-white {
   color: var(--color-text-primary);
 }
@@ -90,7 +114,7 @@
 [data-theme="light"] button.bg-\[var\(--color-brand-primary\)\],
 [data-theme="light"] .bg-\[var\(--color-brand-primary\)\].text-white,
 [data-theme="light"] .text-white-force,
-[data-theme="light"] [class*="bg-[#0284c7]"] * {
+[data-theme="light"] [class*="bg-[#328FDF]"] * {
   color: #ffffff !important;
 }
 
@@ -99,27 +123,27 @@
 [data-theme="light"] .tech-card .w-10.h-10,
 [data-theme="light"] .tech-card .rounded-lg.bg-\[var\(--color-bg-tertiary\)\] {
   background-color: #f1f5f9 !important;
-  color: #0d6b6a !important;
+  color: #1d70be !important;
 }
 
 [data-theme="light"] .tech-card .w-12.h-12 svg,
 [data-theme="light"] .tech-card .w-10.h-10 svg,
 [data-theme="light"] .tech-card .rounded-lg.bg-\[var\(--color-bg-tertiary\)\] svg {
-  color: #0d6b6a !important;
+  color: #1d70be !important;
 }
 
 /* Flagship and pill badges in light mode */
 [data-theme="light"] [class*="rounded-full"][class*="bg-\[var\(--color-brand-primary\)\]"] {
-  background-color: rgba(14, 124, 123, 0.12) !important;
-  color: #0d6b6a !important;
-  border-color: rgba(14, 124, 123, 0.3) !important;
+  background-color: rgba(50, 143, 223, 0.12) !important;
+  color: #1d70be !important;
+  border-color: rgba(50, 143, 223, 0.3) !important;
 }
 
 [data-theme="light"] [class*="rounded-full"][class*="bg-\[var\(--color-brand-primary\)\]"] * {
-  color: #0d6b6a !important;
+  color: #1d70be !important;
 }
 
-/* Inactive button tabs in light mode (e.g. Telemetry stage switcher) */
+/* Inactive button tabs in light mode */
 [data-theme="light"] button.bg-\[var\(--color-bg-tertiary\)\] {
   background-color: #f1f5f9 !important;
   color: #334155 !important;
@@ -127,18 +151,15 @@
 
 [data-theme="light"] button.bg-\[var\(--color-bg-tertiary\)\]:hover {
   background-color: #e2e8f0 !important;
-  color: #0f172a !important;
+  color: #010203 !important;
 }
 
-[data-theme="light"] .bg-\[\#12202c\] {
+[data-theme="light"] .bg-\[\#080a0f\],
+[data-theme="light"] .bg-\[\#10141d\] {
   background-color: #ffffff !important;
 }
 
-[data-theme="light"] .bg-\[\#0b1419\] {
-  background-color: #ffffff !important;
-}
-
-[data-theme="light"] .bg-\[\#060c10\] {
+[data-theme="light"] .bg-\[\#010203\] {
   background-color: #f8fafc !important;
 }
 
@@ -177,7 +198,7 @@
 
   /* Accessible Focus Rings */
   *:focus-visible {
-    outline: 2px solid var(--color-brand-light);
+    outline: 2px solid var(--color-brand-primary);
     outline-offset: 4px;
   }
 }
@@ -186,7 +207,7 @@
   /* Unified Technical Card Styles */
   .tech-card {
     background-color: var(--color-bg-secondary);
-    border: 1px solid rgba(227, 233, 232, 0.1);
+    border: 1px solid var(--color-border);
     border-radius: 1rem;
     position: relative;
     overflow: hidden;
@@ -194,7 +215,7 @@
 
   .tech-card-glow {
     background-color: var(--color-bg-secondary);
-    border: 1px solid rgba(227, 233, 232, 0.1);
+    border: 1px solid var(--color-border);
     border-radius: 1rem;
     position: relative;
     overflow: hidden;
@@ -210,23 +231,23 @@
 
     .card-hover:hover {
       transform: translateY(-2px);
-      border-color: rgba(124, 213, 211, 0.4);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4),
-                  0 0 20px rgba(14, 124, 123, 0.15);
+      border-color: rgba(50, 143, 223, 0.4);
+      box-shadow: 0 12px 30px rgba(1, 2, 3, 0.7),
+                  0 0 20px rgba(50, 143, 223, 0.2);
     }
 
     .tech-card-glow:hover {
-      border-color: rgba(14, 124, 123, 0.5);
-      box-shadow: 0 0 25px rgba(14, 124, 123, 0.25),
-                  inset 0 0 12px rgba(14, 124, 123, 0.1);
+      border-color: rgba(50, 143, 223, 0.5);
+      box-shadow: 0 0 25px rgba(50, 143, 223, 0.3),
+                  inset 0 0 12px rgba(50, 143, 223, 0.15);
       transition: all 0.3s ease;
     }
   }
 
   /* Technical Input Design */
   .tech-input {
-    background-color: var(--color-bg-primary);
-    border: 1px solid rgba(98, 114, 113, 0.4);
+    background-color: var(--color-input-bg);
+    border: 1px solid var(--color-border);
     color: var(--color-text-primary);
     border-radius: 0.5rem;
     padding: 0.75rem 1rem;
@@ -235,8 +256,8 @@
   }
 
   .tech-input:focus {
-    border-color: var(--color-brand-light);
-    box-shadow: 0 0 0 2px rgba(14, 124, 123, 0.25);
+    border-color: var(--color-brand-primary);
+    box-shadow: 0 0 0 2px rgba(50, 143, 223, 0.3);
     outline: none;
   }
 

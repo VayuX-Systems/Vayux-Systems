@@ -123,7 +123,7 @@ export const InsightsScreen: React.FC<InsightsScreenProps> = ({
               onClick={() => setSelectedCategory(cat.id)}
               className={`px-4 py-2 rounded-full text-xs font-mono font-semibold transition-all cursor-pointer ${
                 selectedCategory === cat.id
-                  ? 'bg-[var(--color-brand-light)] text-[#003736] font-bold shadow-md shadow-[var(--color-brand-light)]/20'
+                  ? 'bg-[var(--color-brand-light)] text-[#010203] font-bold shadow-md shadow-[var(--color-brand-light)]/20'
                   : 'bg-[var(--color-bg-primary)] text-[var(--color-text-secondary)] hover:text-white border border-[var(--color-border)]/40 hover:border-[var(--color-brand-light)]/40'
               }`}
             >
@@ -348,7 +348,7 @@ export const InsightsScreen: React.FC<InsightsScreenProps> = ({
             />
             <button
               type="submit"
-              className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider shrink-0 transition-all cursor-pointer"
+              className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider shrink-0 transition-all cursor-pointer"
             >
               Subscribe
             </button>

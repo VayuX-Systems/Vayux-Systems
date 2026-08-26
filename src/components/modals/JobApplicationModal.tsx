@@ -68,7 +68,7 @@ export const JobApplicationModal: React.FC<JobApplicationModalProps> = ({ job, o
                 setSubmitted(false);
                 onClose();
               }}
-              className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-6 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all"
+              className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-6 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all"
             >
               Done
             </button>
@@ -163,7 +163,7 @@ export const JobApplicationModal: React.FC<JobApplicationModalProps> = ({ job, o
               </button>
               <button
                 type="submit"
-                className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-6 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer"
+                className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-6 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer"
               >
                 <Send size={14} />
                 <span>Submit Application</span>

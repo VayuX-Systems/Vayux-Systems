@@ -251,7 +251,7 @@ export const CompanyScreen: React.FC<CompanyScreenProps> = ({
               <div className="shrink-0">
                 <button
                   onClick={() => onOpenJobApplication(job)}
-                  className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-6 py-2.5 rounded font-semibold text-xs uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer shadow-md"
+                  className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-6 py-2.5 rounded font-semibold text-xs uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer shadow-md"
                 >
                   <span>Apply Now</span>
                   <ArrowRight size={14} />
@@ -271,7 +271,7 @@ export const CompanyScreen: React.FC<CompanyScreenProps> = ({
         <div className="pt-2">
           <button
             onClick={() => onOpenContact('Confidential Leadership Inquiry')}
-            className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-8 py-3 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer"
+            className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-8 py-3 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer"
           >
             Direct Contact
           </button>

@@ -105,7 +105,7 @@ export const VaptScreen: React.FC<VaptScreenProps> = ({
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
               onClick={() => onOpenContact('VAPT Engagement')}
-              className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-7 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20"
+              className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-7 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20"
             >
               Request VAPT Proposal
             </button>
@@ -328,7 +328,7 @@ export const VaptScreen: React.FC<VaptScreenProps> = ({
         <div className="flex flex-wrap items-center justify-center gap-4">
           <button
             onClick={() => onOpenContact('VAPT Engagement')}
-            className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-7 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20"
+            className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-7 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20"
           >
             Request VAPT Proposal
           </button>

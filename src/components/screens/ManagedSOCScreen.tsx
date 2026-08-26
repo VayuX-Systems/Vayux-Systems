@@ -109,7 +109,7 @@ export const ManagedSOCScreen: React.FC<ManagedSOCScreenProps> = ({
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
               onClick={() => onOpenContact('Managed SOC Proposal')}
-              className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-7 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20"
+              className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-7 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20"
             >
               Request SOC Proposal
             </button>
@@ -276,17 +276,17 @@ export const ManagedSOCScreen: React.FC<ManagedSOCScreenProps> = ({
       </section>
 
       {/* Final Deployment CTA */}
-      <section className="bg-gradient-to-r from-[var(--color-brand-primary)] to-[#003736] rounded-2xl p-8 sm:p-12 text-center text-white space-y-6 shadow-2xl">
+      <section className="bg-gradient-to-r from-[var(--color-brand-primary)] to-[#080a0f] border border-[var(--color-brand-primary)]/30 rounded-2xl p-8 sm:p-12 text-center text-white space-y-6 shadow-2xl">
         <h2 className="text-3xl sm:text-4xl font-bold">
           Secure your perimeter today.
         </h2>
-        <p className="text-sm sm:text-base text-[var(--color-brand-accent)] max-w-xl mx-auto">
+        <p className="text-sm sm:text-base text-[var(--color-platinum)] max-w-xl mx-auto">
           Deploy VayuX Managed SOC agents in minutes with native support for AWS, Azure, GCP, Kubernetes, and on-premises bare metal.
         </p>
         <div className="flex flex-wrap justify-center gap-4 pt-2">
           <button
             onClick={() => onOpenContact('Managed SOC Onboarding')}
-            className="bg-white text-[#003736] hover:bg-[var(--color-brand-accent)] px-8 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg"
+            className="bg-white text-[#010203] hover:bg-[var(--color-brand-light)] hover:text-white px-8 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg"
           >
             Schedule Technical Onboarding
           </button>

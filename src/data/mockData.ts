@@ -84,7 +84,7 @@ export const LOOP_STAGES: LoopStage[] = [
     subtitle: 'Anomalous Activity Trigger',
     description: 'Anomalous activity breaches initial thresholds. Autonomous heuristics instantly isolate vectors, initiating rapid triage while maintaining critical business operations.',
     icon: 'alert-triangle',
-    iconColor: '#ffb4ab',
+    iconColor: '#ff6b6b',
     telemetryOutput: 'High-entropy egress payload detected across TLS session #88219 (ASN 4837). EDR heuristic alert severity 9.4.',
     actions: ['Automated IP quarantine', 'Process execution suspended', 'Memory state snapshot generated'],
     route: 'vapt'
@@ -96,7 +96,7 @@ export const LOOP_STAGES: LoopStage[] = [
     subtitle: 'Digital Forensics & Isolation',
     description: 'Digital Forensics and Incident Response teams engage. Immediate sandbox containment prevents lateral movement, extracting live memory and artifact logs.',
     icon: 'search',
-    iconColor: '#7cd5d3',
+    iconColor: '#5cb3fa',
     telemetryOutput: 'Endpoint isolated in zero-trust sandbox. Triage script extracted 12 active processes, registry run-keys, and unlinked DLL injection artifacts.',
     actions: ['Forensic image acquisition', 'C2 beacon disruption', 'Lateral pivot kill-chain severance'],
     route: 'dfir'
@@ -108,7 +108,7 @@ export const LOOP_STAGES: LoopStage[] = [
     subtitle: 'Sandboxed Reverse Engineering',
     description: 'Novel payloads are detonated in isolated laboratory sandboxes. Disassembly uncovers weaponized techniques, evasion routines, and global indicators of compromise.',
     icon: 'flask-conical',
-    iconColor: '#38bdf8',
+    iconColor: '#328FDF',
     telemetryOutput: 'Dynamic detonation revealed novel evasion routine bypassing AMSI via memory patching (MITRE ATT&CK T1562.001). 4 C2 domains de-anonymized.',
     actions: ['Static disassembly & decompilation', 'Dynamic payload unpacking', 'Global threat intelligence enrichment'],
     route: 'insights'
@@ -120,7 +120,7 @@ export const LOOP_STAGES: LoopStage[] = [
     subtitle: 'Global Rule Propagation',
     description: 'Extracted threat intelligence is compiled into Sigma, YARA, and Snort detection rules, instantly propagated across managed SOC nodes for proactive shielding.',
     icon: 'radar',
-    iconColor: '#7cd5d3',
+    iconColor: '#5cb3fa',
     telemetryOutput: 'Generated 3 Sigma rules, 2 YARA signatures, and 14 Suricata IDS signatures. Hot-deployed across SIEM fleet in 118ms.',
     actions: ['Continuous behavioral query execution', 'Zero-day baseline recalibration', 'Autonomous rule validation'],
     route: 'managed-soc'
@@ -132,7 +132,7 @@ export const LOOP_STAGES: LoopStage[] = [
     subtitle: 'Adaptive Human Hardening',
     description: 'Incident vectors convert into immediate developer micro-trainings and contextual phishing simulations, strengthening the human defense perimeter against zero-day tactics.',
     icon: 'graduation-cap',
-    iconColor: '#71dba2',
+    iconColor: '#DCDCDF',
     telemetryOutput: 'Role-based remediation micro-module dispatched to 14 software engineering pods. Social engineering resilience score improved by 34%.',
     actions: ['Custom scenario simulation', 'Developer secure-coding brief', 'Phishing awareness recalibration'],
     route: 'training'
@@ -144,7 +144,7 @@ export const LOOP_STAGES: LoopStage[] = [
     subtitle: 'Governance & Compliance Hardening',
     description: 'Audit logs, compliance policies, and governance controls are automatically aligned with DPDP Act, ISO 27001, and SOC2 requirements, closing the loop on risk exposure.',
     icon: 'shield-check',
-    iconColor: '#71dba2',
+    iconColor: '#328FDF',
     telemetryOutput: 'DPDP Act 2023 compliance audit trail generated. SOC2 Trust Services criteria updated with immutable audit log seal #90214.',
     actions: ['Policy & architecture updates', 'Continuous compliance audit log signed', 'Executive risk ledger sync'],
     route: 'grc'
@@ -155,7 +155,7 @@ export const RESEARCH_ARTICLES: ResearchArticle[] = [
   {
     id: 'apt29-cloud-evasion',
     category: 'THREAT ADVISORY',
-    categoryColor: '#ffb4ab',
+    categoryColor: '#ff6b6b',
     title: "Analysis of APT29's Novel Evasion Techniques in Cloud Environments",
     summary: 'A deep technical dive into recently observed tactics, techniques, and procedures (TTPs) utilized by state-sponsored actors to bypass conventional cloud security logging mechanisms.',
     date: 'Oct 24, 2024',
@@ -190,7 +190,7 @@ export const RESEARCH_ARTICLES: ResearchArticle[] = [
   {
     id: 'cve-2024-8991',
     category: 'VULNERABILITY',
-    categoryColor: '#7cd5d3',
+    categoryColor: '#328FDF',
     title: 'CVE-2024-8991: Privilege Escalation in Core Network Appliances',
     summary: 'Detailed analysis and proof-of-concept for a critical vulnerability affecting widespread network infrastructure devices. Remediation steps included.',
     date: 'Oct 21, 2024',
@@ -217,7 +217,7 @@ export const RESEARCH_ARTICLES: ResearchArticle[] = [
   {
     id: 'sec-disclosure-rules',
     category: 'REGULATORY',
-    categoryColor: '#c2c7c7',
+    categoryColor: '#DCDCDF',
     title: "Navigating the SEC's New Incident Disclosure Rules",
     summary: 'A breakdown of the recent changes to mandatory reporting timelines and what it means for enterprise security operations workflows.',
     date: 'Oct 18, 2024',
@@ -240,7 +240,7 @@ export const RESEARCH_ARTICLES: ResearchArticle[] = [
   {
     id: 'vayux-loop-v2',
     category: 'COMPANY NEWS',
-    categoryColor: '#7cd5d3',
+    categoryColor: '#5cb3fa',
     title: 'VayuX Systems Announces Next-Gen Threat Detection Engine',
     summary: "Introducing 'The Loop v2.0', featuring enhanced machine learning models for identifying anomalous behavior in zero-trust architectures.",
     date: 'Oct 15, 2024',

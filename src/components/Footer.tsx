@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PageId } from '../types';
 import { Shield, AlertTriangle, RefreshCw, X } from 'lucide-react';
+import { VayuXLogo } from './VayuXLogo';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
@@ -22,9 +23,9 @@ export const Footer: React.FC<FooterProps> = ({
 
   return (
     <>
-      <footer className="bg-[var(--color-bg-primary)] border-t border-[var(--color-border)]/20 w-full mt-auto relative overflow-hidden pb-20 md:pb-0">
+      <footer className="bg-[var(--color-bg-primary)] border-t border-[var(--color-border)] w-full mt-auto relative overflow-hidden pb-20 md:pb-0">
         {/* Background Watermark */}
-        <div className="absolute -bottom-24 -right-24 opacity-[0.03] pointer-events-none text-[var(--color-brand-light)]">
+        <div className="absolute -bottom-24 -right-24 opacity-[0.03] pointer-events-none text-[var(--color-brand-primary)]">
           <RefreshCw size={360} className="animate-spin-slow" />
         </div>
 
@@ -33,24 +34,22 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="flex flex-col gap-4">
             <div
               onClick={() => handleNav('home')}
-              className="font-bold text-2xl text-[var(--color-brand-light)] opacity-80 cursor-pointer flex items-center gap-2"
+              className="cursor-pointer flex items-center gap-2 group"
             >
-              <div className="w-5 h-5 rounded-full border-2 border-[var(--color-brand-light)] flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-[var(--color-brand-light)]" />
-              </div>
-              <span>VayuX</span>
+              <VayuXLogo size="md" glow={true} />
             </div>
             <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
               © {new Date().getFullYear()} VayuX Systems. Engineering-Grade Security.
             </p>
-            <div className="text-xs font-mono text-[var(--color-brand-light)]/70 pt-2">
-              Verifiable Models • Autonomous Defense
+            <div className="text-xs font-mono text-[var(--color-brand-light)] pt-2 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-primary)] animate-pulse" />
+              <span>Verifiable Models • Autonomous Defense</span>
             </div>
           </div>
 
           {/* Platform Links */}
           <div className="flex flex-col gap-2.5 text-xs font-semibold uppercase tracking-wider">
-            <span className="text-white mb-2">Platform</span>
+            <span className="text-white mb-2 font-bold tracking-widest text-[#DCDCDF]">Platform</span>
             <button
               onClick={() => handleNav('loop')}
               className="text-left text-[var(--color-text-secondary)] hover:text-[var(--color-brand-light)] transition-colors py-1 cursor-pointer"
@@ -79,7 +78,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Corporate & Support */}
           <div className="flex flex-col gap-2.5 text-xs font-semibold uppercase tracking-wider">
-            <span className="text-white mb-2">Company</span>
+            <span className="text-white mb-2 font-bold tracking-widest text-[#DCDCDF]">Company</span>
             <button
               onClick={() => handleNav('company')}
               className="text-left text-[var(--color-text-secondary)] hover:text-[var(--color-brand-light)] transition-colors py-1 cursor-pointer"
@@ -103,7 +102,7 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Legal & Compliance */}
           <div className="flex flex-col gap-2.5 text-xs font-semibold uppercase tracking-wider">
-            <span className="text-white mb-2">Governance</span>
+            <span className="text-white mb-2 font-bold tracking-widest text-[#DCDCDF]">Governance</span>
             <button
               onClick={() => setGovernanceModal('privacy')}
               className="text-left text-[var(--color-text-secondary)] hover:text-[var(--color-brand-light)] transition-colors py-1 cursor-pointer"
@@ -116,9 +115,9 @@ export const Footer: React.FC<FooterProps> = ({
             >
               Terms of Service
             </button>
-            <div className="mt-3 p-3 rounded-lg bg-[var(--color-bg-secondary)] border border-[var(--color-border)]/30">
-              <div className="text-[11px] text-[var(--color-brand-accent)] flex items-center gap-1.5 font-mono">
-                <Shield size={12} />
+            <div className="mt-3 p-3 rounded-lg bg-[var(--color-bg-secondary)] border border-[var(--color-border)]">
+              <div className="text-[11px] text-[var(--color-brand-light)] flex items-center gap-1.5 font-mono">
+                <Shield size={12} className="text-[var(--color-brand-primary)]" />
                 <span>SOC2 Type II Certified</span>
               </div>
             </div>
@@ -131,13 +130,13 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
           <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-2xl w-full max-w-2xl max-h-[80vh] flex flex-col overflow-hidden shadow-2xl">
             {/* Modal Header */}
-            <div className="flex justify-between items-center px-6 py-4 border-b border-[var(--color-border)]/30 bg-[var(--color-bg-primary)]">
+            <div className="flex justify-between items-center px-6 py-4 border-b border-[var(--color-border)] bg-[var(--color-bg-primary)]">
               <h3 className="text-lg font-semibold text-white">
                 {governanceModal === 'privacy' ? 'Privacy Policy' : 'Terms of Service'}
               </h3>
               <button
                 onClick={() => setGovernanceModal(null)}
-                className="text-[var(--color-text-secondary)] hover:text-white p-1 rounded-lg hover:bg-[var(--color-bg-tertiary)] transition-colors"
+                className="text-[var(--color-text-secondary)] hover:text-white p-1 rounded-lg hover:bg-[var(--color-bg-tertiary)] transition-colors cursor-pointer"
               >
                 <X size={20} />
               </button>
@@ -216,10 +215,10 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
 
             {/* Modal Footer */}
-            <div className="border-t border-[var(--color-border)]/30 bg-[var(--color-bg-primary)] px-6 py-4 flex justify-end">
+            <div className="border-t border-[var(--color-border)] bg-[var(--color-bg-primary)] px-6 py-4 flex justify-end">
               <button
                 onClick={() => setGovernanceModal(null)}
-                className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-6 py-2 rounded text-xs font-semibold uppercase tracking-wider transition-all"
+                className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-6 py-2 rounded text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer"
               >
                 Close
               </button>

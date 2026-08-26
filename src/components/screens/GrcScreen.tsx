@@ -104,7 +104,7 @@ export const GrcScreen: React.FC<GrcScreenProps> = ({
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
               onClick={() => onOpenContact('GRC Engagement')}
-              className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-7 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20"
+              className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-7 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20"
             >
               Request GRC Assessment
             </button>
@@ -327,7 +327,7 @@ export const GrcScreen: React.FC<GrcScreenProps> = ({
         <div className="flex flex-wrap items-center justify-center gap-4">
           <button
             onClick={() => onOpenContact('GRC Assessment')}
-            className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-7 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20"
+            className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-7 py-3.5 rounded font-semibold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20"
           >
             Request Assessment
           </button>

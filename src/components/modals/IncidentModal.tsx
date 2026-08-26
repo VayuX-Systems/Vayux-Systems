@@ -325,7 +325,7 @@ export const IncidentModal: React.FC<IncidentModalProps> = ({ isOpen, onClose })
               <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 pt-2 sm:pt-4">
                 <button
                   onClick={handleClose}
-                  className="flex-1 w-full bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
+                  className="flex-1 w-full bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
                 >
                   Acknowledge
                 </button>

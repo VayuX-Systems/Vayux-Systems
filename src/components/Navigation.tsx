@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PageId } from '../types';
 import { Menu, X, ShieldAlert, Mail, Sun, Moon } from 'lucide-react';
+import { VayuXLogo } from './VayuXLogo';
 
 interface NavigationProps {
   currentPage: PageId;
@@ -61,8 +62,8 @@ export const Navigation: React.FC<NavigationProps> = ({
       <header
         className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[var(--color-bg-secondary)]/95 backdrop-blur-md border-b border-[var(--color-brand-primary)]/20 shadow-lg shadow-black/25'
-            : 'bg-[var(--color-bg-primary)]/80 backdrop-blur-sm border-b border-transparent'
+            ? 'bg-[var(--color-bg-secondary)]/95 backdrop-blur-md border-b border-[var(--color-brand-primary)]/25 shadow-lg shadow-black/40'
+            : 'bg-[var(--color-bg-primary)]/85 backdrop-blur-sm border-b border-transparent'
         }`}
       >
         <div className="flex justify-between items-center px-4 sm:px-8 py-3.5 max-w-7xl mx-auto w-full h-[68px]">
@@ -80,12 +81,10 @@ export const Navigation: React.FC<NavigationProps> = ({
 
             <button
               onClick={() => handleNavClick('home')}
-              className="font-bold text-2xl text-[var(--color-brand-light)] tracking-tight flex items-center gap-2.5 group cursor-pointer focus-visible:outline-none"
+              className="cursor-pointer focus-visible:outline-none group flex items-center"
+              aria-label="VayuX Home"
             >
-              <img src="/logo.png" alt="VayuX Logo" className="w-7 h-7 rounded-full object-contain drop-shadow-[0_0_8px_rgba(124,213,211,0.4)]" />
-              <span className="text-[var(--color-text-primary)] font-semibold">
-                Vayu<span className="text-[var(--color-brand-light)]">X</span>
-              </span>
+              <VayuXLogo size="md" glow={true} />
             </button>
           </div>
 
@@ -108,7 +107,7 @@ export const Navigation: React.FC<NavigationProps> = ({
                 >
                   {item.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--color-brand-light)] rounded-full animate-in fade-in duration-200" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--color-brand-primary)] shadow-[0_0_8px_rgba(50,143,223,0.8)] rounded-full animate-in fade-in duration-200" />
                   )}
                 </button>
               );
@@ -139,7 +138,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 
             <button
               onClick={onOpenContact}
-              className="bg-[var(--color-brand-primary)] text-white px-4 py-2 rounded text-xs font-semibold uppercase tracking-wider hover:bg-[var(--color-brand-light)] hover:text-[#003736] transition-all duration-200 active:scale-95 shadow-sm cursor-pointer focus-visible:outline-2"
+              className="bg-[var(--color-brand-primary)] text-white px-4 py-2 rounded text-xs font-semibold uppercase tracking-wider hover:bg-[var(--color-brand-light)] hover:text-[#010203] transition-all duration-200 active:scale-95 shadow-md shadow-[var(--color-brand-primary)]/20 cursor-pointer focus-visible:outline-2"
             >
               Contact
             </button>
@@ -151,7 +150,7 @@ export const Navigation: React.FC<NavigationProps> = ({
           <div
             id="mobile-menu"
             role="navigation"
-            className="md:hidden bg-[var(--color-bg-secondary)] border-b border-[var(--color-brand-primary)]/20 px-6 py-4 space-y-4 relative z-50 animate-in slide-in-from-top duration-300"
+            className="md:hidden bg-[var(--color-bg-secondary)] border-b border-[var(--color-brand-primary)]/20 px-6 py-4 space-y-4 relative z-50 animate-in slide-in-from-top duration-300 shadow-2xl"
           >
             <div className="flex flex-col space-y-2">
               <button
@@ -218,7 +217,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 
       {/* Fixed Mobile Bottom Bar (iOS Notch Safe Spacing) */}
       <nav
-        className="bg-[#12202c] fixed bottom-0 left-0 right-0 w-full z-50 md:hidden border-t border-[var(--color-brand-primary)]/10 shadow-2xl px-6 flex justify-around items-center"
+        className="bg-[var(--color-bg-secondary)] fixed bottom-0 left-0 right-0 w-full z-50 md:hidden border-t border-[var(--color-brand-primary)]/20 shadow-2xl px-6 flex justify-around items-center"
         style={{
           height: 'calc(64px + env(safe-area-inset-bottom, 0px))',
           paddingBottom: 'env(safe-area-inset-bottom, 0px)',
@@ -234,7 +233,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 
         <button
           onClick={onOpenIncident}
-          className="bg-[var(--color-brand-light)] text-[#003736] px-4 py-2 rounded-xl flex flex-col items-center gap-0.5 active:scale-95 transition-all shadow-lg font-bold text-[10px] uppercase tracking-wider cursor-pointer"
+          className="bg-[var(--color-brand-primary)] text-white px-4 py-2 rounded-xl flex flex-col items-center gap-0.5 active:scale-95 transition-all shadow-lg shadow-[var(--color-brand-primary)]/30 font-bold text-[10px] uppercase tracking-wider cursor-pointer"
         >
           <ShieldAlert size={16} />
           <span>Incident Response</span>

@@ -226,7 +226,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               </button>
               <button
                 onClick={handleSubmit}
-                className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-4 sm:px-8 py-2.5 sm:py-3 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20 whitespace-nowrap"
+                className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-4 sm:px-8 py-2.5 sm:py-3 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-[var(--color-brand-primary)]/20 whitespace-nowrap"
               >
                 <span>Submit</span>
                 <ChevronRight size={12} />
@@ -295,7 +295,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               {/* Close Button */}
               <button
                 onClick={handleClose}
-                className="w-full bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
+                className="w-full bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
               >
                 Close
               </button>

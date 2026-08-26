@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PageId } from '../types';
 import { LOOP_STAGES } from '../data/mockData';
+import { VayuXLogo } from './VayuXLogo';
 import {
   GraduationCap,
   ShieldCheck,
@@ -32,7 +33,6 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
   const isPaused = hoveredNode !== null || hoveredCenter;
 
   // 6 Orbital Nodes spaced at equal 60-degree increments (radius = 33%)
-  // Leaves comfortable margins around all 4 edges to prevent any clipping
   const nodes = [
     {
       id: 'training',
@@ -108,9 +108,9 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
       >
         <defs>
           <linearGradient id="orbitGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.8" />
-            <stop offset="50%" stopColor="#0ea5e9" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#0284c7" stopOpacity="0.8" />
+            <stop offset="0%" stopColor="#5cb3fa" stopOpacity="0.8" />
+            <stop offset="50%" stopColor="#328FDF" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#1d70be" stopOpacity="0.8" />
           </linearGradient>
 
           <filter id="trackGlow" x="-20%" y="-20%" width="140%" height="140%">
@@ -124,25 +124,25 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
           cx="200"
           cy="200"
           r="132"
-          stroke="#38bdf8"
+          stroke="#328FDF"
           strokeWidth="1.5"
-          strokeOpacity="0.2"
+          strokeOpacity="0.25"
           className="animate-pulse"
         />
 
-        {/* Clean Light-Blue Dotted/Dashed Orbit Ring */}
+        {/* Clean Electric Blue Dotted/Dashed Orbit Ring */}
         <circle
           cx="200"
           cy="200"
           r="132"
-          stroke="#93c5fd"
+          stroke="#328FDF"
           strokeWidth="2.5"
           strokeDasharray="6 8"
-          strokeOpacity="0.6"
+          strokeOpacity="0.65"
         />
 
         {/* Flowing animated glowing particle along the orbit */}
-        <circle cx="200" cy="68" fill="#38bdf8" r="4.5" filter="url(#trackGlow)">
+        <circle cx="200" cy="68" fill="#5cb3fa" r="4.5" filter="url(#trackGlow)">
           <animateMotion
             dur="8s"
             repeatCount="indefinite"
@@ -150,8 +150,8 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
           />
         </circle>
 
-        {/* Secondary trailing particle */}
-        <circle cx="200" cy="68" fill="#ffffff" r="3" opacity="0.85">
+        {/* Secondary trailing particle in Pure White */}
+        <circle cx="200" cy="68" fill="#FFFFFF" r="3" opacity="0.9">
           <animateMotion
             dur="8s"
             begin="-4s"
@@ -161,32 +161,31 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
         </circle>
       </svg>
 
-      {/* Center Circle: Vibrant Blue Gradient VAYUX Hub */}
+      {/* Center Circle: Electric Blue Gradient & Platinum VAYUX Hub */}
       <div
-        className="relative z-20 w-32 h-32 sm:w-36 sm:h-36 rounded-full flex flex-col items-center justify-center p-3 text-center cursor-pointer transition-all duration-300 transform hover:scale-105 group bg-gradient-to-br from-[#0284c7] via-[#0369a1] to-[#0c4a6e] border-2 border-[#38bdf8]/40 shadow-[0_0_35px_rgba(2,132,199,0.5),0_0_70px_rgba(56,189,248,0.25),inset_0_0_20px_rgba(0,0,0,0.4)]"
+        className="relative z-20 w-32 h-32 sm:w-36 sm:h-36 rounded-full flex flex-col items-center justify-center p-3 text-center cursor-pointer transition-all duration-300 transform hover:scale-105 group bg-gradient-to-br from-[#1d70be] via-[#328FDF] to-[#0f3b68] border-2 border-[#5cb3fa]/50 shadow-[0_0_35px_rgba(50,143,223,0.6),0_0_70px_rgba(50,143,223,0.3),inset_0_0_20px_rgba(1,2,3,0.5)]"
         onMouseEnter={() => setHoveredCenter(true)}
         onMouseLeave={() => setHoveredCenter(false)}
         onClick={() => onNavigate && onNavigate('services')}
       >
         {/* Subtle Ambient Shimmer */}
-        <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25)_0%,transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.3)_0%,transparent_60%)] pointer-events-none" />
 
-        {/* Watermark Logo Icon */}
-        <img
-          src="/logo.png"
-          alt="VayuX"
-          className="w-9 h-9 object-contain mb-1 rounded-full drop-shadow-[0_0_8px_rgba(255,255,255,0.4)] transition-transform duration-300 group-hover:scale-110"
-        />
+        {/* Eagle Watermark Emblem */}
+        <div className="mb-1 transform transition-transform duration-300 group-hover:scale-110">
+          <VayuXLogo size={32} showText={false} glow={true} />
+        </div>
 
-        <div className="text-white font-extrabold tracking-wider text-base sm:text-lg drop-shadow-md leading-tight">
-          VAYUX
+        <div className="text-white font-extrabold tracking-wider text-base sm:text-lg drop-shadow-md leading-tight flex items-center">
+          <span className="text-[#DCDCDF]">VAYU</span>
+          <span className="text-[#FFFFFF] ml-0.5">X</span>
         </div>
 
         <div className="text-[9px] sm:text-[10px] text-sky-100 font-medium tracking-tight opacity-90 leading-tight mt-0.5 max-w-[90px]">
           Continuous Cybersecurity
         </div>
 
-        {/* Center Hover Tooltip - Positioned safely above the center hub */}
+        {/* Center Hover Tooltip */}
         {hoveredCenter && (
           <div className="absolute -top-16 left-1/2 -translate-x-1/2 z-50 bg-[var(--color-bg-secondary)] text-left border border-[var(--color-brand-light)]/40 rounded-xl px-3 py-2 shadow-2xl backdrop-blur-md w-52 text-xs animate-in fade-in zoom-in-95 duration-200 pointer-events-auto">
             <div className="text-[var(--color-brand-light)] font-bold text-xs">
@@ -226,32 +225,32 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
               onMouseEnter={() => setHoveredNode(index)}
               onMouseLeave={() => setHoveredNode(null)}
             >
-              {/* Circular Floating White Card */}
+              {/* Circular Floating Metallic Card */}
               <div
                 onClick={() => handleNodeClick(node.stageIndex)}
                 className={`flex flex-col items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full transition-all duration-300 cursor-pointer shadow-lg select-none ${
                   isSelected
-                    ? 'bg-white text-[#003736] scale-110 ring-4 ring-[#38bdf8] shadow-[0_0_25px_rgba(56,189,248,0.6)]'
+                    ? 'bg-white text-[#010203] scale-110 ring-4 ring-[#328FDF] shadow-[0_0_25px_rgba(50,143,223,0.7)]'
                     : isHovered
-                    ? 'bg-white text-[#0f172a] scale-110 shadow-[0_0_25px_rgba(14,124,123,0.5)]'
-                    : 'bg-white/95 hover:bg-white text-[#0f172a] shadow-md border border-slate-200/80 hover:scale-105'
+                    ? 'bg-white text-[#010203] scale-110 shadow-[0_0_25px_rgba(50,143,223,0.5)]'
+                    : 'bg-white/95 hover:bg-white text-[#010203] shadow-md border border-[#5B5C5F]/30 hover:scale-105'
                 }`}
               >
                 {/* Node Icon */}
-                <div className="text-[#0284c7] mb-0.5">
+                <div className="text-[#328FDF] mb-0.5">
                   <IconComponent size={20} className="sm:w-[22px] sm:h-[22px]" />
                 </div>
 
                 {/* Node Label Text */}
-                <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 tracking-tight leading-none text-center px-1">
+                <span className="text-[10px] sm:text-[11px] font-bold text-[#010203] tracking-tight leading-none text-center px-1">
                   {node.label}
                 </span>
               </div>
 
-              {/* Hover Tooltip / Definition Card with Top Elevation (z-50) */}
+              {/* Hover Tooltip / Definition Card */}
               {isHovered && (
                 <div
-                  className="absolute z-50 w-64 p-3.5 rounded-xl bg-[var(--color-bg-secondary)] backdrop-blur-xl border border-[var(--color-brand-light)]/60 shadow-[0_15px_35px_rgba(0,0,0,0.35)] text-left animate-in fade-in zoom-in-95 duration-150 pointer-events-auto top-full mt-2 left-1/2 -translate-x-1/2"
+                  className="absolute z-50 w-64 p-3.5 rounded-xl bg-[var(--color-bg-secondary)] backdrop-blur-xl border border-[var(--color-brand-light)]/60 shadow-[0_15px_35px_rgba(0,0,0,0.6)] text-left animate-in fade-in zoom-in-95 duration-150 pointer-events-auto top-full mt-2 left-1/2 -translate-x-1/2"
                 >
                   <div className="flex items-center justify-between gap-2 mb-1.5">
                     <div className="text-xs font-bold text-[var(--color-text-primary)]">
@@ -269,7 +268,7 @@ export const VayuXLoopAnimation: React.FC<VayuXLoopAnimationProps> = ({
                   {stageData.route && onNavigate && (
                     <button
                       onClick={(e) => handleNavigateClick(e, stageData.route)}
-                      className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-[var(--color-brand-primary)]/20 hover:bg-[var(--color-brand-light)] hover:text-[#003736] text-[var(--color-brand-light)] text-[11px] font-semibold transition-all cursor-pointer group"
+                      className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-[var(--color-brand-primary)]/20 hover:bg-[var(--color-brand-light)] hover:text-[#010203] text-[var(--color-brand-light)] text-[11px] font-semibold transition-all cursor-pointer group"
                     >
                       <span>Detailed Definition</span>
                       <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
