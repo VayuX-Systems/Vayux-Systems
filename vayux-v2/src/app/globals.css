@@ -1,0 +1,499 @@
+@import "tailwindcss";
+
+/* ============================================
+   VayuX Systems — Aetheric Sentinel Design System
+   "Angel Protector" aesthetic: luminous, airy, ultra-luxurious
+   ============================================ */
+
+/* --- Custom Theme Configuration --- */
+@theme {
+  /* Colors — Aetheric Sentinel M3 Palette */
+  --color-surface: #f9f9ff;
+  --color-surface-dim: #cfdaf2;
+  --color-surface-bright: #f9f9ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f0f3ff;
+  --color-surface-container: #e7eeff;
+  --color-surface-container-high: #dee8ff;
+  --color-surface-container-highest: #d8e3fb;
+  --color-on-surface: #111c2d;
+  --color-on-surface-variant: #3e4852;
+  --color-inverse-surface: #263143;
+  --color-inverse-on-surface: #ecf1ff;
+  --color-outline: #6f7883;
+  --color-outline-variant: #bec7d3;
+  --color-surface-tint: #006399;
+  --color-primary: #006399;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #00a8ff;
+  --color-on-primary-container: #003a5c;
+  --color-inverse-primary: #95ccff;
+  --color-secondary: #00668a;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #40c2fd;
+  --color-on-secondary-container: #004d6a;
+  --color-tertiary: #595f66;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #9ba1a8;
+  --color-on-tertiary-container: #31383e;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-primary-fixed: #cde5ff;
+  --color-primary-fixed-dim: #95ccff;
+  --color-on-primary-fixed: #001d32;
+  --color-on-primary-fixed-variant: #004a75;
+  --color-secondary-fixed: #c4e7ff;
+  --color-secondary-fixed-dim: #7bd0ff;
+  --color-on-secondary-fixed: #001e2c;
+  --color-on-secondary-fixed-variant: #004c69;
+  --color-tertiary-fixed: #dde3eb;
+  --color-tertiary-fixed-dim: #c1c7cf;
+  --color-on-tertiary-fixed: #161c22;
+  --color-on-tertiary-fixed-variant: #41474e;
+  --color-background: #f9f9ff;
+  --color-on-background: #111c2d;
+  --color-surface-variant: #d8e3fb;
+
+  /* Spacing */
+  --spacing-section-gap: 160px;
+  --spacing-gutter: 32px;
+  --spacing-margin-desktop: 80px;
+  --spacing-margin-mobile: 20px;
+  --spacing-container-max: 1440px;
+
+  /* Font Family */
+  --font-heading: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
+  --font-body: var(--font-inter), 'Inter', sans-serif;
+}
+
+/* --- Base Styles --- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-on-surface);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Ambient Background — Celestial radial gradients */
+.ambient-bg {
+  background-color: var(--color-background);
+  background-image:
+    radial-gradient(circle at 80% 0%, rgba(149, 204, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 20% 100%, rgba(64, 194, 253, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(249, 249, 255, 1) 100%);
+  background-attachment: fixed;
+}
+
+/* ============================================
+   Dark Mode Theme System (Cyber Stealth Obsidian)
+   ============================================ */
+.dark {
+  --color-surface: #0a0e17;
+  --color-surface-dim: #070a10;
+  --color-surface-bright: #131b2c;
+  --color-surface-container-lowest: #04060a;
+  --color-surface-container-low: #090d16;
+  --color-surface-container: #0e1524;
+  --color-surface-container-high: #151f34;
+  --color-surface-container-highest: #1d2a45;
+  --color-on-surface: #f1f5f9;
+  --color-on-surface-variant: #94a3b8;
+  --color-inverse-surface: #f1f5f9;
+  --color-inverse-on-surface: #0a0e17;
+  --color-outline: #475569;
+  --color-outline-variant: #1e293b;
+  --color-surface-tint: #38bdf8;
+  --color-primary: #38bdf8;
+  --color-on-primary: #040810;
+  --color-primary-container: #0284c7;
+  --color-on-primary-container: #e0f2fe;
+  --color-inverse-primary: #0284c7;
+  --color-secondary: #00e5ff;
+  --color-on-secondary: #040810;
+  --color-secondary-container: #00b4d8;
+  --color-on-secondary-container: #e0f2fe;
+  --color-background: #060910;
+  --color-on-background: #f1f5f9;
+  --color-surface-variant: #111a2d;
+  color-scheme: dark;
+}
+
+.dark .ambient-bg {
+  background-color: var(--color-background);
+  background-image:
+    radial-gradient(circle at 80% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 20% 100%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
+    linear-gradient(180deg, #060910 0%, #0a0e17 100%);
+}
+
+.dark .glass-panel {
+  background: rgba(13, 21, 39, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.dark .glass-card {
+  background: rgba(14, 21, 36, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dark .glass-card:hover {
+  box-shadow: 0 8px 40px rgba(56, 189, 248, 0.25);
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+.dark .glass-accordion {
+  background: rgba(14, 21, 36, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.dark .btn-outline-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #f1f5f9;
+}
+
+.dark .command-border {
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.dark .shimmer-text {
+  background: linear-gradient(90deg, #ffffff 0%, #38bdf8 50%, #ffffff 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 8s linear infinite;
+}
+
+.dark .text-gradient {
+  background: linear-gradient(to right, #ffffff, #38bdf8, #00e5ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .btn-glow {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #ffffff !important;
+  box-shadow: 0 4px 25px rgba(56, 189, 248, 0.4);
+}
+
+.dark .btn-glow:hover {
+  box-shadow: 0 6px 35px rgba(56, 189, 248, 0.65);
+}
+
+.dark .btn-primary-gradient {
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  color: #040810 !important;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+}
+
+.dark .btn-outline-glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #f1f5f9;
+}
+
+.dark .btn-outline-glass:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+}
+
+.dark .ghost-input {
+  border-color: rgba(56, 189, 248, 0.25);
+  color: #f1f5f9;
+}
+
+.dark .ghost-input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+.dark .pill-badge {
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+}
+
+/* --- Glass Morphism Components --- */
+
+/* Primary glass panel — translucent white with blur */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 10px 40px rgba(56, 189, 248, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Glass card — slightly different opacity for cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(190, 199, 211, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  box-shadow: 0 8px 40px rgba(56, 189, 248, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Glass accordion — for FAQ items */
+.glass-accordion {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+/* --- Button Styles --- */
+
+/* Primary CTA — gradient with glow emission */
+.btn-glow {
+  background: linear-gradient(135deg, #006399, #003a5c);
+  box-shadow: 0 4px 20px rgba(0, 99, 153, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-glow:hover {
+  box-shadow: 0 8px 30px rgba(0, 99, 153, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Primary button — cyan to blue gradient */
+.btn-primary-gradient {
+  background: linear-gradient(135deg, #40c2fd 0%, #006399 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-primary-gradient:hover {
+  box-shadow: 0 0 20px rgba(64, 194, 253, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Outline glass button */
+.btn-outline-glass {
+  background: rgba(0, 99, 153, 0.05);
+  color: #0f172a;
+  border: 1px solid rgba(0, 99, 153, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-outline-glass:hover {
+  background: rgba(0, 99, 153, 0.12);
+  border-color: #006399;
+  color: #003a5c;
+  box-shadow: 0 4px 20px rgba(0, 99, 153, 0.15);
+}
+
+/* --- Text Effects --- */
+
+/* Shimmer gradient text — hero headline effect */
+.shimmer-text {
+  background: linear-gradient(90deg, #001e2c 0%, #006399 50%, #001e2c 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 8s linear infinite;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(to right, #006399, #40c2fd);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- Form Elements --- */
+
+/* Ghost input — transparent with platinum border */
+.ghost-input {
+  background: transparent;
+  border: 1px solid rgba(190, 199, 211, 0.5);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.ghost-input:focus {
+  border-color: #40c2fd;
+  box-shadow: 0 0 15px rgba(64, 194, 253, 0.2);
+}
+
+/* --- Utility Classes --- */
+
+/* Luxury border — subtle platinum */
+.luxury-border {
+  border: 1px solid rgba(190, 199, 211, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+}
+
+/* Command border — for service cards with hover glow */
+.command-border {
+  border: 1px solid rgba(0, 99, 153, 0.2);
+  position: relative;
+}
+
+.command-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(64, 194, 253, 0.4);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.command-border:hover::before {
+  opacity: 1;
+  box-shadow: inset 0 0 20px rgba(64, 194, 253, 0.1);
+}
+
+/* Glow on hover */
+.glow-hover:hover {
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+  border-color: rgba(64, 194, 253, 0.5);
+}
+
+/* --- Animations --- */
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 168, 255, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(0, 168, 255, 0.4);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%) rotate(12deg);
+  }
+
+  20%,
+  100% {
+    transform: translateX(100%) rotate(12deg);
+  }
+}
+
+.animate-shimmer-sweep {
+  animation: shimmer-sweep 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* --- Typography Helpers --- */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* --- Scrollbar Styling --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-container-low);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* --- Selection --- */
+::selection {
+  background: rgba(0, 168, 255, 0.2);
+  color: var(--color-on-surface);
+}
+
+/* --- Focus visible for accessibility --- */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
