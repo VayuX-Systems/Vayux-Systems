@@ -74,13 +74,7 @@ const baseMetadata = {
     index: true,
     follow: true,
     nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+    googleBot: 'index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1',
   },
   icons: {
     icon: '/favicon.ico',
