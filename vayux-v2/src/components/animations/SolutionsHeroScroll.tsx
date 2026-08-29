@@ -25,7 +25,7 @@ export default function SolutionsHeroScroll({ children }: SolutionsHeroScrollPro
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden">
       {/* 1. Full-Bleed Edge-to-Edge Solutions Hero (Pure clean studio lighting, no background image) */}
-      <div className="relative min-h-[65vh] md:min-h-[75vh] w-full flex items-center justify-center pt-32 md:pt-40 pb-24 px-5 md:px-[80px] z-10">
+      <div className="relative min-h-[65vh] md:min-h-[75vh] w-full flex items-center justify-center pt-32 md:pt-40 pb-24 px-4 sm:px-6 md:px-[80px] z-10">
         {/* Soft Ambient Radiance in Background */}
         <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-primary-fixed-dim/15 dark:bg-primary/10 rounded-full blur-[130px] pointer-events-none -z-10" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-container/15 dark:bg-secondary/10 rounded-full blur-[150px] pointer-events-none -z-10" />
@@ -73,7 +73,7 @@ export default function SolutionsHeroScroll({ children }: SolutionsHeroScrollPro
       </div>
 
       {/* 2. Elevated Content Card (Glides up and overlaps over the hero on scroll) */}
-      <div className="relative z-30 bg-surface dark:bg-[#090e17] rounded-t-[3rem] md:rounded-t-[4.5rem] shadow-[0_-30px_90px_rgba(0,0,0,0.12)] dark:shadow-[0_-30px_100px_rgba(0,0,0,0.7)] border-t border-white/80 dark:border-cyan-500/20 pt-16 md:pt-24 pb-20 md:pb-32 px-5 md:px-[80px] max-w-[1440px] mx-auto w-full transition-colors duration-300">
+      <div className="relative z-30 bg-surface dark:bg-[#090e17] rounded-t-[3rem] md:rounded-t-[4.5rem] shadow-[0_-30px_90px_rgba(0,0,0,0.12)] dark:shadow-[0_-30px_100px_rgba(0,0,0,0.7)] border-t border-white/80 dark:border-cyan-500/20 pt-16 md:pt-24 pb-20 md:pb-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto w-full transition-colors duration-300">
         {children}
       </div>
     </div>

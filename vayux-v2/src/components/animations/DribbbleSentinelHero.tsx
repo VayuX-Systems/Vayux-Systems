@@ -1,44 +1,25 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export default function DribbbleSentinelHero() {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
-
-  // Smooth spring physics for mouse parallax on desktop
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const springConfig = { damping: 22, stiffness: 160, mass: 0.8 };
-  const lampSwing = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), springConfig);
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [12, -12]), springConfig);
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-14, 14]), springConfig);
-  const transX = useSpring(useTransform(mouseX, [-0.5, 0.5], [-14, 14]), springConfig);
-  const transY = useSpring(useTransform(mouseY, [-0.5, 0.5], [-10, 10]), springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    mouseX.set(x);
-    mouseY.set(y);
+    // Mouse tracking for parallax (optional future enhancement)
+    e.preventDefault();
   };
 
   const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-    setIsHovered(false);
+    // Reset parallax state
   };
 
   return (
     <div
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       className="relative w-full max-w-[480px] sm:max-w-[540px] h-[520px] sm:h-[560px] mx-auto flex flex-col items-center justify-between select-none pt-0 pb-4"
       style={{ perspective: '1200px' }}
@@ -111,13 +92,13 @@ export default function DribbbleSentinelHero() {
             fill
             priority
             sizes="(max-width: 768px) 320px, 360px"
-            className="object-contain filter drop-shadow-[0_12px_24px_rgba(0,99,153,0.25)] dark:drop-shadow-[0_16px_35px_rgba(0,229,255,0.45)] group-hover:scale-105 transition-transform duration-500"
+            className="object-contain filter drop-shadow-[0_12px_24px_rgba(0,99,153,0.25)] dark:drop-shadow-[0_20px_40px_rgba(0,168,255,0.6)] group-hover:scale-105 transition-transform duration-500"
           />
 
           {/* Cyber Eye Laser Core */}
-          <div className="absolute top-[35%] left-[51.5%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 dark:bg-cyan-300 shadow-[0_0_12px_#00e5ff] animate-ping" />
-            <span className="absolute w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_#ffffff]" />
+          <div className="absolute top-[30%] left-[56%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+            <span className="w-3 h-3 rounded-full bg-cyan-400 dark:bg-cyan-300 shadow-[0_0_14px_#00e5ff,0_0_28px_#00e5ff] animate-ping" />
+            <span className="absolute w-2 h-2 rounded-full bg-white shadow-[0_0_10px_#ffffff,0_0_20px_#00e5ff]" />
           </div>
         </div>
       </motion.div>
@@ -134,7 +115,7 @@ export default function DribbbleSentinelHero() {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="w-48 sm:w-56 md:w-64 h-5 bg-slate-900/20 dark:bg-black/90 blur-lg rounded-[100%]"
+          className="w-56 sm:w-64 md:w-80 h-8 bg-slate-950/70 dark:bg-black blur-xl rounded-[100%]"
         />
       </div>
     </div>

@@ -39,7 +39,7 @@ export default function Navigation() {
             : 'bg-surface/70 backdrop-blur-xl border-outline-variant/10'
         }`}
       >
-        <div className="flex justify-between items-center px-5 md:px-[80px] py-4 md:py-5 max-w-[1440px] mx-auto">
+        <div className="flex justify-between items-center px-4 sm:px-6 md:px-[80px] py-4 md:py-5 max-w-[1440px] mx-auto">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <Image

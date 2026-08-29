@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { plusJakarta, inter } from '@/lib/fonts';
 import Navigation from '@/components/layout/Navigation';
 import Footer from '@/components/layout/Footer';
@@ -6,6 +6,12 @@ import FloatingCTA from '@/components/layout/FloatingCTA';
 import PageTransition from '@/components/layout/PageTransition';
 import { siteConfig } from '@/lib/site-data';
 import './globals.css';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: {
@@ -52,7 +58,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${inter.variable} scroll-smooth antialiased`}
+      className={`${plusJakarta.variable} ${inter.variable} scroll-smooth antialiased overflow-x-hidden`}
       suppressHydrationWarning
     >
       <head>

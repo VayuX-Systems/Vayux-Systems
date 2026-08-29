@@ -13,7 +13,7 @@ import {
   Download,
   Shield,
   CheckCircle2,
-  Sparkles,
+  Zap,
 } from 'lucide-react';
 import HeroScrollContainer from '@/components/animations/HeroScrollContainer';
 import Dribbble3DCard from '@/components/animations/Dribbble3DCard';
@@ -40,7 +40,7 @@ export default function HomePage() {
       {/* 2. Content Layer (Seamless, flat, square edge-to-edge transition) */}
       <div className="relative z-30 bg-transparent">
         {/* Institutional Trust Badges */}
-        <section className="py-10 md:py-12 px-5 md:px-[80px] border-y border-slate-200/70 dark:border-white/10 bg-slate-50/50 dark:bg-[#070b14]/60 backdrop-blur-sm">
+        <section className="py-10 md:py-12 px-4 sm:px-6 md:px-[80px] border-y border-slate-200/70 dark:border-white/10 bg-slate-50/50 dark:bg-[#070b14]/60 backdrop-blur-sm">
           <div className="max-w-[1440px] mx-auto">
             <p className="text-center font-[var(--font-heading)] text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mb-8 font-semibold">
               Architectural Standards &amp; Certifications
@@ -75,7 +75,7 @@ export default function HomePage() {
         </section>
 
         {/* Mission & Vision — High-Tech Holographic Grid */}
-        <section className="py-20 md:py-32 px-5 md:px-[80px] max-w-[1440px] mx-auto text-center">
+        <section className="py-20 md:py-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto text-center">
           <ScrollReveal>
             <div className="max-w-5xl mx-auto glass-panel rounded-3xl p-8 sm:p-12 md:p-16 relative overflow-hidden shadow-[0_20px_60px_rgba(0,168,255,0.08)] border border-white/80">
               {/* High-res holographic network background */}
@@ -91,7 +91,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent -z-10" />
 
               <span className="font-[var(--font-heading)] text-primary tracking-[0.2em] uppercase mb-6 text-xs sm:text-sm font-bold inline-flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-primary" /> VayuX Vision
+                <Zap className="w-4 h-4 text-primary" /> VayuX Vision
               </span>
               <h2 className="font-[var(--font-heading)] text-2xl sm:text-3xl md:text-5xl text-on-surface mb-8 font-bold tracking-tight leading-[1.2]">
                 Engineering unassailable digital environments through luminous clarity and celestial technicality.
@@ -104,7 +104,7 @@ export default function HomePage() {
         </section>
 
         {/* Guardian Philosophy — Lab vs Vendor with SOC Command Background */}
-        <section className="pb-20 md:pb-32 px-5 md:px-[80px] max-w-[1440px] mx-auto relative">
+        <section className="pb-20 md:pb-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto relative">
           <ScrollReveal>
             <div className="glass-panel rounded-3xl p-8 sm:p-12 md:p-16 relative overflow-hidden shadow-[0_20px_60px_rgba(0,168,255,0.08)] border border-white/80">
               {/* Atmospheric SOC command hub backdrop */}
@@ -138,7 +138,7 @@ export default function HomePage() {
         </section>
 
         {/* Services Bento Grid */}
-        <section className="py-20 md:py-32 px-5 md:px-[80px] max-w-[1440px] mx-auto border-t border-outline-variant/20">
+        <section className="py-20 md:py-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto border-t border-outline-variant/20">
           <SectionHeading
             center
             title="Applied Technical Solutions"
@@ -266,7 +266,7 @@ export default function HomePage() {
         </section>
 
         {/* Core Capabilities Deep-Dive with 3D Depth Elevation */}
-        <section className="py-20 md:py-32 px-5 md:px-[80px] max-w-[1440px] mx-auto">
+        <section className="py-20 md:py-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto">
           <SectionHeading
             title="Core Capabilities Deep-Dive"
             subtitle="Advanced architectural implementations and autonomous response systems designed for the modern threat landscape."
@@ -289,7 +289,7 @@ export default function HomePage() {
         </section>
 
         {/* Strategic Partnership FAQ */}
-        <section className="py-24 md:py-36 px-5 md:px-[80px] bg-surface-container-low border-t border-outline-variant/20 rounded-b-3xl">
+        <section className="py-24 md:py-36 px-4 sm:px-6 md:px-[80px] bg-surface-container-low border-t border-outline-variant/20 rounded-b-3xl">
           <div className="max-w-4xl mx-auto">
             <SectionHeading
               center

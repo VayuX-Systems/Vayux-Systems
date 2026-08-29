@@ -14,7 +14,7 @@ export default function HeroScrollContainer() {
       </div>
 
       {/* 2. Hero Section Container */}
-      <div className="relative min-h-[85vh] md:min-h-[90vh] w-full flex items-center justify-center pt-24 sm:pt-28 md:pt-36 pb-14 sm:pb-16 px-5 md:px-[80px] z-10">
+      <div className="relative min-h-[85vh] md:min-h-[90vh] w-full flex items-center justify-center pt-24 sm:pt-28 md:pt-36 pb-14 sm:pb-16 px-4 sm:px-6 md:px-[80px] z-10">
         {/* Soft Ambient Radiance in Background */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-fixed-dim/15 dark:bg-primary/10 rounded-full blur-[140px] pointer-events-none -z-10" />
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary-container/15 dark:bg-secondary/10 rounded-full blur-[160px] pointer-events-none -z-10" />
@@ -30,7 +30,7 @@ export default function HeroScrollContainer() {
             </div>
 
             {/* Solid High-Contrast Headline */}
-            <h1 className="hero-title font-[var(--font-heading)] text-3xl sm:text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.12] mb-5 sm:mb-6">
+            <h1 className="hero-title font-[var(--font-heading)] text-[1.75rem] sm:text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.12] mb-5 sm:mb-6">
               Architecting a Resilient <br className="hidden sm:inline" />
               Digital Landscape.
             </h1>
@@ -58,7 +58,7 @@ export default function HeroScrollContainer() {
             </div>
 
             {/* Micro Feature Indicators */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 pt-5 sm:pt-6 border-t border-slate-200 dark:border-white/10 text-[11px] sm:text-xs font-[var(--font-heading)] uppercase tracking-wider text-slate-700 dark:text-slate-400 font-semibold">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-6 pt-5 sm:pt-6 border-t border-slate-200 dark:border-white/10 text-[10px] sm:text-xs font-[var(--font-heading)] uppercase tracking-wider text-slate-700 dark:text-slate-400 font-semibold">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
                 <span>Sub-15ms Event Correlation</span>

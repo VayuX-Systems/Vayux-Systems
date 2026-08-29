@@ -45,7 +45,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="pt-28 md:pt-36 pb-20 md:pb-32 px-5 md:px-[80px] max-w-[1440px] mx-auto w-full">
+    <div className="pt-28 md:pt-36 pb-20 md:pb-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto w-full">
       {/* Hero Section */}
       <section className="py-10 md:py-16 max-w-4xl mx-auto text-center">
         <ScrollReveal>

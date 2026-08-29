@@ -4,7 +4,7 @@ import { footerLinks, siteConfig } from '@/lib/site-data';
 
 export default function Footer() {
   return (
-    <footer className="w-full py-16 md:py-24 px-5 md:px-[80px] bg-surface border-t border-outline-variant/20 relative overflow-hidden">
+    <footer className="w-full py-16 md:py-24 px-4 sm:px-6 md:px-[80px] bg-surface border-t border-outline-variant/20 relative overflow-hidden">
       {/* Background watermark */}
       <div className="absolute -right-40 -top-40 opacity-[0.03] pointer-events-none">
         <Image

@@ -1,231 +1,207 @@
+'use client';
+
+import { BookOpen, ArrowRight, Calendar, User } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
-import {
-  Search,
-  ArrowUpRight,
-  Download,
-  FileText,
-  FlaskConical,
-  ArrowRight,
-  Terminal,
-  ShieldCheck,
-  Cpu,
-  FileCheck,
-} from 'lucide-react';
-import Dribbble3DCard from '@/components/animations/Dribbble3DCard';
 import ScrollReveal from '@/components/layout/ScrollReveal';
 import SectionHeading from '@/components/ui/SectionHeading';
-import FAQ from '@/components/ui/FAQ';
-import Badge from '@/components/ui/Badge';
-import { insightsFAQ, knowledgeBase } from '@/lib/site-data';
 
-export const metadata = {
-  title: 'Research & Insights | VayuX Systems',
-  description:
-    'Intelligence Forged in Data. Digital library of advanced whitepapers, real-time advisories, and lab notes for autonomous security.',
-};
+// Sample blog articles - structured for CMS integration
+const blogArticles = [
+  {
+    id: 'autonomous-soc-evolution',
+    title: 'The Evolution of Autonomous SOC: From Alert Triage to Threat Prediction',
+    excerpt: 'Exploring how artificial intelligence and machine learning are transforming security operations centers from reactive alert handlers to proactive threat prediction engines.',
+    author: 'Pragnesh Kumar S. Singh',
+    date: '2026-08-15',
+    category: 'Research',
+    featured: true,
+  },
+  {
+    id: 'dpdp-act-compliance',
+    title: 'DPDP Act 2023: Building Data Sovereignty Into Your Security Stack',
+    excerpt: 'A comprehensive guide to implementing the Digital Personal Data Protection Act requirements within enterprise cybersecurity infrastructure without compromising operational efficiency.',
+    author: 'VayuX Research Team',
+    date: '2026-08-08',
+    category: 'Compliance',
+  },
+  {
+    id: 'zero-trust-patterns',
+    title: 'Zero-Trust Architecture Patterns: Implementation Strategies for Indian Enterprises',
+    excerpt: 'Practical patterns and real-world case studies for implementing zero-trust security models tailored to Indian regulatory requirements and operational constraints.',
+    author: 'VayuX Systems',
+    date: '2026-07-25',
+    category: 'Architecture',
+  },
+  {
+    id: 'incident-response-playbooks',
+    title: 'DFIR Playbooks: Incident Response in the Age of Ransomware',
+    excerpt: 'Advanced forensic techniques and incident response frameworks for containing and eradicating modern ransomware attacks with minimal business disruption.',
+    author: 'VayuX DFIR Team',
+    date: '2026-07-12',
+    category: 'Incident Response',
+  },
+  {
+    id: 'threat-landscape-2026',
+    title: '2026 Threat Landscape Report: Emerging Vectors and Defensive Adaptations',
+    excerpt: 'Annual threat analysis based on real-world telemetry from our global SOC operations, highlighting emerging attack patterns and recommended defensive strategies.',
+    author: 'VayuX Intelligence Division',
+    date: '2026-06-30',
+    category: 'Threat Intelligence',
+  },
+  {
+    id: 'vapt-methodology',
+    title: 'Advanced VAPT Methodologies: Beyond OWASP Top 10',
+    excerpt: 'Deep dive into systemic vulnerability assessment techniques that go beyond standardized frameworks to uncover architectural weaknesses and supply chain risks.',
+    author: 'VayuX Offensive R&D',
+    date: '2026-06-15',
+    category: 'Security Research',
+  },
+];
+
+const categories = ['All', 'Research', 'Compliance', 'Architecture', 'Incident Response', 'Threat Intelligence', 'Security Research'];
 
 export default function InsightsPage() {
-  const kbIconMap = {
-    Terminal: Terminal,
-    ShieldCheck: ShieldCheck,
-    Cpu: Cpu,
-    FileCheck: FileCheck,
-  };
+  const [selectedCategory, setSelectedCategory] = React.useState('All');
+
+  const filteredArticles = selectedCategory === 'All'
+    ? blogArticles
+    : blogArticles.filter(article => article.category === selectedCategory);
 
   return (
-    <div className="pt-28 md:pt-36 pb-20 md:pb-32 px-5 md:px-[80px] max-w-[1440px] mx-auto w-full">
+    <main className="relative overflow-hidden w-full">
       {/* Hero Section */}
-      <section className="mb-16 md:mb-24 pt-4 md:pt-8 relative">
-        <div className="max-w-3xl">
-          <ScrollReveal>
-            <h1 className="font-[var(--font-heading)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-on-surface mb-6 leading-tight">
-              Intelligence <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary-container to-primary glow-text">
-                Forged in Data.
-              </span>
-            </h1>
-            <p className="font-[var(--font-body)] text-base sm:text-lg md:text-xl text-on-surface-variant max-w-2xl mb-10 font-light leading-relaxed">
-              Access the frontier of autonomous security. Our digital library houses advanced whitepapers, real-time advisories, and lab notes driving the next evolution of celestial protection.
-            </p>
-            <div className="flex gap-4">
-              <Link
-                href="#featured"
-                className="btn-primary-gradient px-8 py-4 rounded-full font-[var(--font-heading)] text-xs uppercase tracking-widest text-on-primary font-semibold flex items-center gap-2 shadow-lg"
-              >
-                Explore Library
-                <Search className="w-4 h-4" />
-              </Link>
-            </div>
-          </ScrollReveal>
-        </div>
-
-        {/* Abstract orbital decoration */}
-        <div className="absolute right-0 top-0 w-1/3 h-full hidden lg:flex items-center justify-center opacity-60 pointer-events-none">
-          <div className="w-80 h-80 border border-primary/20 rounded-full flex items-center justify-center relative">
-            <div className="w-[120%] h-[120%] rounded-full border border-secondary-container/30 animate-spin-slow" />
-            <div
-              className="absolute w-[80%] h-[80%] rounded-full border border-primary/40 animate-spin"
-              style={{ animationDuration: '14s', animationDirection: 'reverse' }}
-            />
-            <div className="w-3 h-3 rounded-full bg-primary animate-pulse" />
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Articles Grid */}
-      <section id="featured" className="mb-24 md:mb-36">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
-          <div>
-            <h2 className="font-[var(--font-heading)] text-2xl sm:text-3xl md:text-4xl font-bold text-on-surface mb-2">
-              Featured Articles
-            </h2>
-            <p className="font-[var(--font-body)] text-sm sm:text-base text-on-surface-variant font-light">
-              Curated intelligence and technical documentation.
-            </p>
-          </div>
-          <button
-            type="button"
-            className="btn-outline-glass px-6 py-3 rounded-full font-[var(--font-heading)] text-xs uppercase tracking-widest font-semibold flex items-center gap-2"
-          >
-            View All Resources
-            <ArrowUpRight className="w-4 h-4" />
-          </button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Large Featured Card with Dribbble3DCard */}
-          <ScrollReveal className="md:col-span-2">
-            <Dribbble3DCard depth={30} className="p-8 sm:p-10 md:p-12 flex flex-col justify-end relative overflow-hidden group cursor-pointer min-h-[420px] h-full">
-              {/* Background art */}
-              <div className="absolute inset-0 z-0 opacity-40">
-                <Image
-                  src="/images/sentinel_grid.jpg"
-                  alt="Autonomous Defense Grid"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 66vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent z-0" />
-
-              <div className="relative z-10">
-                <Badge variant="primary" className="mb-4">
-                  Featured Whitepaper
-                </Badge>
-                <h3 className="font-[var(--font-heading)] text-2xl sm:text-3xl font-bold text-on-surface mb-3">
-                  The Architecture of Autonomous Defense Grids
-                </h3>
-                <p className="font-[var(--font-body)] text-sm sm:text-base text-on-surface-variant max-w-xl mb-6 font-light leading-relaxed">
-                  A comprehensive analysis of self-healing security perimeters and predictive threat mitigation strategies in cloud-native environments.
-                </p>
-                <div className="flex items-center gap-4">
-                  <button
-                    type="button"
-                    className="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-secondary transition-colors shadow-lg shadow-primary/30"
-                  >
-                    <Download className="w-5 h-5" />
-                  </button>
-                  <span className="font-[var(--font-heading)] text-xs text-on-surface-variant uppercase tracking-wider font-semibold">
-                    PDF • 4.2 MB
-                  </span>
-                </div>
-              </div>
-            </Dribbble3DCard>
-          </ScrollReveal>
-
-          {/* Right Column: 2 Cards */}
-          <div className="flex flex-col gap-6">
-            {/* Advisory Card */}
-            <ScrollReveal delay={0.1}>
-              <Dribbble3DCard depth={20} className="p-6 sm:p-8 flex flex-col justify-between group h-full">
-                <div>
-                  <div className="flex justify-between items-start mb-4">
-                    <Badge variant="secondary">Advisory</Badge>
-                    <FileText className="w-5 h-5 text-outline group-hover:text-primary transition-colors" />
-                  </div>
-                  <h4 className="font-[var(--font-heading)] text-lg sm:text-xl font-bold text-on-surface mb-2">
-                    Q3 Threat Landscape Report
-                  </h4>
-                  <p className="font-[var(--font-body)] text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed line-clamp-3">
-                    Analysis of emerging vectors targeting decentralized finance protocols and proposed counter-measures.
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-outline-variant/30 flex justify-between items-center text-xs font-[var(--font-heading)] text-tertiary">
-                  <span>Oct 12, 2024</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-primary" />
-                </div>
-              </Dribbble3DCard>
-            </ScrollReveal>
-
-            {/* Lab Notes Card */}
-            <ScrollReveal delay={0.2}>
-              <Dribbble3DCard depth={20} className="p-6 sm:p-8 flex flex-col justify-between group h-full">
-                <div>
-                  <div className="flex justify-between items-start mb-4">
-                    <Badge variant="subtle">Lab Notes</Badge>
-                    <FlaskConical className="w-5 h-5 text-outline group-hover:text-primary transition-colors" />
-                  </div>
-                  <h4 className="font-[var(--font-heading)] text-lg sm:text-xl font-bold text-on-surface mb-2">
-                    Quantum Resilience in Cryptography
-                  </h4>
-                  <p className="font-[var(--font-body)] text-xs sm:text-sm text-on-surface-variant font-light leading-relaxed line-clamp-3">
-                    Initial findings from our Vanguard team on implementing post-quantum cryptographic standards.
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-outline-variant/30 flex justify-between items-center text-xs font-[var(--font-heading)] text-tertiary">
-                  <span>Sep 28, 2024</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-primary" />
-                </div>
-              </Dribbble3DCard>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Knowledge Base */}
-      <section className="mb-24 md:mb-36">
-        <SectionHeading
-          title="Technical Knowledge Base"
-          subtitle="Deep dives into our core technologies and methodologies."
-        />
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {knowledgeBase.map((item, idx) => {
-            const Icon = kbIconMap[item.icon as keyof typeof kbIconMap] || Terminal;
-            return (
-              <ScrollReveal key={item.title} delay={idx * 0.1}>
-                <Dribbble3DCard depth={20} className="p-6 sm:p-8 group h-full flex flex-col justify-between">
-                  <div>
-                    <Icon className="w-8 h-8 text-primary mb-4 block" />
-                    <h4 className="font-[var(--font-heading)] text-lg sm:text-xl font-bold text-on-surface mb-2">
-                      {item.title}
-                    </h4>
-                    <p className="font-[var(--font-body)] text-xs sm:text-sm text-on-surface-variant font-light mb-6 leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2 text-secondary font-[var(--font-heading)] text-xs uppercase tracking-wider font-semibold group-hover:text-primary transition-colors mt-auto">
-                    Read Docs <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Dribbble3DCard>
-              </ScrollReveal>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Research FAQ */}
-      <section className="max-w-4xl mx-auto mb-16">
-        <SectionHeading
-          center
-          title="Research FAQ"
-          subtitle="Common inquiries regarding our publications and data."
-        />
+      <section className="py-20 md:py-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto text-center">
         <ScrollReveal>
-          <FAQ items={insightsFAQ} />
+          <div className="max-w-4xl mx-auto">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wide mb-6">
+              📖 Research & Thought Leadership
+            </span>
+
+            <h1 className="font-[var(--font-heading)] text-4xl md:text-6xl font-bold text-on-surface mb-6 leading-tight tracking-tight">
+              Reflections on <span className="text-gradient">Autonomy</span>
+            </h1>
+
+            <p className="font-[var(--font-body)] text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-2xl mx-auto">
+              Technical insights, threat research, and deep dives into autonomous security architectures from the VayuX research laboratory.
+            </p>
+          </div>
         </ScrollReveal>
       </section>
-    </div>
+
+      {/* Category Filter */}
+      <section className="py-8 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto">
+        <ScrollReveal>
+          <div className="flex flex-wrap justify-center gap-2">
+            {categories.map(category => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-lg font-[var(--font-heading)] font-semibold uppercase tracking-wide text-xs transition-all ${
+                  selectedCategory === category
+                    ? 'bg-primary text-on-primary border border-primary'
+                    : 'border border-outline-variant/30 text-on-surface hover:border-primary/50'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* Articles Grid */}
+      <section className="py-20 md:py-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto">
+        {filteredArticles.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {filteredArticles.map((article, idx) => (
+              <ScrollReveal key={article.id} delay={idx * 0.1}>
+                <Link href={`/insights/${article.id}`} className="h-full block group">
+                  <article className="glass-card rounded-2xl overflow-hidden border border-white/80 hover:shadow-[0_20px_60px_rgba(0,168,255,0.12)] transition-all duration-300 h-full flex flex-col p-6 md:p-8">
+                    {/* Category Badge */}
+                    <div className="flex items-start justify-between mb-4">
+                      <span className="inline-flex px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wide">
+                        {article.category}
+                      </span>
+                      {article.featured && (
+                        <span className="text-lg">⭐</span>
+                      )}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-[var(--font-heading)] text-xl md:text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors line-clamp-3">
+                      {article.title}
+                    </h3>
+
+                    {/* Excerpt */}
+                    <p className="font-[var(--font-body)] text-base text-on-surface-variant mb-6 flex-1 line-clamp-3">
+                      {article.excerpt}
+                    </p>
+
+                    {/* Metadata */}
+                    <div className="space-y-3 pt-6 border-t border-outline-variant/20">
+                      <div className="flex items-center gap-2 text-sm text-on-surface-variant">
+                        <User className="w-4 h-4 text-primary" />
+                        <span className="font-[var(--font-body)]">{article.author}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-on-surface-variant">
+                        <Calendar className="w-4 h-4 text-primary" />
+                        <span className="font-[var(--font-body)]">
+                          {new Date(article.date).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          })}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* CTA */}
+                    <div className="flex items-center gap-2 text-primary font-[var(--font-heading)] font-semibold uppercase tracking-wide text-xs mt-4 group-hover:translate-x-1 transition-transform">
+                      Read Article <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </article>
+                </Link>
+              </ScrollReveal>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16">
+            <p className="font-[var(--font-body)] text-on-surface-variant text-lg">
+              No articles found in this category. Check back soon!
+            </p>
+          </div>
+        )}
+      </section>
+
+      {/* Newsletter CTA */}
+      <section className="py-20 md:py-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto border-t border-outline-variant/20">
+        <ScrollReveal>
+          <div className="glass-panel rounded-3xl p-8 md:p-12 text-center border border-white/80 shadow-[0_20px_60px_rgba(0,168,255,0.08)]">
+            <h2 className="font-[var(--font-heading)] text-3xl md:text-4xl font-bold text-on-surface mb-4">
+              Stay Updated on <span className="text-gradient">Threat Landscape Changes</span>
+            </h2>
+            <p className="font-[var(--font-body)] text-lg text-on-surface-variant mb-8 max-w-2xl mx-auto">
+              Subscribe to VayuX threat intelligence reports and quarterly security insights delivered directly to your inbox.
+            </p>
+            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="your@company.com"
+                className="flex-1 px-4 py-3 rounded-lg border border-outline-variant/30 bg-surface-container text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
+                required
+              />
+              <button
+                type="submit"
+                className="btn-glow px-6 py-3 rounded-lg text-on-primary font-[var(--font-heading)] tracking-widest uppercase text-xs font-semibold"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </ScrollReveal>
+      </section>
+    </main>
   );
 }
+
+import React from 'react';

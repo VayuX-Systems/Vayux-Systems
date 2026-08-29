@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Use class-based dark mode so dark: variants respect the .dark class
+   instead of prefers-color-scheme (fixes Brave browser dark preference) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ============================================
    VayuX Systems — Aetheric Sentinel Design System
    "Angel Protector" aesthetic: luminous, airy, ultra-luxurious
@@ -71,6 +75,7 @@
 /* --- Base Styles --- */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -80,6 +85,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* --- Responsive Helpers --- */
+/* Ensure all images and media respect container width */
+img, video, svg, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent any child from causing horizontal scroll */
+#__next, main {
+  overflow-x: hidden;
+  min-width: 0;
 }
 
 /* Ambient Background — Celestial radial gradients */
@@ -104,24 +124,24 @@ body {
   --color-surface-container: #0e1524;
   --color-surface-container-high: #151f34;
   --color-surface-container-highest: #1d2a45;
-  --color-on-surface: #f1f5f9;
-  --color-on-surface-variant: #94a3b8;
+  --color-on-surface: #ffffff;
+  --color-on-surface-variant: #cbd5e1;
   --color-inverse-surface: #f1f5f9;
   --color-inverse-on-surface: #0a0e17;
   --color-outline: #475569;
   --color-outline-variant: #1e293b;
-  --color-surface-tint: #38bdf8;
-  --color-primary: #38bdf8;
-  --color-on-primary: #040810;
+  --color-surface-tint: #00a8ff;
+  --color-primary: #00a8ff;
+  --color-on-primary: #ffffff;
   --color-primary-container: #0284c7;
   --color-on-primary-container: #e0f2fe;
   --color-inverse-primary: #0284c7;
-  --color-secondary: #00e5ff;
-  --color-on-secondary: #040810;
+  --color-secondary: #40c2fd;
+  --color-on-secondary: #ffffff;
   --color-secondary-container: #00b4d8;
   --color-on-secondary-container: #e0f2fe;
   --color-background: #060910;
-  --color-on-background: #f1f5f9;
+  --color-on-background: #ffffff;
   --color-surface-variant: #111a2d;
   color-scheme: dark;
 }
