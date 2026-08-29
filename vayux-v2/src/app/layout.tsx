@@ -11,6 +11,8 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
 };
 
 export const metadata: Metadata = {
@@ -80,7 +82,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-background text-on-surface font-[var(--font-body)] antialiased min-h-screen flex flex-col relative overflow-x-hidden ambient-bg">
+      <body className="bg-background text-on-surface font-[var(--font-body)] antialiased min-h-screen min-h-dvh flex flex-col relative overflow-x-hidden ambient-bg">
         <Navigation />
         <main className="flex-grow">
           <PageTransition>{children}</PageTransition>
