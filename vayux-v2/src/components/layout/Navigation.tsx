@@ -12,13 +12,34 @@ import { navLinks } from '@/lib/site-data';
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 80) {
+        if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 8) {
+          // Scrolling down: hide header to keep viewport uncluttered
+          setVisible(false);
+        } else if (lastScrollY - currentScrollY > 8) {
+          // Scrolling up: reveal header smoothly
+          setVisible(true);
+        }
+      } else {
+        // At the top of page: always show header
+        setVisible(true);
+      }
+
+      setScrolled(currentScrollY > 20);
+      setLastScrollY(currentScrollY);
+    };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   useEffect(() => {
     setIsOpen(false);
@@ -32,8 +53,11 @@ export default function Navigation() {
 
   return (
     <>
-      <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-500 border-b ${
+      <motion.nav
+        initial={{ y: 0 }}
+        animate={{ y: visible || isOpen ? 0 : -110 }}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 w-full z-50 transition-colors duration-500 border-b ${
           scrolled
             ? 'bg-surface/90 backdrop-blur-2xl border-outline-variant/20 shadow-[0_4px_30px_rgba(0,0,0,0.05)]'
             : 'bg-surface/70 backdrop-blur-xl border-outline-variant/10'
@@ -47,7 +71,7 @@ export default function Navigation() {
               alt="VayuX Systems"
               width={48}
               height={48}
-              className="h-10 w-10 md:h-12 md:w-12 object-contain transition-transform duration-300 group-hover:scale-105"
+              className="w-10 h-10 md:w-12 md:h-12 object-contain transition-transform duration-300 group-hover:scale-105"
               priority
             />
             <span className="font-[var(--font-heading)] text-xl md:text-2xl font-bold tracking-tight text-on-surface">
@@ -106,7 +130,7 @@ export default function Navigation() {
             </button>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>

@@ -7,8 +7,11 @@ interface ScrollRevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
-  direction?: 'up' | 'down' | 'left' | 'right';
+  direction?: 'up' | 'down' | 'left' | 'right' | 'none';
   duration?: number;
+  distance?: number;
+  blur?: boolean;
+  scale?: boolean;
 }
 
 export default function ScrollReveal({
@@ -16,16 +19,18 @@ export default function ScrollReveal({
   className = '',
   delay = 0,
   direction = 'up',
-  duration = 0.5,
+  duration = 0.65,
+  distance = 28,
+  blur = true,
+  scale = false,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  // Root margin only affects bottom boundary (-40px)
-  // Top/left/right are 0px so any content at or near the top of the viewport triggers immediately
+  // Root margin triggers slightly before the element fully enters the screen for silky smoothness
   const isInView = useInView(ref, {
     once: true,
-    margin: '0px 0px -40px 0px',
+    margin: '0px 0px -50px 0px',
     amount: 'some',
   });
 
@@ -35,14 +40,10 @@ export default function ScrollReveal({
       return;
     }
 
-    // Direct viewport check on mount & route change
-    // This ensures content in view on initial load or reload displays immediately
-    // without requiring the user to touch or scroll the screen
     const checkViewport = () => {
       if (!ref.current) return;
       const rect = ref.current.getBoundingClientRect();
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-      // If any portion of the element is visible in the viewport
       if (rect.top < windowHeight && rect.bottom > 0) {
         setIsVisible(true);
       }
@@ -50,12 +51,11 @@ export default function ScrollReveal({
 
     checkViewport();
     const rafId = requestAnimationFrame(checkViewport);
-    const timerId = setTimeout(checkViewport, 100);
+    const timerId = setTimeout(checkViewport, 120);
 
-    // Fallback safety: guarantee content reveals after 800ms even if observer fails
     const safetyId = setTimeout(() => {
       setIsVisible(true);
-    }, 800);
+    }, 900);
 
     return () => {
       cancelAnimationFrame(rafId);
@@ -65,25 +65,51 @@ export default function ScrollReveal({
   }, [isInView]);
 
   const directionMap = {
-    up: { y: 20, x: 0 },
-    down: { y: -20, x: 0 },
-    left: { y: 0, x: 20 },
-    right: { y: 0, x: -20 },
+    up: { y: distance, x: 0 },
+    down: { y: -distance, x: 0 },
+    left: { y: 0, x: distance },
+    right: { y: 0, x: -distance },
+    none: { y: 0, x: 0 },
   };
 
-  const offset = directionMap[direction] || { y: 20, x: 0 };
+  const offset = directionMap[direction] || { y: distance, x: 0 };
   const shouldShow = isVisible || isInView;
+
+  const initialStyles: Record<string, any> = {
+    opacity: 0,
+    ...offset,
+  };
+
+  if (blur) {
+    initialStyles.filter = 'blur(8px)';
+  }
+  if (scale) {
+    initialStyles.scale = 0.95;
+  }
+
+  const animateStyles: Record<string, any> = {
+    opacity: 1,
+    y: 0,
+    x: 0,
+  };
+
+  if (blur) {
+    animateStyles.filter = 'blur(0px)';
+  }
+  if (scale) {
+    animateStyles.scale = 1;
+  }
 
   return (
     <motion.div
       ref={ref}
       className={className}
-      initial={{ opacity: 0, ...offset }}
-      animate={shouldShow ? { opacity: 1, y: 0, x: 0 } : { opacity: 0, ...offset }}
+      initial={initialStyles}
+      animate={shouldShow ? animateStyles : initialStyles}
       transition={{
         duration,
         delay: shouldShow ? delay : 0,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.16, 1, 0.3, 1], // Custom apple-grade cubic-bezier
       }}
     >
       {children}

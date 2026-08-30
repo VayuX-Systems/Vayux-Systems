@@ -113,23 +113,23 @@ img, video, svg, canvas {
 }
 
 /* ============================================
-   Dark Mode Theme System (Cyber Stealth Obsidian)
+   Dark Mode Theme System (Obsidian Black)
    ============================================ */
 .dark {
-  --color-surface: #0a0e17;
-  --color-surface-dim: #070a10;
-  --color-surface-bright: #131b2c;
-  --color-surface-container-lowest: #04060a;
-  --color-surface-container-low: #090d16;
-  --color-surface-container: #0e1524;
-  --color-surface-container-high: #151f34;
-  --color-surface-container-highest: #1d2a45;
+  --color-surface: #09090b;
+  --color-surface-dim: #050507;
+  --color-surface-bright: #141417;
+  --color-surface-container-lowest: #000000;
+  --color-surface-container-low: #0c0c0e;
+  --color-surface-container: #111114;
+  --color-surface-container-high: #16161a;
+  --color-surface-container-highest: #1d1d23;
   --color-on-surface: #ffffff;
-  --color-on-surface-variant: #cbd5e1;
-  --color-inverse-surface: #f1f5f9;
-  --color-inverse-on-surface: #0a0e17;
-  --color-outline: #475569;
-  --color-outline-variant: #1e293b;
+  --color-on-surface-variant: #a1a1aa;
+  --color-inverse-surface: #f4f4f5;
+  --color-inverse-on-surface: #050505;
+  --color-outline: #2e2e38;
+  --color-outline-variant: #18181f;
   --color-surface-tint: #00a8ff;
   --color-primary: #00a8ff;
   --color-on-primary: #ffffff;
@@ -140,52 +140,52 @@ img, video, svg, canvas {
   --color-on-secondary: #ffffff;
   --color-secondary-container: #00b4d8;
   --color-on-secondary-container: #e0f2fe;
-  --color-background: #060910;
+  --color-background: #050505;
   --color-on-background: #ffffff;
-  --color-surface-variant: #111a2d;
+  --color-surface-variant: #131317;
   color-scheme: dark;
 }
 
 .dark .ambient-bg {
   background-color: var(--color-background);
   background-image:
-    radial-gradient(circle at 80% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 20% 100%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
-    linear-gradient(180deg, #060910 0%, #0a0e17 100%);
+    radial-gradient(circle at 80% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 20% 100%, rgba(0, 229, 255, 0.05) 0%, transparent 50%),
+    linear-gradient(180deg, #050505 0%, #09090b 100%);
 }
 
 .dark .glass-panel {
-  background: rgba(13, 21, 39, 0.75);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(10, 10, 13, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow:
-    0 10px 40px rgba(0, 0, 0, 0.5),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    0 10px 40px rgba(0, 0, 0, 0.75),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .dark .glass-card {
-  background: rgba(14, 21, 36, 0.75);
-  border: 1px solid rgba(56, 189, 248, 0.15);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  background: rgba(13, 13, 16, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
 }
 
 .dark .glass-card:hover {
-  box-shadow: 0 8px 40px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 8px 40px rgba(0, 168, 255, 0.2);
   border-color: rgba(56, 189, 248, 0.4);
 }
 
 .dark .glass-accordion {
-  background: rgba(14, 21, 36, 0.6);
-  border: 1px solid rgba(56, 189, 248, 0.15);
+  background: rgba(13, 13, 16, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .dark .btn-outline-glass {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  color: #f1f5f9;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f4f4f5;
 }
 
 .dark .command-border {
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dark .shimmer-text {
@@ -216,18 +216,12 @@ img, video, svg, canvas {
 
 .dark .btn-primary-gradient {
   background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
-  color: #040810 !important;
+  color: #050505 !important;
   box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
 }
 
-.dark .btn-outline-glass {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  color: #f1f5f9;
-}
-
 .dark .btn-outline-glass:hover {
-  background: rgba(56, 189, 248, 0.15);
+  background: rgba(56, 189, 248, 0.12);
   border-color: #38bdf8;
   box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
 }

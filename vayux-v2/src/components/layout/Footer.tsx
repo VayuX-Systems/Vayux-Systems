@@ -12,7 +12,7 @@ export default function Footer() {
           alt=""
           width={600}
           height={600}
-          className="grayscale"
+          className="w-[600px] h-[600px] grayscale"
           aria-hidden="true"
         />
       </div>
@@ -25,7 +25,7 @@ export default function Footer() {
             alt="VayuX Systems"
             width={80}
             height={80}
-            className="h-16 w-16 md:h-20 md:w-20 object-contain mb-6 grayscale hover:grayscale-0 transition-all duration-500"
+            className="w-16 h-16 md:w-20 md:h-20 object-contain mb-6 grayscale hover:grayscale-0 transition-all duration-500"
           />
           <p className="font-[var(--font-heading)] text-lg md:text-xl font-bold text-on-surface mb-2 tracking-tight">
             {siteConfig.name}

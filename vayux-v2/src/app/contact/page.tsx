@@ -39,8 +39,11 @@ export default function ContactPage() {
       {/* Hero Section */}
       <header className="text-center mb-12 md:mb-16 max-w-3xl mx-auto">
         <ScrollReveal>
-          <h1 className="font-[var(--font-heading)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-on-surface mb-6">
-            Initiate Contact
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-sm">
+            🔒 Encrypted Nexus Channel
+          </span>
+          <h1 className="font-[var(--font-heading)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-on-surface mb-6 leading-tight tracking-tight">
+            Initiate <span className="text-gradient">Contact</span>
           </h1>
           <p className="font-[var(--font-body)] text-base sm:text-lg md:text-xl text-on-surface-variant leading-relaxed font-light">
             Establish a secure connection with our defense nexus. Request an elite partnership for architectural consultation, training, or advanced research collaboration.
@@ -56,7 +59,7 @@ export default function ContactPage() {
             <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl pointer-events-none" />
 
             <h2 className="font-[var(--font-heading)] text-2xl sm:text-3xl font-bold text-on-surface mb-8 border-b border-outline-variant/20 pb-4">
-              Secure Discovery Portal
+              Secure Discovery <span className="text-gradient">Portal</span>
             </h2>
 
             {submitted ? (
@@ -289,15 +292,34 @@ export default function ContactPage() {
         <SectionHeading
           center
           title="Global Node Infrastructure"
-          subtitle="Real-time telemetry and defensive response nodes distributed across sovereign enclaves."
+          subtitle="Real-time telemetry and autonomous defense orchestrated from VayuX Global HQ (Vadodara, India) across 14 sovereign enclaves."
         />
 
         <ScrollReveal>
-          <div className="glass-card rounded-2xl overflow-hidden relative p-4 sm:p-8 bg-surface/70">
-            <DynamicGlobeScene className="h-[400px] sm:h-[480px]" />
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-              <div className="bg-surface/90 backdrop-blur-md px-6 py-3 rounded-full border border-outline-variant/30 flex items-center gap-2 text-primary font-[var(--font-heading)] text-xs uppercase tracking-wider font-semibold shadow-xl">
-                <Globe2 className="w-4 h-4" /> Access 14 Global Operating Centers
+          <div className="rounded-3xl overflow-hidden relative p-4 sm:p-8 bg-slate-900/60 dark:bg-[#060813]/90 border border-sky-500/25 shadow-[0_20px_70px_rgba(0,168,255,0.12)] backdrop-blur-xl">
+            {/* Top HUD Indicators */}
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-4 px-4 py-2.5 border-b border-sky-500/20 text-[11px] font-mono text-sky-400">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping" />
+                <span className="font-bold tracking-wider text-amber-400">CENTRAL_HQ: VADODARA, INDIA</span>
+                <span className="text-sky-400/50">|</span>
+                <span className="text-sky-300">14_NODES_ONLINE</span>
+              </div>
+              <div className="flex items-center gap-3 text-sky-300/80 text-[10px]">
+                <span className="hidden sm:inline">SUB-15MS TELEMETRY</span>
+                <span className="hidden sm:inline">•</span>
+                <span>INTERACTIVE 3D · DRAG TO EXPLORE</span>
+              </div>
+            </div>
+
+            {/* 3D Globe Canvas */}
+            <DynamicGlobeScene className="h-[440px] sm:h-[520px]" />
+
+            {/* Bottom HUD Badge */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 w-auto max-w-[90%] text-center">
+              <div className="bg-slate-900/90 dark:bg-black/90 backdrop-blur-md px-6 py-2.5 rounded-full border border-amber-500/30 flex items-center justify-center gap-2.5 text-slate-200 text-xs font-[var(--font-heading)] uppercase tracking-wider font-semibold shadow-2xl">
+                <Globe2 className="w-4 h-4 text-amber-400 animate-pulse" />
+                <span>Central Hub: <strong className="text-amber-400">Vadodara, India</strong> • 14 Global Operating Nodes</span>
               </div>
             </div>
           </div>

@@ -675,10 +675,10 @@ export const solutionsFAQ = [
 
 export const footerLinks = {
   defenseGrid: [
-    { label: 'SOC Management', href: '/solutions#soc' },
-    { label: 'VAPT Simulations', href: '/solutions#vapt' },
-    { label: 'DFIR Protocols', href: '/solutions#dfir' },
-    { label: 'GRC Alignment', href: '/solutions#grc' },
+    { label: 'SOC Architecture & Management', href: '/solutions/soc' },
+    { label: 'VAPT Simulations', href: '/solutions/vapt' },
+    { label: 'DFIR Protocols', href: '/solutions/dfir' },
+    { label: 'GRC Alignment', href: '/solutions/grc' },
   ],
   researchLab: [
     { label: 'How It Works', href: '/#how-it-works' },

@@ -5,24 +5,24 @@ import ScrollReveal from '@/components/layout/ScrollReveal';
 
 export default function TermsPage() {
   return (
-    <main className="relative overflow-hidden w-full">
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto">
+    <main className="relative pt-28 sm:pt-36 pb-20 md:pb-32 px-4 sm:px-6 md:px-[80px] max-w-4xl mx-auto w-full">
+      {/* Hero Header */}
+      <header className="text-center mb-10 md:mb-12">
         <ScrollReveal>
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h1 className="font-[var(--font-heading)] text-4xl md:text-5xl font-bold text-on-surface mb-4">
-              Terms of <span className="text-gradient">Service</span>
-            </h1>
-            <p className="font-[var(--font-body)] text-on-surface-variant text-sm">
-              Last Updated: August 29, 2026
-            </p>
-          </div>
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-semibold uppercase tracking-wider mb-4 backdrop-blur-sm">
+            📜 Legal Vault
+          </span>
+          <h1 className="font-[var(--font-heading)] text-3xl sm:text-5xl md:text-6xl font-bold text-on-surface mb-3 leading-tight tracking-tight">
+            Terms of <span className="text-gradient">Service</span>
+          </h1>
+          <p className="font-[var(--font-body)] text-on-surface-variant text-xs sm:text-sm font-medium">
+            Last Updated: August 29, 2026
+          </p>
         </ScrollReveal>
-      </section>
+      </header>
 
       {/* Content */}
-      <section className="py-20 md:py-32 px-4 sm:px-6 md:px-[80px] max-w-3xl mx-auto">
-        <div className="space-y-12">
+      <div className="space-y-8">
           {/* Section 1 */}
           <ScrollReveal>
             <div className="glass-card rounded-2xl p-8 border border-white/80">
@@ -196,7 +196,6 @@ export default function TermsPage() {
             </div>
           </ScrollReveal>
         </div>
-      </section>
     </main>
   );
 }

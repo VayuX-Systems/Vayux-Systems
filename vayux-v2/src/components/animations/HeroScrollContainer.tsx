@@ -29,10 +29,10 @@ export default function HeroScrollContainer() {
               </span>
             </div>
 
-            {/* Solid High-Contrast Headline */}
+            {/* Solid High-Contrast Headline with Celestial Blue Finish */}
             <h1 className="hero-title font-[var(--font-heading)] text-[1.75rem] sm:text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.12] mb-5 sm:mb-6">
               Architecting a Resilient <br className="hidden sm:inline" />
-              Digital Landscape.
+              <span className="text-gradient">Digital Landscape.</span>
             </h1>
 
             {/* High-Contrast Visible Subtitle Description */}

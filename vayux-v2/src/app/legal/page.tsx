@@ -12,10 +12,13 @@ export default function LegalPage() {
   return (
     <div className="pt-28 md:pt-36 pb-20 md:pb-32 px-5 md:px-[80px] max-w-[1440px] mx-auto w-full">
       {/* Hero Section */}
-      <header className="mb-12 md:mb-16 text-center max-w-3xl mx-auto">
+      <header className="mb-10 md:mb-12 text-center max-w-3xl mx-auto">
         <ScrollReveal>
-          <h1 className="font-[var(--font-heading)] text-4xl sm:text-5xl md:text-6xl font-bold text-on-surface mb-4">
-            Legal &amp; Privacy
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-semibold uppercase tracking-wider mb-4 backdrop-blur-sm">
+            📜 Legal Vault
+          </span>
+          <h1 className="font-[var(--font-heading)] text-4xl sm:text-5xl md:text-6xl font-bold text-on-surface mb-4 leading-tight tracking-tight">
+            Legal &amp; <span className="text-gradient">Privacy</span>
           </h1>
           <p className="font-[var(--font-body)] text-base sm:text-lg text-on-surface-variant leading-relaxed font-light">
             Comprehensive terms governing your interaction with VayuX Systems. Our commitment to absolute transparency and unassailable protection.

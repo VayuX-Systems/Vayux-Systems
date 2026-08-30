@@ -372,19 +372,19 @@ export const knowledgeBase = [
 
 export const footerLinks = {
   defenseGrid: [
-    { label: 'SOC Architecture', href: '/solutions' },
-    { label: 'VAPT Simulations', href: '/solutions' },
-    { label: 'DFIR Protocols', href: '/solutions' },
-    { label: 'GRC Alignment', href: '/solutions' },
+    { label: 'SOC Architecture', href: '/solutions/soc' },
+    { label: 'VAPT Simulations', href: '/solutions/vapt' },
+    { label: 'DFIR Protocols', href: '/solutions/dfir' },
+    { label: 'GRC Alignment', href: '/solutions/grc' },
   ],
   researchLab: [
-    { label: 'Methodology', href: '/insights' },
-    { label: 'Technical Briefs', href: '/insights' },
+    { label: 'Technical Glossary', href: '/glossary' },
+    { label: 'Methodology & Research', href: '/insights' },
     { label: 'Global Sentinel Network', href: '/contact' },
   ],
   legalVault: [
     { label: 'Security Protocols', href: '/legal' },
-    { label: 'Privacy Vault', href: '/legal' },
-    { label: 'Terms of Engagement', href: '/legal' },
+    { label: 'Privacy Vault', href: '/legal/privacy' },
+    { label: 'Terms of Engagement', href: '/legal/terms' },
   ],
 } as const;
