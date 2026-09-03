@@ -59,7 +59,7 @@ export default function CareersPage() {
     async function loadBackendRoles() {
       try {
         setLoading(true);
-        const res = await api.getJobRoles();
+        const res = await api.getJobRoles(true);
         if (res?.results && res.results.length > 0) {
           const mapped = res.results.map((r: JobRole) => ({
             title: r.title,
@@ -205,7 +205,7 @@ export default function CareersPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span>Direct mentorship from Founder &amp; CTO Pragnesh Kumar S. Singh</span>
+                  <span>Direct mentorship from Founder &amp; CTO Pragnesh Kumar S.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />

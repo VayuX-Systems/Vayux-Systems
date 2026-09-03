@@ -17,7 +17,7 @@ export default function HeroScrollContainer() {
   useEffect(() => {
     async function loadBackendHero() {
       try {
-        const sections = await api.getPageSections();
+        const sections = await api.getPageSections(true);
         if (sections && sections['home-hero']) {
           setHeroData({
             badge_text: sections['home-hero'].badge_text || '🔒 Sovereign Cyber Defense Nexus',

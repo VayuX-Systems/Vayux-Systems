@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { api, Solution } from '@/lib/api-client';
 import {
   ShieldCheck,
   Lock,
@@ -36,7 +37,7 @@ export default function HomePageContent() {
     const { scrollLeft, offsetWidth } = servicesRailRef.current;
     const cardWidth = Math.max(280, offsetWidth * 0.85);
     const idx = Math.round(scrollLeft / cardWidth);
-    setActiveServiceIdx(Math.max(0, Math.min(idx, enhancedServices.length - 1)));
+    setActiveServiceIdx(Math.max(0, Math.min(idx, servicesList.length - 1)));
   };
 
   const scrollToService = (idx: number) => {
@@ -108,6 +109,36 @@ export default function HomePageContent() {
       href: '/solutions/dfir',
     },
   ];
+
+  const [servicesList, setServicesList] = useState(enhancedServices);
+
+  useEffect(() => {
+    async function loadLiveHomeSolutions() {
+      try {
+        const res = await api.getSolutions(true);
+        if (res?.results && res.results.length > 0) {
+          const updated = enhancedServices.map((srv) => {
+            const slug = srv.href.replace('/solutions/', '');
+            const liveMatch = res.results.find((s: Solution) => s.slug === slug);
+            if (liveMatch) {
+              return {
+                ...srv,
+                title: liveMatch.name || srv.title,
+                subtitle: liveMatch.tagline || srv.subtitle,
+                description: liveMatch.lead_definition || srv.description,
+                includes: liveMatch.capabilities_list?.length > 0 ? liveMatch.capabilities_list.slice(0, 3) : srv.includes,
+              };
+            }
+            return srv;
+          });
+          setServicesList(updated);
+        }
+      } catch {
+        // Fallback silently
+      }
+    }
+    loadLiveHomeSolutions();
+  }, []);
 
   const statsData = [
     {
@@ -285,7 +316,7 @@ export default function HomePageContent() {
               onScroll={handleServicesScroll}
               className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4 no-scrollbar md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:mx-0 md:px-0"
             >
-              {enhancedServices.map((service, idx) => (
+              {servicesList.map((service, idx) => (
                 <div
                   key={service.title}
                   className={`w-[84vw] sm:w-[340px] shrink-0 snap-center md:w-auto md:shrink md:snap-align-none ${
@@ -302,7 +333,7 @@ export default function HomePageContent() {
 
             {/* Mobile Carousel Indicators & Swipe Hint */}
             <div className="flex md:hidden items-center justify-center gap-1.5 mt-3">
-              {enhancedServices.map((_, idx) => (
+              {servicesList.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => scrollToService(idx)}

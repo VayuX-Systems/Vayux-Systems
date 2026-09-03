@@ -13,7 +13,7 @@ const initialArticles = [
     id: 'autonomous-soc-evolution',
     title: 'The Evolution of Autonomous SOC: From Alert Triage to Threat Prediction',
     excerpt: 'Exploring how artificial intelligence and machine learning are transforming security operations centers from reactive alert handlers to proactive threat prediction engines.',
-    author: 'Pragnesh Kumar S. Singh',
+    author: 'Pragnesh Kumar S.',
     date: '2026-08-15',
     category: 'Research',
     featured: true,
@@ -76,7 +76,7 @@ export default function InsightsPage() {
     async function loadBackendArticles() {
       try {
         setLoading(true);
-        const res = await api.getArticles();
+        const res = await api.getArticles(undefined, true);
         if (res?.results && res.results.length > 0) {
           const mapped = res.results.map((art: Article) => ({
             id: art.slug,

@@ -29,7 +29,7 @@ const fallbackArticles: Record<string, any> = {
     title: 'The Evolution of Autonomous SOC: From Alert Triage to Threat Prediction',
     slug: 'autonomous-soc-evolution',
     category_name: 'Research',
-    author_name: 'Pragnesh Kumar S. Singh',
+    author_name: 'Pragnesh Kumar S.',
     author_role: 'Founder & Chief Technology Officer',
     published_at: '2026-08-15',
     read_time_minutes: 7,
@@ -80,7 +80,7 @@ VayuX embeds compliance parameters directly into the software architecture, enab
     title: 'Zero-Trust Architecture Patterns: Implementation Strategies for Indian Enterprises',
     slug: 'zero-trust-patterns',
     category_name: 'Architecture',
-    author_name: 'Pragnesh Kumar S. Singh',
+    author_name: 'Pragnesh Kumar S.',
     author_role: 'Founder & Chief Technology Officer',
     published_at: '2026-07-25',
     read_time_minutes: 8,
@@ -173,7 +173,7 @@ export default function InsightDetailPage() {
     async function fetchLiveArticle() {
       try {
         setLoading(true);
-        const live = await api.getArticleBySlug(slug);
+        const live = await api.getArticleBySlug(slug, true);
         if (live) {
           setArticle({
             title: live.title,

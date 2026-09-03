@@ -76,7 +76,7 @@ export default function SolutionsPage() {
   useEffect(() => {
     async function loadBackendSolutions() {
       try {
-        const res = await api.getSolutions();
+        const res = await api.getSolutions(true);
         if (res?.results && res.results.length > 0) {
           const mapped = res.results.map((sol: Solution) => {
             const staticMatch = initialServices.find(s => s.id === sol.slug);

@@ -165,7 +165,7 @@ export default function JobRoleDetailPage() {
     async function fetchRole() {
       try {
         setLoading(true);
-        const live = await api.getJobRoleBySlug(slug);
+        const live = await api.getJobRoleBySlug(slug, true);
         if (live) {
           setRole(live);
           setNotFoundState(false);
@@ -472,7 +472,7 @@ export default function JobRoleDetailPage() {
             <ul className="space-y-3 font-[var(--font-body)] text-sm text-slate-600 dark:text-slate-300 font-light">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
-                <span>Direct mentorship from Founder &amp; CTO Pragnesh Kumar S. Singh</span>
+                <span>Direct mentorship from Founder &amp; CTO Pragnesh Kumar S.</span>
               </li>
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />

@@ -28,7 +28,7 @@ export default function Footer() {
   useEffect(() => {
     async function loadBackendSettings() {
       try {
-        const live = await api.getSiteSettings();
+        const live = await api.getSiteSettings(true);
         if (live) {
           setConfig(live);
         }

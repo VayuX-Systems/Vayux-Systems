@@ -167,7 +167,7 @@ interface CacheEntry<T> {
 }
 
 const memoryCache = new Map<string, CacheEntry<any>>();
-const DEFAULT_CACHE_TTL_MS = 5 * 60 * 1000; // 5 Minutes Cache
+const DEFAULT_CACHE_TTL_MS = 15 * 1000; // 15 Seconds Cache (Instant responsiveness for CMS admin updates)
 
 function getCachedData<T>(key: string, ttlMs = DEFAULT_CACHE_TTL_MS): T | null {
   const now = Date.now();
