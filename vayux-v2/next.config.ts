@@ -41,6 +41,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  distDir: "dist",
   reactStrictMode: true,
   async headers() {
     return [
