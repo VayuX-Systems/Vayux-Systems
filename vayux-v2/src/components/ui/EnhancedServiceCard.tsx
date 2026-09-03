@@ -13,6 +13,7 @@ interface EnhancedServiceCardProps {
   icon: string;
   bgImage?: string;
   color: string;
+  badge?: string;
   includes: string[];
   href: string;
   isFlagship?: boolean;
@@ -26,6 +27,7 @@ export default function EnhancedServiceCard({
   icon,
   bgImage,
   color,
+  badge,
   includes,
   href,
   isFlagship = false,
@@ -37,110 +39,99 @@ export default function EnhancedServiceCard({
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay, duration: 0.5 }}
-        className={`relative overflow-hidden rounded-2xl h-full ${
-          isFlagship ? 'md:col-span-2' : ''
-        }`}
+        className="relative overflow-hidden rounded-3xl h-full border border-slate-200/90 dark:border-white/10 bg-white dark:bg-slate-900/80 backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
         style={{ perspective: '1000px' }}
       >
         {/* Ambient Corner Glow */}
         <div
-          className="absolute top-0 right-0 w-64 h-64 rounded-2xl pointer-events-none -z-10 opacity-30 group-hover:opacity-70 transition-opacity duration-500"
+          className="absolute top-0 right-0 w-72 h-72 rounded-full pointer-events-none -z-10 opacity-20 group-hover:opacity-60 transition-opacity duration-500 blur-2xl"
           style={{
-            background: `radial-gradient(circle at 100% 0%, ${color}35 0%, ${color}05 50%, transparent 80%)`,
+            background: `radial-gradient(circle at 80% 20%, ${color}40 0%, ${color}10 60%, transparent 80%)`,
           }}
         />
 
-        {/* Card Background Base */}
-        <div className="absolute inset-0 bg-white/80 dark:bg-[#070b16]/90 backdrop-blur-xl -z-20" />
-
-        {/* Animated border glow on hover */}
-        <div
-          className="absolute inset-0 border border-slate-200/80 dark:border-white/10 rounded-2xl pointer-events-none group-hover:border-2 transition-all duration-300"
-          style={{ borderColor: `${color}40` }}
-        />
-
-        {/* Content */}
-        <div className="relative z-10 p-5 sm:p-7 md:p-10 h-full flex flex-col justify-between">
-          {/* Header */}
+        {/* Content Container */}
+        <div className="relative z-10 p-6 sm:p-8 md:p-9 h-full flex flex-col justify-between">
           <div>
-            {/* Icon & Badge */}
-            <div className="flex items-start justify-between mb-3.5 sm:mb-6">
-              <motion.div
-                className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 border shadow-md"
+            {/* Header: Icon & Domain Badge */}
+            <div className="flex items-center justify-between mb-5 sm:mb-6">
+              <div
+                className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 border shadow-sm transition-transform duration-300 group-hover:scale-105"
                 style={{
-                  backgroundColor: `${color}15`,
+                  backgroundColor: `${color}12`,
                   borderColor: `${color}35`,
                 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               >
                 {icon}
-              </motion.div>
+              </div>
 
-              {isFlagship && (
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-white shadow-sm"
-                  style={{ backgroundColor: color }}
-                >
-                  Flagship
-                </motion.div>
-              )}
+              <span
+                className="px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider border shadow-sm"
+                style={{
+                  backgroundColor: `${color}10`,
+                  borderColor: `${color}35`,
+                  color: color,
+                }}
+              >
+                {badge || (isFlagship ? 'FLAGSHIP PILLAR' : 'APPLIED SOLUTION')}
+              </span>
             </div>
 
             {/* Title & Subtitle */}
-            <h3 className="font-[var(--font-heading)] text-lg sm:text-2xl md:text-3xl font-bold text-on-surface mb-1 sm:mb-2 tracking-tight">
+            <h3 className="font-[var(--font-heading)] text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight group-hover:text-primary transition-colors">
               {title}
             </h3>
             <p
-              className="font-mono text-[11px] sm:text-xs md:text-sm font-semibold uppercase tracking-wider mb-2.5 sm:mb-4"
+              className="font-mono text-xs font-semibold uppercase tracking-wider mb-4 leading-normal"
               style={{ color }}
             >
               {subtitle}
             </p>
 
             {/* Description */}
-            <p className="font-[var(--font-body)] text-xs sm:text-sm md:text-base text-on-surface-variant leading-relaxed mb-3.5 sm:mb-6 line-clamp-2 sm:line-clamp-none">
+            <p className="font-[var(--font-body)] text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6 font-light">
               {description}
             </p>
 
-            {/* Features List */}
-            <div className="space-y-1.5 sm:space-y-2.5 mb-4 sm:mb-8">
+            {/* Key Capabilities Checklist */}
+            <div className="space-y-2.5 mb-8 pt-2 border-t border-slate-100 dark:border-white/5">
               {includes.slice(0, 3).map((item, idx) => (
-                <motion.div
+                <div
                   key={idx}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: delay + idx * 0.1 }}
-                  className="flex items-start gap-2.5 sm:gap-3"
+                  className="flex items-start gap-2.5"
                 >
-                  <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5" style={{ color }} />
-                  <span className="font-[var(--font-body)] text-xs sm:text-sm text-on-surface-variant/90">
+                  <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color }} />
+                  <span className="font-[var(--font-body)] text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-normal">
                     {item}
                   </span>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
 
-          {/* Footer CTA */}
+          {/* Action Footer */}
           <div
-            className="flex items-center justify-between border-t border-outline-variant/15 dark:border-white/10 pt-3 sm:pt-4 group-hover:translate-x-1 transition-transform"
+            className="flex items-center justify-between border-t border-slate-200/80 dark:border-white/10 pt-4 mt-auto group-hover:translate-x-1 transition-transform"
           >
-            <span className="font-[var(--font-heading)] text-xs uppercase tracking-wider font-semibold" style={{ color }}>
-              View Details
+            <span className="font-[var(--font-heading)] text-xs uppercase tracking-wider font-bold" style={{ color }}>
+              View Technical Specifications
             </span>
-            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color }} />
+            <div
+              className="w-8 h-8 rounded-full flex items-center justify-center border transition-all"
+              style={{
+                backgroundColor: `${color}15`,
+                borderColor: `${color}30`,
+              }}
+            >
+              <ArrowRight className="w-4 h-4" style={{ color }} />
+            </div>
           </div>
         </div>
 
-        {/* Hover highlight effect */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 0.1 }}
-          className="absolute inset-0 pointer-events-none rounded-2xl"
-          style={{ backgroundColor: color }}
+        {/* Dynamic Border Glow on Hover */}
+        <div
+          className="absolute inset-0 border-2 rounded-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{ borderColor: `${color}50` }}
         />
       </motion.div>
     </Link>

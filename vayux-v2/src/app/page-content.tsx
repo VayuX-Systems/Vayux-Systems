@@ -53,60 +53,64 @@ export default function HomePageContent() {
     }
   };
 
-  // Service cards data with enhancements
+  // Service cards data with enhancements (Structured 2x2 Sovereign Defense Matrix)
   const enhancedServices = [
     {
       title: 'Security Operations Center (SOC)',
       subtitle: '24/7 Autonomous Threat Monitoring & Triage',
-      description: 'Continuous, luminous oversight of your digital assets. Anticipating anomalies before they manifest through advanced threat telemetry and heuristic behavioral analysis.',
+      description: 'Continuous, luminous oversight of enterprise perimeters. Ingesting distributed telemetry to correlate and neutralize attack vectors in under 15ms.',
       icon: '🛡️',
       color: '#38bdf8',
+      badge: '24/7 ACTIVE DEFENSE',
       includes: [
-        '24/7 Real-time Monitoring',
-        'Advanced Threat Detection',
-        'Incident Response',
+        'Sub-15ms Event Correlation Engine',
+        'Autonomous Threat Containment',
+        '24/7/365 Continuous Human Analyst Triage',
       ],
       href: '/solutions/soc',
       isFlagship: true,
     },
     {
-      title: 'VAPT Services',
-      subtitle: 'Systemic Vulnerability & Penetration Testing',
-      description: 'Vulnerability Assessment & Penetration Testing utilizing adversarial simulation techniques.',
+      title: 'Vulnerability Assessment & Penetration Testing (VAPT)',
+      subtitle: 'Adversarial Exploitation & Red Team Simulation',
+      description: 'Rigorous offensive security assessments targeting web, cloud, and OS kernel boundaries to uncover deep zero-day vulnerabilities before adversaries do.',
       icon: '⚡',
       color: '#f43f5e',
+      badge: 'OFFENSIVE SIMULATION',
       includes: [
-        'Comprehensive Scans',
-        'Exploitation Simulation',
-        'Remediation Roadmap',
+        'Comprehensive Architecture Audits',
+        'Kernel & Cloud Exploitation Simulation',
+        'Developer-Ready Patch Remediation Roadmaps',
       ],
       href: '/solutions/vapt',
     },
     {
-      title: 'GRC Alignment',
-      subtitle: 'Governance, Risk & Compliance Architecture',
-      description: 'Governance, Risk, and Compliance alignment establishing unassailable policy architectures.',
-      icon: '⚖️',
-      color: '#10b981',
-      includes: [
-        'Policy Framework',
-        'Audit Support',
-        'Compliance Mapping',
-      ],
-      href: '/solutions/grc',
-    },
-    {
-      title: 'DFIR Protocols',
-      subtitle: 'Digital Forensics & Incident Response',
-      description: 'Digital Forensics and Incident Response providing luminous clarity post-breach.',
+      title: 'Digital Forensics & Incident Response (DFIR)',
+      subtitle: 'Sub-4-Hour Emergency Breach Containment',
+      description: 'Guaranteed emergency response deployment within 4 hours. Extracting volatile memory telemetry and securing court-admissible forensic evidence.',
       icon: '🔍',
       color: '#f59e0b',
+      badge: 'EMERGENCY DFIR DISPATCH',
       includes: [
-        'Forensic Analysis',
-        'Timeline Reconstruction',
-        'Incident Reports',
+        'Volatile Memory & Attack Reconstruction',
+        'Court-Admissible Chain-of-Custody Forensics',
+        'Rapid Enterprise Eradication & Recovery',
       ],
       href: '/solutions/dfir',
+    },
+    {
+      title: 'Governance, Risk & Compliance (GRC)',
+      subtitle: 'Statutory DPDP Act 2023 & Zero-Trust Governance',
+      description: 'Aligning enterprise security architectures with India DPDP Act 2023 mandates, CERT-In 6-hour disclosure runbooks, and ISO 27001 statutory standards.',
+      icon: '⚖️',
+      color: '#10b981',
+      badge: 'SOVEREIGN COMPLIANCE',
+      includes: [
+        'DPDP Act 2023 Statutory Alignment',
+        'CERT-In 6-Hour Disclosure Directives',
+        'Continuous Zero-Trust Policy Auditing',
+      ],
+      href: '/solutions/grc',
     },
   ];
 
@@ -314,14 +318,12 @@ export default function HomePageContent() {
             <div
               ref={servicesRailRef}
               onScroll={handleServicesScroll}
-              className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4 no-scrollbar md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:mx-0 md:px-0"
+              className="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-4 -mx-4 px-4 no-scrollbar md:grid md:grid-cols-2 md:gap-8 md:overflow-visible md:mx-0 md:px-0 max-w-6xl mx-auto"
             >
               {servicesList.map((service, idx) => (
                 <div
                   key={service.title}
-                  className={`w-[84vw] sm:w-[340px] shrink-0 snap-center md:w-auto md:shrink md:snap-align-none ${
-                    service.isFlagship ? 'md:col-span-2' : 'md:col-span-1'
-                  }`}
+                  className="w-[86vw] sm:w-[360px] shrink-0 snap-center md:w-auto md:shrink md:snap-align-none h-full"
                 >
                   <EnhancedServiceCard
                     {...service}
