@@ -32,8 +32,8 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net; " +
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
       "font-src 'self' https://fonts.gstatic.com data:; " +
-      "img-src 'self' data: blob: https://vayux.systems https://lh3.googleusercontent.com; " +
-      "connect-src 'self' http://localhost:8000 https://api.vayux.systems https://vayux.systems; " +
+      "img-src 'self' data: blob: https://vayux.systems https://lh3.googleusercontent.com https://*.onrender.com; " +
+      "connect-src 'self' http://localhost:8000 https://api.vayux.systems https://vayux.systems https://*.onrender.com https://vayux-backend.onrender.com; " +
       "frame-ancestors 'none'; " +
       "base-uri 'self'; " +
       "form-action 'self';",
