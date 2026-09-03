@@ -1,0 +1,24 @@
+name: Render Keep-Alive Cron
+
+on:
+  schedule:
+    # Runs every 12 minutes to prevent Render free instance 15-minute sleep
+    - cron: '*/12 * * * *'
+  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
+
+jobs:
+  ping-render:
+    name: Keep Render Backend Warm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Backend Health Check
+        run: |
+          echo "Sending keep-alive pulse to VayuX Render backend..."
+          RESPONSE=$(curl -s -w "\nHTTP_STATUS:%{http_code}" https://vayux-backend.onrender.com/health/)
+          echo "$RESPONSE"
+          STATUS=$(echo "$RESPONSE" | grep "HTTP_STATUS" | cut -d':' -f2)
+          if [ "$STATUS" -ge 200 ] && [ "$STATUS" -lt 400 ]; then
+            echo "Sentinel Backend is ACTIVE & HEALTHY (Status: $STATUS)"
+          else
+            echo "Warning: Received HTTP $STATUS from health check"
+          fi

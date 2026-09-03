@@ -13,17 +13,28 @@ admin.site.site_header = "VayuX Sentinel Command"
 admin.site.site_title = "VayuX Sentinel Admin"
 admin.site.index_title = "Sovereign Defense Control Center"
 
+from django.db import connection
+
 def health_check(request):
+    db_status = "connected"
+    try:
+        connection.ensure_connection()
+    except Exception as e:
+        db_status = f"degraded: {str(e)}"
+
     return JsonResponse({
-        'status': 'healthy',
+        'status': 'healthy' if db_status == 'connected' else 'degraded',
+        'database': db_status,
         'service': 'VayuX Sentinel Backend',
         'version': '2.0.0-PROD',
         'environment': 'development' if settings.DEBUG else 'production'
     })
 
 urlpatterns = [
-    # Health Check Endpoint
+    # Health Check Endpoints (Keeps Render & Database Warm)
     path('health/', health_check, name='health-check'),
+    path('health', health_check, name='health-check-noslash'),
+    path('api/health/', health_check, name='api-health-check'),
     
     # Root Crawl & Machine Feeds
     path('sitemap.xml', SitemapXMLView.as_view(), name='root-sitemap'),
