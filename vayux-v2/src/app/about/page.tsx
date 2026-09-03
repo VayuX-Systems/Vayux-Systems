@@ -84,7 +84,7 @@ export default function AboutPage() {
     hero_subtitle: 'Constructing unassailable defensive architectures through deep R&D and operational threat telemetry.',
     founding_story: 'Founded in 2024 in Vadodara, Gujarat, VayuX Systems was established as an innovation-driven laboratory designed to replace static security tools with autonomous, self-defending architectures. By channeling real-world incident response and SOC telemetry directly into low-level systems research, VayuX engineers defense that evolves faster than adversaries.',
     leadership_quote: 'True cyber sovereignty is not bought off the shelf; it is forged through rigorous offensive research.',
-    leader_name: 'Pragnesh Kumar S. Singh',
+    leader_name: 'Pragnesh Kumar S.',
     leader_title: 'Founder & Chief Technology Officer',
     core_principles: initialPrinciples,
     team_members: fallbackLeadership,
@@ -94,7 +94,7 @@ export default function AboutPage() {
   useEffect(() => {
     async function loadBackendAbout() {
       try {
-        const live = await api.getAboutUs();
+        const live = await api.getAboutUs(true);
         if (live) {
           const founder = live.team_members?.find((m: any) => m.name.includes('Pragnesh'));
           const subLeadership = live.team_members?.filter((m: any) => !m.name.includes('Pragnesh')) || fallbackLeadership;
@@ -104,8 +104,8 @@ export default function AboutPage() {
             hero_subtitle: live.hero_subtitle || 'Constructing unassailable defensive architectures through deep R&D and operational threat telemetry.',
             founding_story: live.founding_story || aboutData.founding_story,
             leadership_quote: live.leadership_quote || aboutData.leadership_quote,
-            leader_name: founder?.name || live.leader_name || 'Pragnesh Kumar S. Singh',
-            leader_title: founder?.role_designation || live.leader_title || 'Founder & Chief Technology Officer',
+            leader_name: live.leader_name || founder?.name || 'Pragnesh Kumar S.',
+            leader_title: live.leader_title || founder?.role_designation || 'Founder & Chief Technology Officer',
             core_principles: live.core_principles?.length > 0 ? live.core_principles.map((p: any) => ({
               title: p.title,
               description: p.desc || p.description,

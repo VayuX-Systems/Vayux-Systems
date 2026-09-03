@@ -55,8 +55,8 @@ export const teamMembers = [
   {
     slug: 'pragnesh',
     firstName: 'Pragnesh Kumar',
-    lastName: 'S. Singh',
-    fullName: 'Pragnesh Kumar S. Singh',
+    lastName: 'S.',
+    fullName: 'Pragnesh Kumar S.',
     title: 'Founder / CTO',
     org: 'VayuX Systems',
     phone: '+91-6355736986',
