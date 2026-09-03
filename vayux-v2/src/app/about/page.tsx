@@ -48,12 +48,22 @@ const initialPrinciples = [
   },
 ];
 
+const getMemberAvatar = (name: string, backendAvatar?: string | null) => {
+  if (backendAvatar) return backendAvatar;
+  const lower = (name || '').toLowerCase();
+  if (lower.includes('vikram')) return '/images/vikramaditya-sharma.jpg';
+  if (lower.includes('aarav')) return '/images/aarav-patel.jpg';
+  if (lower.includes('nandini')) return '/images/nandini-joshi.jpg';
+  return null;
+};
+
 const fallbackLeadership = [
   {
     id: 7,
     name: 'Vikramaditya Sharma',
     role_designation: 'Co-Founder & VP of Systems Defense',
     bio: 'Leading low-level kernel security and real-time event telemetry pipelines. Specialist in memory resident exploit mitigation and distributed cyber defense architectures.',
+    avatar_image: '/images/vikramaditya-sharma.jpg',
     linkedin_url: 'https://www.linkedin.com/company/vayux-systems',
     github_url: 'https://github.com/vayux-systems',
     is_founder: true,
@@ -63,6 +73,7 @@ const fallbackLeadership = [
     name: 'Aarav Patel',
     role_designation: 'Head of Threat Intelligence & Neural Modeling',
     bio: 'Pioneer in predictive behavioral heuristics, autonomous anomaly scoring, and sub-15ms event correlation engines trained on live operational SOC telemetry.',
+    avatar_image: '/images/aarav-patel.jpg',
     linkedin_url: 'https://www.linkedin.com/company/vayux-systems',
     github_url: 'https://github.com/vayux-systems',
     is_founder: false,
@@ -72,6 +83,7 @@ const fallbackLeadership = [
     name: 'Nandini Joshi',
     role_designation: 'Director of Sovereign GRC & Compliance',
     bio: 'Specialist in DPDP Act 2023 statutory alignment, CERT-In mandatory disclosure runbooks, and continuous zero-trust governance architectures.',
+    avatar_image: '/images/nandini-joshi.jpg',
     linkedin_url: 'https://www.linkedin.com/company/vayux-systems',
     github_url: 'https://github.com/vayux-systems',
     is_founder: false,
@@ -99,6 +111,11 @@ export default function AboutPage() {
           const founder = live.team_members?.find((m: any) => m.name.includes('Pragnesh'));
           const subLeadership = live.team_members?.filter((m: any) => !m.name.includes('Pragnesh')) || fallbackLeadership;
 
+          const mappedSubLeadership = (subLeadership.length > 0 ? subLeadership : fallbackLeadership).map((m: any) => ({
+            ...m,
+            avatar_image: getMemberAvatar(m.name, m.avatar_image),
+          }));
+
           setAboutData({
             hero_title: live.hero_title || 'The Genesis of Sovereign Defense',
             hero_subtitle: live.hero_subtitle || 'Constructing unassailable defensive architectures through deep R&D and operational threat telemetry.',
@@ -110,7 +127,7 @@ export default function AboutPage() {
               title: p.title,
               description: p.desc || p.description,
             })) : initialPrinciples,
-            team_members: subLeadership.length > 0 ? subLeadership : fallbackLeadership,
+            team_members: mappedSubLeadership,
             credentials: live.credentials || [],
           });
         }
@@ -218,14 +235,16 @@ export default function AboutPage() {
               {/* Left Column: Avatar & Quick Badges */}
               <div className="lg:col-span-4 flex flex-col items-center text-center">
                 <div className="relative mb-6 group">
-                  <div className="absolute -inset-1.5 bg-gradient-to-r from-primary to-sky-400 rounded-full blur opacity-50 group-hover:opacity-80 transition duration-500" />
-                  <div className="relative w-44 h-44 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-slate-900 bg-slate-800 shadow-2xl flex items-center justify-center">
-                    <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-950 flex flex-col items-center justify-center p-4 text-center">
-                      <Cpu className="w-16 h-16 text-primary mb-2 opacity-90 animate-pulse" />
-                      <span className="text-[11px] font-mono text-primary uppercase font-bold tracking-widest">
-                        FOUNDER &amp; CTO
-                      </span>
-                    </div>
+                  <div className="absolute -inset-1.5 bg-gradient-to-r from-primary to-sky-400 rounded-full blur opacity-60 group-hover:opacity-100 transition duration-500" />
+                  <div className="relative w-44 h-44 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-slate-900 dark:border-slate-800 bg-slate-900 shadow-2xl flex items-center justify-center">
+                    <Image
+                      src="/images/pragnesh-singh.jpg"
+                      alt={aboutData.leader_name || "Pragnesh Kumar Singh - Founder & CTO"}
+                      fill
+                      sizes="192px"
+                      className="object-cover object-top hover:scale-105 transition-transform duration-500"
+                      priority
+                    />
                   </div>
                 </div>
 
@@ -337,22 +356,45 @@ export default function AboutPage() {
                   className="p-8 flex flex-col justify-between h-full rounded-3xl border border-white/10 bg-slate-900/70 hover:border-primary/40 backdrop-blur-xl transition-all hover:shadow-[0_20px_50px_rgba(0,168,255,0.08)]"
                 >
                   <div>
-                    {/* Role Badge & Icon */}
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center text-primary">
-                        {member.role_designation.includes('Systems') && <Terminal className="w-6 h-6" />}
-                        {member.role_designation.includes('Threat') && <Eye className="w-6 h-6" />}
-                        {member.role_designation.includes('GRC') && <Scale className="w-6 h-6" />}
-                        {!member.role_designation.includes('Systems') &&
-                          !member.role_designation.includes('Threat') &&
-                          !member.role_designation.includes('GRC') && <Shield className="w-6 h-6" />}
+                    {/* Member Photo & Role Badge */}
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl overflow-hidden border-2 border-primary/30 bg-slate-800 shrink-0 shadow-lg shadow-primary/5">
+                        {member.avatar_image ? (
+                          <Image
+                            src={member.avatar_image}
+                            alt={member.name}
+                            fill
+                            sizes="72px"
+                            className="object-cover object-top hover:scale-105 transition-transform duration-300"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center text-primary">
+                            {member.role_designation.includes('Systems') && <Terminal className="w-7 h-7" />}
+                            {member.role_designation.includes('Threat') && <Eye className="w-7 h-7" />}
+                            {member.role_designation.includes('GRC') && <Scale className="w-7 h-7" />}
+                            {!member.role_designation.includes('Systems') &&
+                              !member.role_designation.includes('Threat') &&
+                              !member.role_designation.includes('GRC') && <Shield className="w-7 h-7" />}
+                          </div>
+                        )}
                       </div>
 
-                      {member.is_founder && (
-                        <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary font-bold uppercase tracking-wider">
-                          CO-FOUNDER
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap mb-1">
+                          {member.is_founder ? (
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-primary/20 border border-primary/30 text-primary font-bold uppercase tracking-wider">
+                              CO-FOUNDER
+                            </span>
+                          ) : (
+                            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/30 text-sky-400 font-semibold uppercase tracking-wider">
+                              LEAD ARCHITECT
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[11px] font-mono text-secondary uppercase tracking-wider block truncate">
+                          {member.role_designation.split('&')[0]}
                         </span>
-                      )}
+                      </div>
                     </div>
 
                     <h3 className="font-[var(--font-heading)] text-xl font-bold text-on-surface mb-1">
