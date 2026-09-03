@@ -1,0 +1,10 @@
+{
+  "name": "vayux-systems",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "cd vayux-v2 && npm install && npm run build",
+    "start": "cd vayux-v2 && npm run start",
+    "dev": "cd vayux-v2 && npm run dev"
+  }
+}
