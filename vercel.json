@@ -1,5 +1,0 @@
-{
-  "buildCommand": "cd vayux-v2 && npm install && npm run build",
-  "outputDirectory": "vayux-v2/.next",
-  "framework": null
-}
