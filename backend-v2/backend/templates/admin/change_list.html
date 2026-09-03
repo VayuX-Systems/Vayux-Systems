@@ -1,0 +1,67 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_urls static %}
+
+{% block object-tools %}
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <!-- Prominent Red Bulk Delete Button -->
+        <button type="button" onclick="triggerPurgeSelected()" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(239, 68, 68, 0.18); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#EF4444'; this.style.color='#FFFFFF';" onmouseout="this.style.background='rgba(239, 68, 68, 0.18)'; this.style.color='#EF4444';">
+            <span>🗑️</span>
+            <span>Delete Selected (Purge Storage)</span>
+        </button>
+
+        <button type="button" onclick="selectAllTableItems()" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; background: #1e293b; color: #94A3B8; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; font-size: 11px; font-weight: 600; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.color='#F8FAFC';" onmouseout="this.style.color='#94A3B8';">
+            <span>☑</span>
+            <span>Select All</span>
+        </button>
+    </div>
+
+    <div>
+        {{ block.super }}
+    </div>
+</div>
+
+<script>
+function triggerPurgeSelected() {
+    const form = document.getElementById('changelist-form');
+    if (!form) return;
+    
+    // Check if any checkboxes are checked
+    const checkedBoxes = form.querySelectorAll('input[name="_selected_action"]:checked');
+    if (checkedBoxes.length === 0) {
+        alert('Kripya table me se kam se kam ek checkbox (☑) select karein jise delete karna hai.');
+        return;
+    }
+    
+    if (confirm(`Kya aap sure hain ki aap ${checkedBoxes.length} selected application(s) ko permanently DELETE karke disk storage free karna chahte hain?`)) {
+        const actionSelect = form.querySelector('select[name="action"]');
+        if (actionSelect) {
+            // Find purge action or delete action
+            let selectedIndex = 0;
+            for (let i = 0; i < actionSelect.options.length; i++) {
+                if (actionSelect.options[i].value.includes('purge_applications') || actionSelect.options[i].value.includes('delete_selected')) {
+                    selectedIndex = i;
+                    break;
+                }
+            }
+            actionSelect.selectedIndex = selectedIndex;
+        }
+        form.submit();
+    }
+}
+
+function selectAllTableItems() {
+    const selectAllBox = document.getElementById('action-toggle');
+    if (selectAllBox) {
+        selectAllBox.click();
+    } else {
+        const form = document.getElementById('changelist-form');
+        if (form) {
+            const boxes = form.querySelectorAll('input[name="_selected_action"]');
+            const shouldCheck = Array.from(boxes).some(b => !b.checked);
+            boxes.forEach(b => b.checked = shouldCheck);
+        }
+    }
+}
+</script>
+{% endblock %}

@@ -102,6 +102,17 @@ img, video, svg, canvas {
   min-width: 0;
 }
 
+/* Hide scrollbar utility for touch/swipe carousels */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Ambient Background — Celestial radial gradients */
 .ambient-bg {
   background-color: var(--color-background);
@@ -471,6 +482,20 @@ img, video, svg, canvas {
 
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
+}
+
+@keyframes arcStream {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+.animate-arc-stream {
+  stroke-dasharray: 8 20;
+  animation: arcStream 4s linear infinite;
 }
 
 /* --- Typography Helpers --- */

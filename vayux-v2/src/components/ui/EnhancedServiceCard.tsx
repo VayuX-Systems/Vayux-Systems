@@ -60,13 +60,13 @@ export default function EnhancedServiceCard({
         />
 
         {/* Content */}
-        <div className="relative z-10 p-6 sm:p-8 md:p-10 h-full flex flex-col justify-between">
+        <div className="relative z-10 p-5 sm:p-7 md:p-10 h-full flex flex-col justify-between">
           {/* Header */}
           <div>
             {/* Icon & Badge */}
-            <div className="flex items-start justify-between mb-6">
+            <div className="flex items-start justify-between mb-3.5 sm:mb-6">
               <motion.div
-                className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl flex-shrink-0 border shadow-md"
+                className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0 border shadow-md"
                 style={{
                   backgroundColor: `${color}15`,
                   borderColor: `${color}35`,
@@ -81,7 +81,7 @@ export default function EnhancedServiceCard({
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider text-white shadow-sm"
+                  className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-white shadow-sm"
                   style={{ backgroundColor: color }}
                 >
                   Flagship
@@ -90,32 +90,32 @@ export default function EnhancedServiceCard({
             </div>
 
             {/* Title & Subtitle */}
-            <h3 className="font-[var(--font-heading)] text-xl sm:text-2xl md:text-3xl font-bold text-on-surface mb-2 tracking-tight">
+            <h3 className="font-[var(--font-heading)] text-lg sm:text-2xl md:text-3xl font-bold text-on-surface mb-1 sm:mb-2 tracking-tight">
               {title}
             </h3>
             <p
-              className="font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider mb-4"
+              className="font-mono text-[11px] sm:text-xs md:text-sm font-semibold uppercase tracking-wider mb-2.5 sm:mb-4"
               style={{ color }}
             >
               {subtitle}
             </p>
 
             {/* Description */}
-            <p className="font-[var(--font-body)] text-sm sm:text-base text-on-surface-variant leading-relaxed mb-6">
+            <p className="font-[var(--font-body)] text-xs sm:text-sm md:text-base text-on-surface-variant leading-relaxed mb-3.5 sm:mb-6 line-clamp-2 sm:line-clamp-none">
               {description}
             </p>
 
             {/* Features List */}
-            <div className="space-y-2.5 mb-8">
+            <div className="space-y-1.5 sm:space-y-2.5 mb-4 sm:mb-8">
               {includes.slice(0, 3).map((item, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: delay + idx * 0.1 }}
-                  className="flex items-start gap-3"
+                  className="flex items-start gap-2.5 sm:gap-3"
                 >
-                  <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color }} />
+                  <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 mt-0.5" style={{ color }} />
                   <span className="font-[var(--font-body)] text-xs sm:text-sm text-on-surface-variant/90">
                     {item}
                   </span>
@@ -126,12 +126,12 @@ export default function EnhancedServiceCard({
 
           {/* Footer CTA */}
           <div
-            className="flex items-center justify-between border-t border-outline-variant/15 dark:border-white/10 pt-4 group-hover:translate-x-1 transition-transform"
+            className="flex items-center justify-between border-t border-outline-variant/15 dark:border-white/10 pt-3 sm:pt-4 group-hover:translate-x-1 transition-transform"
           >
             <span className="font-[var(--font-heading)] text-xs uppercase tracking-wider font-semibold" style={{ color }}>
               View Details
             </span>
-            <ArrowRight className="w-4 h-4" style={{ color }} />
+            <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" style={{ color }} />
           </div>
         </div>
 

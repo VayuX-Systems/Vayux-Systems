@@ -626,6 +626,10 @@ export const contactFormData = {
 
 export const homeFAQ = [
   {
+    question: 'Is it VayuX or Yux? How is your name pronounced?',
+    answer: 'Our official name is VayuX Systems (pronounced "VAH-yoo-X"). Because spoken conversations move quickly over the phone, partners and clients often search for us as Yux, Why-UX, or Vayu-X. "Vayu" represents the elemental force of swift intelligence and adaptive movement, while "X" marks our autonomous R&D defense laboratory.',
+  },
+  {
     question: 'How does the R&D feedback loop integrate with daily operations?',
     answer: 'Our operational SOC environment doubles as a live telemetry source for our research labs. Anomalies detected in client networks inform immediate architectural upgrades which are then deployed autonomously across all partnership nodes.',
   },
@@ -640,6 +644,10 @@ export const homeFAQ = [
 ];
 
 export const aboutFAQ = [
+  {
+    question: 'Why the name VayuX (and why is it sometimes misheard as Yux)?',
+    answer: 'VayuX is derived from the Sanskrit word "Vayu" (swift, invisible, yet vital atmosphere and intelligence) merged with "X" (autonomous defense research). In fast phone discussions, listeners occasionally hear "Yux" — so we ensure both paths lead directly to our cybersecurity engineering team.',
+  },
   {
     question: 'How do you ensure accountability in automated systems?',
     answer: "Every automated decision made by our defense pipeline is logged and subjected to a transparent audit trail. We employ 'explainable AI' protocols to ensure that all actions are fully comprehensible to human oversight.",

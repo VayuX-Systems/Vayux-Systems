@@ -12,7 +12,7 @@ export default function CyberBackgroundGrid() {
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
       {/* 1. Global Subtle Cyber Matrix Grid */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.035] dark:opacity-[0.06] bg-[linear-gradient(to_right,#00a8ff_1px,transparent_1px),linear-gradient(to_bottom,#00a8ff_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000_70%,transparent_100%)]"
       />
 
@@ -56,7 +56,7 @@ export default function CyberBackgroundGrid() {
       {/* 4. Subtle Animated Cyber Circuit Beams */}
       <div className="absolute inset-0 opacity-[0.12] dark:opacity-[0.22] overflow-hidden pointer-events-none">
         {/* Horizontal Moving Scan Line */}
-        <div 
+        <div
           className="absolute left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-sky-400 to-transparent animate-[scan_14s_ease-in-out_infinite]"
         />
 

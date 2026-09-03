@@ -1,12 +1,14 @@
 'use client';
 
+import React, { useState, useEffect } from 'react';
 import { BookOpen, ArrowRight, Calendar, User } from 'lucide-react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/layout/ScrollReveal';
 import SectionHeading from '@/components/ui/SectionHeading';
+import { api, Article } from '@/lib/api-client';
 
-// Sample blog articles - structured for CMS integration
-const blogArticles = [
+// Initial fallback articles
+const initialArticles = [
   {
     id: 'autonomous-soc-evolution',
     title: 'The Evolution of Autonomous SOC: From Alert Triage to Threat Prediction',
@@ -23,6 +25,7 @@ const blogArticles = [
     author: 'VayuX Research Team',
     date: '2026-08-08',
     category: 'Compliance',
+    featured: false,
   },
   {
     id: 'zero-trust-patterns',
@@ -31,6 +34,7 @@ const blogArticles = [
     author: 'VayuX Systems',
     date: '2026-07-25',
     category: 'Architecture',
+    featured: false,
   },
   {
     id: 'incident-response-playbooks',
@@ -39,6 +43,7 @@ const blogArticles = [
     author: 'VayuX DFIR Team',
     date: '2026-07-12',
     category: 'Incident Response',
+    featured: false,
   },
   {
     id: 'threat-landscape-2026',
@@ -47,6 +52,7 @@ const blogArticles = [
     author: 'VayuX Intelligence Division',
     date: '2026-06-30',
     category: 'Threat Intelligence',
+    featured: false,
   },
   {
     id: 'vapt-methodology',
@@ -55,17 +61,49 @@ const blogArticles = [
     author: 'VayuX Offensive R&D',
     date: '2026-06-15',
     category: 'Security Research',
+    featured: false,
   },
 ];
 
 const categories = ['All', 'Research', 'Compliance', 'Architecture', 'Incident Response', 'Threat Intelligence', 'Security Research'];
 
 export default function InsightsPage() {
-  const [selectedCategory, setSelectedCategory] = React.useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [articles, setArticles] = useState(initialArticles);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function loadBackendArticles() {
+      try {
+        setLoading(true);
+        const res = await api.getArticles();
+        if (res?.results && res.results.length > 0) {
+          const mapped = res.results.map((art: Article) => ({
+            id: art.slug,
+            title: art.title,
+            excerpt: art.excerpt,
+            author: art.author_name,
+            date: art.published_at,
+            category: art.category_name,
+            featured: art.is_featured,
+          }));
+          setArticles(mapped);
+        }
+      } catch {
+        // Backend offline or unreachable — seamlessly preserve built-in static fallback
+        if (process.env.NODE_ENV === 'development') {
+          console.info('[VayuX CMS] Backend offline or unreachable — utilizing static fallback data.');
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadBackendArticles();
+  }, []);
 
   const filteredArticles = selectedCategory === 'All'
-    ? blogArticles
-    : blogArticles.filter(article => article.category === selectedCategory);
+    ? articles
+    : articles.filter(article => article.category.toLowerCase() === selectedCategory.toLowerCase());
 
   return (
     <main className="relative overflow-hidden w-full">
@@ -138,26 +176,21 @@ export default function InsightsPage() {
                     </p>
 
                     {/* Metadata */}
-                    <div className="space-y-3 pt-6 border-t border-outline-variant/20">
-                      <div className="flex items-center gap-2 text-sm text-on-surface-variant">
-                        <User className="w-4 h-4 text-primary" />
-                        <span className="font-[var(--font-body)]">{article.author}</span>
+                    <div className="flex items-center justify-between text-xs text-on-surface-variant/70 pt-4 border-t border-outline-variant/10">
+                      <div className="flex items-center gap-2">
+                        <User className="w-3.5 h-3.5" />
+                        <span>{article.author}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-on-surface-variant">
-                        <Calendar className="w-4 h-4 text-primary" />
-                        <span className="font-[var(--font-body)]">
-                          {new Date(article.date).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                          })}
-                        </span>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>{article.date}</span>
                       </div>
                     </div>
 
-                    {/* CTA */}
-                    <div className="flex items-center gap-2 text-primary font-[var(--font-heading)] font-semibold uppercase tracking-wide text-xs mt-4 group-hover:translate-x-1 transition-transform">
-                      Read Article <ArrowRight className="w-4 h-4" />
+                    {/* Read More Link */}
+                    <div className="mt-4 flex items-center gap-2 text-primary font-[var(--font-heading)] text-xs uppercase tracking-wider group-hover:gap-3 transition-all">
+                      <span>Read Whitepaper</span>
+                      <ArrowRight className="w-4 h-4" />
                     </div>
                   </article>
                 </Link>
@@ -165,43 +198,11 @@ export default function InsightsPage() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-16">
-            <p className="font-[var(--font-body)] text-on-surface-variant text-lg">
-              No articles found in this category. Check back soon!
-            </p>
+          <div className="text-center py-20">
+            <p className="text-on-surface-variant text-lg">No articles found in this category.</p>
           </div>
         )}
-      </section>
-
-      {/* Newsletter CTA */}
-      <section className="py-20 md:py-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto border-t border-outline-variant/20">
-        <ScrollReveal>
-          <div className="glass-panel rounded-3xl p-8 md:p-12 text-center border border-white/80 shadow-[0_20px_60px_rgba(0,168,255,0.08)]">
-            <h2 className="font-[var(--font-heading)] text-3xl md:text-4xl font-bold text-on-surface mb-4">
-              Stay Updated on <span className="text-gradient">Threat Landscape Changes</span>
-            </h2>
-            <p className="font-[var(--font-body)] text-lg text-on-surface-variant mb-8 max-w-2xl mx-auto">
-              Subscribe to VayuX threat intelligence reports and quarterly security insights delivered directly to your inbox.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="your@company.com"
-                className="flex-1 px-4 py-3 rounded-lg border border-outline-variant/30 bg-surface-container text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                required
-              />
-              <button
-                type="submit"
-                className="btn-glow px-6 py-3 rounded-lg text-on-primary font-[var(--font-heading)] tracking-widest uppercase text-xs font-semibold"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </ScrollReveal>
       </section>
     </main>
   );
 }
-
-import React from 'react';

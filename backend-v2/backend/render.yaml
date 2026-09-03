@@ -1,0 +1,42 @@
+services:
+  # =========================================================================
+  # VayuX Systems — Django Production API Web Service
+  # =========================================================================
+  - type: web
+    name: vayux-backend
+    runtime: python
+    region: singapore
+    plan: free
+    buildCommand: chmod +x build.sh && ./build.sh
+    startCommand: gunicorn config.wsgi:application --bind 0.0.0.0:$PORT --workers 3 --timeout 120
+    healthCheckPath: /api/v1/site/settings/
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.14
+      - key: DJANGO_SETTINGS_MODULE
+        value: config.settings.production
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: "localhost,127.0.0.1,.onrender.com,vayux.systems,api.vayux.systems"
+      - key: CORS_ALLOWED_ORIGINS
+        value: "http://localhost:3000,https://vayux.systems"
+      - key: CSRF_TRUSTED_ORIGINS
+        value: "https://*.onrender.com,https://vayux.systems,https://*.vercel.app"
+      - key: FIELD_ENCRYPTION_KEY
+        value: "r0h1tV4yuX53nt1n3lK3y32Byt35L0ngS3cur3=="
+      - key: DATABASE_URL
+        sync: false
+      - key: EMAIL_BACKEND
+        value: django.core.mail.backends.smtp.EmailBackend
+      - key: EMAIL_HOST
+        value: smtp.sendgrid.net
+      - key: EMAIL_PORT
+        value: "587"
+      - key: EMAIL_USE_TLS
+        value: "True"
+      - key: NOTIFICATION_EMAIL_SENDER
+        value: sentinel@vayux.systems

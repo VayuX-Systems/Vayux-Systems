@@ -1,0 +1,152 @@
+{% extends "admin/index.html" %}
+{% load i18n static sentinel_tags %}
+
+{% block content %}
+{% get_sentinel_metrics as metrics %}
+
+<!-- 1. Executive Welcome & Direct Access Quick Action Bar -->
+<div style="background: linear-gradient(135deg, #0f172a 0%, #080c14 100%); border: 1px solid rgba(0, 168, 255, 0.25); border-radius: 16px; padding: 24px; margin-bottom: 28px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 20px;">
+        <div>
+            <div style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; background: rgba(0, 168, 255, 0.15); border: 1px solid rgba(0, 168, 255, 0.3); border-radius: 999px; color: #00A8FF; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">
+                <span style="width: 6px; height: 6px; border-radius: 50%; background: #10B981; animation: pulse 2s infinite;"></span>
+                Sentinel Operational Grid Online
+            </div>
+            <h1 style="color: #F8FAFC; font-size: 24px; font-weight: 800; margin: 0 0 6px 0; letter-spacing: -0.5px;">
+                VayuX Sentinel Command Center
+            </h1>
+            <p style="color: #94A3B8; font-size: 13px; margin: 0; font-weight: 400;">
+                Direct 1-click access to all incoming client transmissions, emergency breaches, and recruitment pipelines.
+            </p>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <a href="http://localhost:3000" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; background: #00A8FF; color: #080c14; font-weight: 700; font-size: 12px; border-radius: 8px; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);">
+                🌐 Live Website →
+            </a>
+            <a href="{% url 'admin:content_cms_article_add' %}" style="display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px; background: #1e293b; color: #F8FAFC; border: 1px solid rgba(255,255,255,0.15); font-weight: 600; font-size: 12px; border-radius: 8px; text-decoration: none;">
+                ➕ New Whitepaper
+            </a>
+            <a href="{% url 'admin:careers_jobrole_add' %}" style="display: inline-flex; align-items: center; gap: 6px; padding: 9px 14px; background: #1e293b; color: #F8FAFC; border: 1px solid rgba(255,255,255,0.15); font-weight: 600; font-size: 12px; border-radius: 8px; text-decoration: none;">
+                ➕ Post Career Role
+            </a>
+        </div>
+    </div>
+
+    <!-- DIRECT ACCESS PILL BUTTONS -->
+    <div style="margin-bottom: 20px; padding: 12px 16px; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+        <span style="font-size: 11px; font-weight: 700; color: #00A8FF; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 4px;">⚡ Direct Access:</span>
+        <a href="{% url 'admin:communications_transmitsignal_changelist' %}" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(0, 168, 255, 0.12); color: #00A8FF; border: 1px solid rgba(0, 168, 255, 0.3); border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none;">
+            📡 Inquiries ({{ metrics.new_signals }} new)
+        </a>
+        <a href="{% url 'admin:communications_emergencyincidentreport_changelist' %}" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none;">
+            🚨 DFIR Emergencies ({{ metrics.active_dfir }} active)
+        </a>
+        <a href="{% url 'admin:careers_jobapplication_changelist' %}" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(245, 158, 11, 0.12); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none;">
+            💼 Career Applicants ({{ metrics.pending_applicants }} pending)
+        </a>
+        <a href="{% url 'admin:communications_newslettersubscriber_changelist' %}" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(16, 185, 129, 0.12); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none;">
+            📰 Subscribers ({{ metrics.subscribers }})
+        </a>
+        <a href="{% url 'admin:content_cms_solution_changelist' %}" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #1e293b; color: #94A3B8; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; font-size: 12px; font-weight: 600; text-decoration: none;">
+            🛡️ Solutions Grid
+        </a>
+        <a href="{% url 'admin:content_cms_article_changelist' %}" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #1e293b; color: #94A3B8; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; font-size: 12px; font-weight: 600; text-decoration: none;">
+            📝 Whitepapers
+        </a>
+        <a href="{% url 'admin:site_config_siteconfiguration_changelist' %}" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: #1e293b; color: #94A3B8; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; font-size: 12px; font-weight: 600; text-decoration: none;">
+            ⚙️ Site Settings
+        </a>
+    </div>
+
+    <!-- Live Telemetry KPI Cards (CLICKABLE DIRECT ACCESS) -->
+    <div class="sentinel-kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px;">
+        <!-- Card 1: Inbound Inquiries -->
+        <a href="{% url 'admin:communications_transmitsignal_changelist' %}" class="sentinel-kpi-card" style="display: block; text-decoration: none; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(0, 168, 255, 0.25); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.borderColor='#00A8FF'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='rgba(0, 168, 255, 0.25)'; this.style.transform='none';">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">📡 Inbound Inquiries</span>
+                <span style="color: #00A8FF; font-size: 12px; font-weight: bold;">View →</span>
+            </div>
+            <div style="font-size: 24px; font-weight: 800; color: #00A8FF;">
+                {{ metrics.new_signals }} <span style="font-size: 12px; color: #94A3B8; font-weight: 400;">new / {{ metrics.total_signals }} total</span>
+            </div>
+            <div style="font-size: 10px; color: #64748B; margin-top: 4px;">Click to view client consultations</div>
+        </a>
+
+        <!-- Card 2: DFIR Emergencies -->
+        <a href="{% url 'admin:communications_emergencyincidentreport_changelist' %}" class="sentinel-kpi-card" style="display: block; text-decoration: none; background: rgba(15, 23, 42, 0.9); border: 1px solid {% if metrics.active_dfir > 0 %}rgba(239, 68, 68, 0.45){% else %}rgba(16, 185, 129, 0.25){% endif %}; border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.borderColor='#EF4444'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='{% if metrics.active_dfir > 0 %}rgba(239, 68, 68, 0.45){% else %}rgba(16, 185, 129, 0.25){% endif %}'; this.style.transform='none';">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">🚨 DFIR Emergencies</span>
+                <span style="color: #EF4444; font-size: 12px; font-weight: bold;">Dispatch →</span>
+            </div>
+            <div style="font-size: 24px; font-weight: 800; color: {% if metrics.active_dfir > 0 %}#EF4444{% else %}#10B981{% endif %};">
+                {{ metrics.active_dfir }} <span style="font-size: 12px; color: #94A3B8; font-weight: 400;">active / {{ metrics.total_dfir }} total</span>
+            </div>
+            <div style="font-size: 10px; color: #64748B; margin-top: 4px;">Click to triage breach hotline</div>
+        </a>
+
+        <!-- Card 3: Career Applicants -->
+        <a href="{% url 'admin:careers_jobapplication_changelist' %}" class="sentinel-kpi-card" style="display: block; text-decoration: none; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.borderColor='#F59E0B'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='rgba(245, 158, 11, 0.25)'; this.style.transform='none';">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">💼 Career Applicants</span>
+                <span style="color: #F59E0B; font-size: 12px; font-weight: bold;">Review →</span>
+            </div>
+            <div style="font-size: 24px; font-weight: 800; color: #F59E0B;">
+                {{ metrics.pending_applicants }} <span style="font-size: 12px; color: #94A3B8; font-weight: 400;">pending / {{ metrics.total_applicants }} total</span>
+            </div>
+            <div style="font-size: 10px; color: #64748B; margin-top: 4px;">Click to review candidate CVs</div>
+        </a>
+
+        <!-- Card 4: Subscribers -->
+        <a href="{% url 'admin:communications_newslettersubscriber_changelist' %}" class="sentinel-kpi-card" style="display: block; text-decoration: none; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.borderColor='#10B981'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='rgba(16, 185, 129, 0.25)'; this.style.transform='none';">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">📰 Subscribers</span>
+                <span style="color: #10B981; font-size: 12px; font-weight: bold;">List →</span>
+            </div>
+            <div style="font-size: 24px; font-weight: 800; color: #10B981;">
+                {{ metrics.subscribers }} <span style="font-size: 12px; color: #94A3B8; font-weight: 400;">bulletin list</span>
+            </div>
+            <div style="font-size: 10px; color: #64748B; margin-top: 4px;">Click to manage newsletter list</div>
+        </a>
+
+        <!-- Card 5: Threat Probes -->
+        <a href="{% url 'admin:geo_engine_socnode_changelist' %}" class="sentinel-kpi-card" style="display: block; text-decoration: none; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 12px; padding: 16px; transition: all 0.2s; cursor: pointer;" onmouseover="this.style.borderColor='#A78BFA'; this.style.transform='translateY(-2px)';" onmouseout="this.style.borderColor='rgba(139, 92, 246, 0.25)'; this.style.transform='none';">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-size: 11px; color: #94A3B8; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">🛡️ Threat Probes</span>
+                <span style="color: #A78BFA; font-size: 12px; font-weight: bold;">Nodes →</span>
+            </div>
+            <div style="font-size: 24px; font-weight: 800; color: #A78BFA;">
+                {{ metrics.blocked_probes }} <span style="font-size: 12px; color: #94A3B8; font-weight: 400;">neutralized</span>
+            </div>
+            <div style="font-size: 10px; color: #64748B; margin-top: 4px;">Click to view SOC active nodes</div>
+        </a>
+    </div>
+</div>
+
+<!-- 2. Interactive Navigation Guide for Admin -->
+<div style="background: #0f172a; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px;">
+    <h3 style="color: #38BDF8; font-size: 13px; font-weight: 700; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 1px;">
+        🧭 Operational Sections Guide (Aap Yahan Se Kya-Kya Edit Kar Sakte Hain):
+    </h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; font-size: 12px; color: #94A3B8;">
+        <a href="{% url 'admin:site_config_siteconfiguration_changelist' %}" style="display: block; text-decoration: none; background: #080c14; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); color: #94A3B8; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#00A8FF';" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)';">
+            <strong style="color: #F8FAFC; display: block; margin-bottom: 2px;">🌐 Site Config:</strong> Company phone, Vadodara address, emails, legal policies &amp; SLAs.
+        </a>
+        <a href="{% url 'admin:content_cms_solution_changelist' %}" style="display: block; text-decoration: none; background: #080c14; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); color: #94A3B8; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#00A8FF';" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)';">
+            <strong style="color: #F8FAFC; display: block; margin-bottom: 2px;">📝 Content CMS:</strong> Solutions (SOC, VAPT, GRC, DFIR), Whitepapers, Team, About Story, &amp; Glossary.
+        </a>
+        <a href="{% url 'admin:careers_jobrole_changelist' %}" style="display: block; text-decoration: none; background: #080c14; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); color: #94A3B8; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#00A8FF';" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)';">
+            <strong style="color: #F8FAFC; display: block; margin-bottom: 2px;">💼 Careers:</strong> Post new job roles, open/close hiring, review applicant resumes.
+        </a>
+        <a href="{% url 'admin:communications_transmitsignal_changelist' %}" style="display: block; text-decoration: none; background: #080c14; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); color: #94A3B8; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#00A8FF';" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)';">
+            <strong style="color: #F8FAFC; display: block; margin-bottom: 2px;">🚨 Communications:</strong> Client signal inquiries, critical DFIR breach alerts, &amp; newsletters.
+        </a>
+        <a href="{% url 'admin:seo_engine_pageseo_changelist' %}" style="display: block; text-decoration: none; background: #080c14; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); color: #94A3B8; transition: border-color 0.2s;" onmouseover="this.style.borderColor='#00A8FF';" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)';">
+            <strong style="color: #F8FAFC; display: block; margin-bottom: 2px;">🛰️ SEO &amp; GEO Engine:</strong> Google search meta tags, FAQs, and global SOC nodes.
+        </a>
+    </div>
+</div>
+
+<!-- 3. Standard Django Admin Application Lists -->
+{{ block.super }}
+{% endblock %}

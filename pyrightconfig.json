@@ -1,0 +1,21 @@
+{
+  "include": [
+    "backend-v2/backend"
+  ],
+  "extraPaths": [
+    "backend-v2/backend",
+    "backend-v2/backend/apps"
+  ],
+  "executionEnvironments": [
+    {
+      "root": "backend-v2/backend",
+      "extraPaths": [
+        "backend-v2/backend",
+        "backend-v2/backend/apps"
+      ]
+    }
+  ],
+  "venvPath": "backend-v2",
+  "venv": ".venv",
+  "pythonVersion": "3.9"
+}

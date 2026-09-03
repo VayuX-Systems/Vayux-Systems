@@ -1,0 +1,66 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | VayuX Sentinel Command{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          cyber: {
+            bg: '#060911',
+            surface: '#0d1322',
+            card: '#131b2e',
+            border: 'rgba(0, 168, 255, 0.2)',
+            cyan: '#00A8FF',
+            glow: 'rgba(0, 168, 255, 0.35)',
+            emerald: '#10B981',
+            amber: '#F59E0B',
+            rose: '#EF4444',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/sentinel-admin.css' %}?v=2.2">
+<link rel="icon" href="https://vayux.systems/logo-light.png">
+{% endblock %}
+
+{% block branding %}
+<div class="flex items-center gap-3 py-1">
+    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-cyber-cyan/20 to-cyber-cyan/5 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan shadow-lg shadow-cyber-cyan/10">
+        <span class="text-lg">🛡️</span>
+    </div>
+    <div>
+        <a href="{% url 'admin:index' %}" class="flex items-center gap-2 text-white font-extrabold tracking-tight text-lg no-underline hover:text-cyber-cyan transition-colors">
+            VAYUX <span class="text-cyber-cyan font-light tracking-widest text-xs uppercase px-2 py-0.5 rounded bg-cyber-cyan/10 border border-cyber-cyan/30">SENTINEL COMMAND</span>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block nav-global %}
+<div class="flex items-center gap-4 py-2 px-3">
+    <div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        API: LIVE (8000)
+    </div>
+    <a href="http://localhost:3000" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-cyber-cyan text-cyber-bg font-bold text-xs uppercase tracking-wider hover:bg-white transition-all shadow-md shadow-cyber-cyan/20 no-underline">
+        <span>🌐 Open Frontend</span>
+        <span class="text-xs">→</span>
+    </a>
+</div>
+{% endblock %}

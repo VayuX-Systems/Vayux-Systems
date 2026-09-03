@@ -103,12 +103,20 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
+                  var mediaQuery = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+                  var prefersDark = mediaQuery ? mediaQuery.matches : false;
+                  var userSelected = localStorage.getItem('vayux-theme-user-selected');
                   var saved = localStorage.getItem('vayux-theme');
-                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  if (saved === 'dark' || (!saved && prefersDark)) {
+
+                  // If user never manually clicked the toggle, ALWAYS strictly obey device/browser theme
+                  var isDark = (userSelected && saved) ? (saved === 'dark') : prefersDark;
+
+                  if (isDark) {
                     document.documentElement.classList.add('dark');
+                    document.documentElement.style.colorScheme = 'dark';
                   } else {
                     document.documentElement.classList.remove('dark');
+                    document.documentElement.style.colorScheme = 'light';
                   }
                 } catch (e) {}
               })();

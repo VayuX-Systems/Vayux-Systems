@@ -10,25 +10,52 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem('vayux-theme') as 'light' | 'dark' | null;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-    setTheme(initialTheme);
-    if (initialTheme === 'dark') {
-      document.documentElement.classList.add('dark');
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const applyTheme = (isDark: boolean) => {
+      setTheme(isDark ? 'dark' : 'light');
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.colorScheme = 'dark';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.style.colorScheme = 'light';
+      }
+    };
+
+    const userSelected = localStorage.getItem('vayux-theme-user-selected');
+    const savedTheme = localStorage.getItem('vayux-theme');
+    if (userSelected && (savedTheme === 'dark' || savedTheme === 'light')) {
+      applyTheme(savedTheme === 'dark');
     } else {
-      document.documentElement.classList.remove('dark');
+      // Default directly to user device / browser theme
+      applyTheme(mediaQuery.matches);
     }
+
+    // Listen for live changes to device / browser theme
+    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+      const isManual = localStorage.getItem('vayux-theme-user-selected');
+      // If user hasn't explicitly locked a theme, follow device live
+      if (!isManual) {
+        applyTheme(e.matches);
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleSystemThemeChange);
+    return () => mediaQuery.removeEventListener('change', handleSystemThemeChange);
   }, []);
 
   const toggleTheme = () => {
     const nextTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(nextTheme);
     localStorage.setItem('vayux-theme', nextTheme);
+    localStorage.setItem('vayux-theme-user-selected', 'true');
     if (nextTheme === 'dark') {
       document.documentElement.classList.add('dark');
+      document.documentElement.style.colorScheme = 'dark';
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.style.colorScheme = 'light';
     }
   };
 

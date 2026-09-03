@@ -1,6 +1,7 @@
 'use client';
 
-import { CheckCircle, ArrowRight, Cpu, Terminal, SearchCode, FileCheck2, ShieldAlert } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { CheckCircle, ArrowRight, Cpu, Terminal, SearchCode, FileCheck2 } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import ScrollFadeIn from '@/components/layout/ScrollFadeIn';
@@ -9,7 +10,8 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import Badge from '@/components/ui/Badge';
 import AnimatedButton from '@/components/ui/AnimatedButton';
 import TiltCard from '@/components/ui/TiltCard';
-import { services } from '@/lib/site-data-enhanced';
+import { services as initialServices } from '@/lib/site-data-enhanced';
+import { api, Solution } from '@/lib/api-client';
 
 const SERVICE_THEMES: Record<string, {
   Icon: React.ComponentType<{ className?: string }>;
@@ -69,9 +71,42 @@ const SERVICE_THEMES: Record<string, {
 };
 
 export default function SolutionsPage() {
+  const [solutionsList, setSolutionsList] = useState<any[]>(initialServices as any);
+
+  useEffect(() => {
+    async function loadBackendSolutions() {
+      try {
+        const res = await api.getSolutions();
+        if (res?.results && res.results.length > 0) {
+          const mapped = res.results.map((sol: Solution) => {
+            const staticMatch = initialServices.find(s => s.id === sol.slug);
+            return {
+              id: sol.slug,
+              title: sol.name,
+              subtitle: sol.tagline || staticMatch?.subtitle,
+              badge: staticMatch?.badge || sol.slug.toUpperCase(),
+              badgeColor: staticMatch?.badgeColor || '#38bdf8',
+              shortDescription: sol.lead_definition,
+              fullDescription: sol.full_description,
+              includes: sol.capabilities_list?.length > 0 ? sol.capabilities_list : staticMatch?.includes || [],
+              appliedSolutions: staticMatch?.appliedSolutions || [sol.sla_commitment],
+              sla: sol.sla_commitment,
+            };
+          });
+          setSolutionsList(mapped);
+        }
+      } catch {
+        if (process.env.NODE_ENV === 'development') {
+          console.info('[VayuX CMS] Backend offline or unreachable — utilizing static solutions fallback.');
+        }
+      }
+    }
+    loadBackendSolutions();
+  }, []);
+
   return (
     <main className="relative overflow-hidden w-full">
-      {/* Clean Hero Section without background image or parallax scroll recession */}
+      {/* Clean Hero Section */}
       <section className="relative min-h-[70vh] md:min-h-[75vh] flex items-center justify-center pt-28 sm:pt-32 md:pt-40 pb-16 md:pb-20 px-4 sm:px-6 md:px-[80px]">
         {/* Soft Ambient Radiance in Background */}
         <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-primary-fixed-dim/15 dark:bg-primary/10 rounded-full blur-[130px] pointer-events-none -z-10" />
@@ -123,8 +158,8 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      {/* Services Section Header (Cleanly separated, no negative margin overlap) */}
-      <div className="mx-4 sm:mx-6 md:mx-[80px] mb-12 md:mb-16 z-20">
+      {/* Services Section Header */}
+      <div id="services" className="mx-4 sm:mx-6 md:mx-[80px] mb-12 md:mb-16 z-20">
         <div className="glass-card rounded-3xl border border-outline-variant/20 dark:border-white/10 p-8 md:p-12 shadow-lg">
           <SectionHeading
             center
@@ -137,7 +172,7 @@ export default function SolutionsPage() {
       {/* Services Grid */}
       <section className="py-20 md:py-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service, idx) => {
+          {solutionsList.map((service, idx) => {
             const theme = SERVICE_THEMES[service.id] || SERVICE_THEMES.soc;
             const IconComponent = theme.Icon;
 
@@ -185,7 +220,7 @@ export default function SolutionsPage() {
 
                     {/* Includes List */}
                     <div className="space-y-2.5 mb-8 pb-8 border-b border-outline-variant/15 dark:border-white/10">
-                      {service.includes.slice(0, 3).map((item, i) => (
+                      {service.includes?.slice(0, 3).map((item: string, i: number) => (
                         <div key={i} className="flex items-start gap-3">
                           <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${theme.checkClass}`} />
                           <span className="font-[var(--font-body)] text-xs sm:text-sm text-on-surface-variant/90">
@@ -214,7 +249,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* Service Detail Sections */}
-      {services.map((service) => (
+      {solutionsList.map((service) => (
         <section
           key={service.id}
           id={service.id}
@@ -240,7 +275,7 @@ export default function SolutionsPage() {
                   What's Included
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {service.includes.map((item, idx) => (
+                  {service.includes.map((item: string, idx: number) => (
                     <div key={idx} className="flex items-start gap-3">
                       <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: service.badgeColor }} />
                       <span className="font-[var(--font-body)] text-base text-on-surface-variant">
@@ -258,10 +293,10 @@ export default function SolutionsPage() {
             <ScrollFadeIn direction="right" delay={0.2}>
               <div className="mb-12 glass-card rounded-2xl p-8 md:p-12 border border-white/80">
                 <h3 className="font-[var(--font-heading)] text-2xl font-bold text-on-surface mb-6">
-                  Key Benefits & Outcomes
+                  Key Benefits &amp; Outcomes
                 </h3>
                 <div className="space-y-4">
-                  {service.appliedSolutions.map((solution, idx) => (
+                  {service.appliedSolutions.map((solution: string, idx: number) => (
                     <div key={idx} className="flex items-start gap-4">
                       <div
                         className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white flex-shrink-0 mt-0.5"

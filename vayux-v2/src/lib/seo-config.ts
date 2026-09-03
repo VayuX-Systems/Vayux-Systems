@@ -23,6 +23,11 @@ const baseMetadata: Metadata = {
     'VayuX Systems is an enterprise cybersecurity R&D and Incident Response firm providing 24/7 Managed SOC, VAPT, DFIR, and GRC solutions powered by an active operational telemetry feedback loop.',
   keywords: [
     'VayuX Systems',
+    'VayuX',
+    'Yux cyber',
+    'Why-UX',
+    'VaayuX',
+    'WayuX',
     'Cybersecurity R&D firm India',
     'Managed SOC Services India',
     'DFIR Incident Response Company',
@@ -145,6 +150,21 @@ export function getGlobalSchemaGraph() {
         '@id': 'https://vayux.systems/#organization',
         name: 'VayuX Systems',
         legalName: 'VayuX Systems',
+        alternateName: [
+          'VayuX',
+          'Yux',
+          'Yux Cyber',
+          'Yux Systems',
+          'Why-UX',
+          'WhyUX',
+          'VaayuX',
+          'VaayuX Systems',
+          'WayuX',
+          'WayuX Systems',
+          'V-UX',
+          'VUX Cyber',
+          'Vayu-X',
+        ],
         url: 'https://vayux.systems',
         logo: {
           '@type': 'ImageObject',
@@ -153,7 +173,7 @@ export function getGlobalSchemaGraph() {
           caption: 'VayuX Systems Cybersecurity R&D',
         },
         description:
-          'VayuX Systems is an enterprise cybersecurity R&D and Incident Response firm operating an active operational telemetry feedback loop to engineer next-generation autonomous defense architectures.',
+          'VayuX Systems (often searched or misheard as Yux, WhyUX, or VaayuX) is an enterprise cybersecurity R&D and Incident Response firm operating an active operational telemetry feedback loop to engineer next-generation autonomous defense architectures.',
         foundingDate: '2024',
         foundingLocation: {
           '@type': 'Place',

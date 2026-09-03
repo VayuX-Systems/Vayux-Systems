@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: vayux_postgres
+    environment:
+      POSTGRES_DB: vayux_db
+      POSTGRES_USER: vayux_admin
+      POSTGRES_PASSWORD: vayux_secure_prod_password_2026
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  backend:
+    build: .
+    container_name: vayux_backend
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py seed_vayux_data &&
+             gunicorn --bind 0.0.0.0:8000 --workers 3 config.wsgi:application"
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=False
+      - SECRET_KEY=prod-vayux-secret-key-2026-sentinel-ultra-secure
+      - DATABASE_URL=postgres://vayux_admin:vayux_secure_prod_password_2026@db:5432/vayux_db
+      - ALLOWED_HOSTS=vayux.systems,api.vayux.systems,localhost,127.0.0.1
+      - CORS_ALLOWED_ORIGINS=https://vayux.systems,https://www.vayux.systems,http://localhost:3000
+    depends_on:
+      - db
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:

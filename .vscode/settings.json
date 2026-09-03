@@ -1,0 +1,16 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/backend-v2/.venv/Scripts/python.exe",
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/backend-v2/backend",
+    "${workspaceFolder}/backend-v2/backend/apps",
+    "c:/Users/Rohit/Downloads/vayux-systems/backend-v2/backend",
+    "c:/Users/Rohit/Downloads/vayux-systems/backend-v2/backend/apps"
+  ],
+  "python.autoComplete.extraPaths": [
+    "${workspaceFolder}/backend-v2/backend",
+    "${workspaceFolder}/backend-v2/backend/apps",
+    "c:/Users/Rohit/Downloads/vayux-systems/backend-v2/backend",
+    "c:/Users/Rohit/Downloads/vayux-systems/backend-v2/backend/apps"
+  ],
+  "python.envFile": "${workspaceFolder}/.env"
+}

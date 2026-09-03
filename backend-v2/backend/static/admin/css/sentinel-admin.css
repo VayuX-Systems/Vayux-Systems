@@ -1,0 +1,470 @@
+/* ==========================================================================
+   VayuX Sentinel Command — State-of-the-Art Cyber Admin Theme
+   ========================================================================== */
+
+:root {
+    --bg-base: #060911;
+    --bg-surface: #0d1322;
+    --bg-card: rgba(19, 27, 46, 0.85);
+    --border-color: rgba(0, 168, 255, 0.18);
+    --border-glow: rgba(0, 168, 255, 0.4);
+    --primary-cyan: #00A8FF;
+    --primary-hover: #38bdf8;
+    --accent-emerald: #10B981;
+    --accent-amber: #F59E0B;
+    --accent-rose: #EF4444;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+}
+
+/* Base Body Setup */
+body {
+    background-color: var(--bg-base) !important;
+    color: var(--text-primary) !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+::-webkit-scrollbar-track {
+    background: #060911;
+}
+::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00A8FF;
+}
+
+/* Header & Navbar */
+#header {
+    background: linear-gradient(180deg, #0f172a 0%, #080c14 100%) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
+    padding: 12px 24px !important;
+}
+
+#user-tools {
+    color: var(--text-secondary) !important;
+    font-size: 12px !important;
+}
+
+#user-tools a {
+    color: var(--primary-cyan) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    padding: 4px 8px !important;
+    border-radius: 6px !important;
+    transition: all 0.2s !important;
+}
+
+#user-tools a:hover {
+    background: rgba(0, 168, 255, 0.15) !important;
+    color: #fff !important;
+}
+
+/* Breadcrumbs Bar */
+div.breadcrumbs {
+    background: #090e1a !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    color: var(--text-secondary) !important;
+    padding: 12px 24px !important;
+    font-size: 12px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+}
+
+div.breadcrumbs a {
+    color: var(--primary-cyan) !important;
+    text-decoration: none !important;
+}
+
+div.breadcrumbs a:hover {
+    text-decoration: underline !important;
+}
+
+/* Main Container */
+#content {
+    padding: 24px 32px !important;
+    max-width: 1540px !important;
+    margin: 0 auto !important;
+}
+
+/* Modules & Panels */
+.module {
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 14px !important;
+    margin-bottom: 24px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+.module h2, .module caption {
+    background: linear-gradient(90deg, #131d35 0%, #0d1322 100%) !important;
+    color: var(--primary-cyan) !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    padding: 12px 18px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Tables & Change Lists */
+#changelist {
+    background: transparent !important;
+}
+
+#changelist table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    background: var(--bg-surface) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+#changelist thead th {
+    background: #0c1220 !important;
+    color: #94A3B8 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    padding: 12px 16px !important;
+    border-bottom: 1px solid rgba(0, 168, 255, 0.2) !important;
+}
+
+#changelist tbody tr {
+    transition: background 0.15s ease !important;
+}
+
+#changelist tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.015) !important;
+}
+
+#changelist tbody tr:hover {
+    background: rgba(0, 168, 255, 0.06) !important;
+}
+
+#changelist tbody td, #changelist tbody th {
+    padding: 12px 16px !important;
+    font-size: 13px !important;
+    color: #F8FAFC !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    vertical-align: middle !important;
+}
+
+#changelist tbody th a {
+    color: var(--primary-cyan) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+
+#changelist tbody th a:hover {
+    text-decoration: underline !important;
+}
+
+/* Date Hierarchy Bar */
+.xfull {
+    background: #090e1a !important;
+    padding: 10px 16px !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    margin-bottom: 16px !important;
+    font-size: 12px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    color: #94A3B8 !important;
+}
+
+.xfull a {
+    color: var(--primary-cyan) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+
+.xfull a:hover {
+    text-decoration: underline !important;
+}
+
+/* Action Bar */
+div.actions {
+    background: #090e1a !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 10px !important;
+    padding: 12px 16px !important;
+    margin-bottom: 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+}
+
+div.actions label {
+    color: #94A3B8 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+}
+
+div.actions button.button {
+    background: var(--primary-cyan) !important;
+    color: #060911 !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
+    padding: 8px 16px !important;
+    border-radius: 6px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+}
+
+div.actions button.button:hover {
+    background: #fff !important;
+}
+
+/* Filter Sidebar */
+#changelist-filter {
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    padding: 16px !important;
+}
+
+#changelist-filter h2 {
+    background: transparent !important;
+    color: var(--primary-cyan) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 12px !important;
+}
+
+#changelist-filter h3 {
+    color: #F8FAFC !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    margin-top: 16px !important;
+}
+
+#changelist-filter li.selected a {
+    color: var(--primary-cyan) !important;
+    font-weight: 700 !important;
+}
+
+#changelist-filter a {
+    color: var(--text-secondary) !important;
+    font-size: 12px !important;
+}
+
+#changelist-filter a:hover {
+    color: #fff !important;
+}
+
+/* Forms & Fieldsets */
+fieldset {
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 14px !important;
+    padding: 20px 24px !important;
+    margin-bottom: 24px !important;
+}
+
+fieldset h2 {
+    background: transparent !important;
+    color: var(--primary-cyan) !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 16px !important;
+}
+
+fieldset .description {
+    color: var(--text-secondary) !important;
+    font-size: 12px !important;
+    margin-bottom: 16px !important;
+    font-style: italic !important;
+}
+
+.form-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    padding: 14px 0 !important;
+}
+
+label {
+    color: #F8FAFC !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    margin-bottom: 6px !important;
+    display: inline-block !important;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="date"],
+input[type="tel"] {
+    background: #070c17 !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px !important;
+    color: #F8FAFC !important;
+    font-size: 13px !important;
+    min-height: 42px !important;
+    height: 42px !important;
+    line-height: 20px !important;
+    padding: 8px 14px !important;
+    transition: all 0.2s ease !important;
+    box-sizing: border-box !important;
+}
+
+/* Fix Dropdown / Select Cut-Off & Vertical Misalignment in ALL Sections */
+select,
+.form-row select,
+div.actions select,
+.vSelect,
+.vSelectMultiple {
+    background: #070c17 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2300A8FF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E") no-repeat right 12px center / 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-radius: 8px !important;
+    color: #F8FAFC !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    min-height: 44px !important;
+    height: 44px !important;
+    line-height: 26px !important;
+    padding: 8px 38px 8px 14px !important;
+    transition: all 0.2s ease !important;
+    box-sizing: border-box !important;
+    vertical-align: middle !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+}
+
+select option {
+    background-color: #0d1322 !important;
+    color: #F8FAFC !important;
+    padding: 10px 14px !important;
+    font-size: 13px !important;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--primary-cyan) !important;
+    box-shadow: 0 0 12px rgba(0, 168, 255, 0.25) !important;
+    outline: none !important;
+    background-color: #091020 !important;
+}
+
+textarea {
+    background: #070c17 !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px !important;
+    color: #F8FAFC !important;
+    font-size: 13px !important;
+    padding: 12px 14px !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    line-height: 1.6 !important;
+    box-sizing: border-box !important;
+}
+
+.help, p.help {
+    color: var(--text-muted) !important;
+    font-size: 11px !important;
+    margin-top: 6px !important;
+}
+
+/* Submit Buttons Bar */
+.submit-row {
+    background: #0b1120 !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    padding: 14px 20px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    justify-content: flex-end !important;
+}
+
+.submit-row input[type="submit"] {
+    background: #1e293b !important;
+    color: #F8FAFC !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px !important;
+    padding: 9px 18px !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+}
+
+.submit-row input[type="submit"]:hover {
+    background: #334155 !important;
+    color: #fff !important;
+}
+
+.submit-row input[type="submit"].default {
+    background: var(--primary-cyan) !important;
+    color: #060911 !important;
+    border: none !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3) !important;
+}
+
+.submit-row input[type="submit"].default:hover {
+    background: #fff !important;
+    transform: translateY(-1px) !important;
+}
+
+.submit-row a.deletelink {
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: #EF4444 !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 9px 18px !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+    text-decoration: none !important;
+}
+
+.submit-row a.deletelink:hover {
+    background: #EF4444 !important;
+    color: #fff !important;
+}
+
+/* Success / Error Messages */
+ul.messagelist li {
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    margin-bottom: 16px !important;
+}
+
+ul.messagelist li.success {
+    background: rgba(16, 185, 129, 0.15) !important;
+    border: 1px solid rgba(16, 185, 129, 0.4) !important;
+    color: #10B981 !important;
+}
+
+ul.messagelist li.error {
+    background: rgba(239, 68, 68, 0.15) !important;
+    border: 1px solid rgba(239, 68, 68, 0.4) !important;
+    color: #EF4444 !important;
+}
