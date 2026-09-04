@@ -49,14 +49,13 @@ const initialPrinciples = [
 ];
 
 const getMemberAvatar = (name: string, backendAvatar?: string | null) => {
-  if (backendAvatar) return backendAvatar;
-
   const lower = (name || '').toLowerCase();
 
-  if (lower.includes('vikram')) return '/images/vikramaditya-sharma.jpg';
-  if (lower.includes('aarav')) return '/images/aarav-patel.jpg';
-  if (lower.includes('nandini')) return '/images/nandini-joshi.jpg';
-  if (lower.includes('ishan')) return '/images/ishan-manoj.jpg';
+  if (lower.includes('ishan')) {
+    return '/images/ishan-manoj.jpeg';
+  }
+
+  if (backendAvatar) return backendAvatar;
 
   return null;
 };
@@ -354,29 +353,33 @@ export default function AboutPage() {
                     <div className="flex items-center gap-4 mb-6">
                       <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-2xl overflow-hidden border-2 border-primary/30 bg-slate-800 shrink-0 shadow-lg shadow-primary/5">
                         {member.avatar_image ? (
-                          <Image
-                            src={member.avatar_image}
-                            alt={member.name}
-                            fill
-                            sizes="72px"
-                            className={`object-cover ${
-  member.name.toLowerCase().includes('ishan')
-    ? 'object-[50%_30%] scale-[1.65]'
-    : 'object-top'
-} hover:scale-105 transition-transform duration-300`}
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center text-primary">
-  <span className="font-[var(--font-heading)] text-2xl sm:text-3xl font-bold tracking-wider">
-    {member.name
-      .split(' ')
-      .map((part: string) => part[0])
-      .join('')
-      .slice(0, 2)
-      .toUpperCase()}
-  </span>
-</div>
-                        )}
+  <Image
+    src={member.avatar_image}
+    alt={member.name}
+    fill
+    sizes="72px"
+    className={`object-cover ${
+      member.name.toLowerCase().includes('ishan')
+        ? 'object-[50%_30%] scale-[1.65]'
+        : 'object-top'
+    } hover:scale-105 transition-transform duration-300`}
+    onError={(e) => {
+      e.currentTarget.style.display = 'none';
+      e.currentTarget.parentElement?.classList.add('show-initials');
+    }}
+  />
+) : (
+  <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center text-primary">
+    <span className="font-[var(--font-heading)] text-2xl sm:text-3xl font-bold tracking-wider">
+      {member.name
+        .split(' ')
+        .map((part: string) => part[0])
+        .join('')
+        .slice(0, 2)
+        .toUpperCase()}
+    </span>
+  </div>
+)}
                       </div>
 
                       <div className="flex-1 min-w-0">
