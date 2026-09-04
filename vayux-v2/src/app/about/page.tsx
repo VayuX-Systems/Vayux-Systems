@@ -89,7 +89,7 @@ export default function AboutPage() {
     hero_subtitle: 'Constructing unassailable defensive architectures through deep R&D and operational threat telemetry.',
     founding_story: 'Founded in 2024 in Vadodara, Gujarat, VayuX Systems was established as an innovation-driven laboratory designed to replace static security tools with autonomous, self-defending architectures. By channeling real-world incident response and SOC telemetry directly into low-level systems research, VayuX engineers defense that evolves faster than adversaries.',
     leadership_quote: 'True cyber sovereignty is not bought off the shelf; it is forged through rigorous offensive research.',
-    leader_name: 'Pragnesh Kumar S.',
+    leader_name: 'PragneshKumar S. Singh',
     leader_title: 'Founder & Chief Technology Officer',
     core_principles: initialPrinciples,
     team_members: fallbackLeadership,
@@ -357,6 +357,7 @@ export default function AboutPage() {
     src={member.avatar_image}
     alt={member.name}
     fill
+    unoptimized
     sizes="72px"
     className={`object-cover ${
       member.name.toLowerCase().includes('ishan')
