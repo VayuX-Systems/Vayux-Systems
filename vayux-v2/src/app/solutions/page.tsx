@@ -322,12 +322,13 @@ export default function SolutionsPage() {
           <ScrollFadeIn direction="up" delay={0.3}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <AnimatedButton
-                href={`/solutions/${service.id}`}
-                variant="primary"
-                size="lg"
-              >
-                View Full {service.title} Architecture <ArrowRight className="w-4 h-4" />
-              </AnimatedButton>
+  href={`/solutions/${service.id}`}
+  variant="outline"
+  size="lg"
+  className={SERVICE_THEMES[service.id]?.btnClass}
+>
+  View Full {service.title} Architecture <ArrowRight className="w-4 h-4" />
+</AnimatedButton>
               <AnimatedButton
                 href="/contact"
                 variant="outline"

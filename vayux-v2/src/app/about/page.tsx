@@ -261,7 +261,7 @@ export default function AboutPage() {
                     href="https://www.linkedin.com/in/pragnesh-singh-rajput/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl bg-slate-800/80 border border-white/10 hover:border-primary/50 hover:bg-primary/20 text-on-surface hover:text-primary transition-all flex items-center justify-center"
+                    className="w-10 h-10 rounded-xl bg-surface-container border border-outline-variant/20 hover:border-primary/50 hover:bg-primary/10 text-on-surface hover:text-primary transition-all flex items-center justify-center"
                     aria-label="LinkedIn"
                   >
                     <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -272,7 +272,7 @@ export default function AboutPage() {
                     href="https://github.com/pragnesh-singh-rajput"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl bg-slate-800/80 border border-white/10 hover:border-primary/50 hover:bg-primary/20 text-on-surface hover:text-primary transition-all flex items-center justify-center"
+                    className="w-10 h-10 rounded-xl bg-surface-container border border-outline-variant/20 hover:border-primary/50 hover:bg-primary/10 text-on-surface hover:text-primary transition-all flex items-center justify-center"
                     aria-label="GitHub"
                   >
                     <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -281,7 +281,7 @@ export default function AboutPage() {
                   </a>
                   <a
                     href="mailto:pragnesh.s@vayux.systems"
-                    className="w-10 h-10 rounded-xl bg-slate-800/80 border border-white/10 hover:border-primary/50 hover:bg-primary/20 text-on-surface hover:text-primary transition-all flex items-center justify-center"
+                    className="w-10 h-10 rounded-xl bg-surface-container border border-outline-variant/20 hover:border-primary/50 hover:bg-primary/10 text-on-surface hover:text-primary transition-all flex items-center justify-center"
                     aria-label="Email"
                   >
                     <Mail className="w-4 h-4" />
@@ -419,7 +419,7 @@ export default function AboutPage() {
                         href={member.linkedin_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 hover:border-primary/50 text-slate-400 hover:text-primary transition-all flex items-center justify-center"
+                        className="w-8 h-8 rounded-lg bg-surface-container border border-outline-variant/20 hover:border-primary/50 text-on-surface-variant hover:text-primary transition-all flex items-center justify-center"
                         aria-label="LinkedIn"
                       >
                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -432,7 +432,7 @@ export default function AboutPage() {
                         href={member.github_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-8 h-8 rounded-lg bg-slate-800 border border-white/10 hover:border-primary/50 text-slate-400 hover:text-primary transition-all flex items-center justify-center"
+                        className="w-8 h-8 rounded-lg bg-surface-container border border-outline-variant/20 hover:border-primary/50 text-on-surface-variant hover:text-primary transition-all flex items-center justify-center"
                         aria-label="GitHub"
                       >
                         <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
