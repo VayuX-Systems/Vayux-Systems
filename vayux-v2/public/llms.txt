@@ -34,6 +34,6 @@ VayuX Systems is an innovation-driven cybersecurity research and development fir
 ## Contact & Direct Response Endpoints
 - **Website**: https://vayux.systems
 - **Emergency Hotline / DFIR**: +91-8200677905 (24/7)
-- **Inquiries**: admin@vayux.systems / nexus@vayux.systems
+- **Inquiries**: admin@vayux.systems / admin@vayux.systems.systems
 - **GitHub**: https://github.com/vayux-systems
 - **Headquarters**: Vadodara, Gujarat, India

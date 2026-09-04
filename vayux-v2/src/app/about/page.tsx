@@ -50,40 +50,34 @@ const initialPrinciples = [
 
 const getMemberAvatar = (name: string, backendAvatar?: string | null) => {
   if (backendAvatar) return backendAvatar;
+
   const lower = (name || '').toLowerCase();
+
   if (lower.includes('vikram')) return '/images/vikramaditya-sharma.jpg';
   if (lower.includes('aarav')) return '/images/aarav-patel.jpg';
   if (lower.includes('nandini')) return '/images/nandini-joshi.jpg';
+  if (lower.includes('ishan')) return '/images/ishan-manoj.jpg';
+
   return null;
 };
 
 const fallbackLeadership = [
   {
-    id: 7,
-    name: 'Vikramaditya Sharma',
-    role_designation: 'Co-Founder & VP of Systems Defense',
-    bio: 'Leading low-level kernel security and real-time event telemetry pipelines. Specialist in memory resident exploit mitigation and distributed cyber defense architectures.',
-    avatar_image: '/images/vikramaditya-sharma.jpg',
+    id: 2,
+    name: 'Varun Patel',
+    role_designation: 'Co-Founder & CEO',
+    bio: "Leading VayuX's business vision and strategic growth, focused on translating technology and innovation into meaningful solutions for customers.",
+    avatar_image: '',
     linkedin_url: 'https://www.linkedin.com/company/vayux-systems',
     github_url: 'https://github.com/vayux-systems',
     is_founder: true,
   },
   {
-    id: 8,
-    name: 'Aarav Patel',
-    role_designation: 'Head of Threat Intelligence & Neural Modeling',
-    bio: 'Pioneer in predictive behavioral heuristics, autonomous anomaly scoring, and sub-15ms event correlation engines trained on live operational SOC telemetry.',
-    avatar_image: '/images/aarav-patel.jpg',
-    linkedin_url: 'https://www.linkedin.com/company/vayux-systems',
-    github_url: 'https://github.com/vayux-systems',
-    is_founder: false,
-  },
-  {
-    id: 9,
-    name: 'Nandini Joshi',
-    role_designation: 'Director of Sovereign GRC & Compliance',
-    bio: 'Specialist in DPDP Act 2023 statutory alignment, CERT-In mandatory disclosure runbooks, and continuous zero-trust governance architectures.',
-    avatar_image: '/images/nandini-joshi.jpg',
+    id: 3,
+    name: 'Ishan Manoj',
+    role_designation: 'Head of IT',
+    bio: "Leading VayuX's IT infrastructure and technical operations, ensuring reliable, secure, and efficient systems that support the organization's growth.",
+    avatar_image: '/images/ishan-manoj.jpeg',
     linkedin_url: 'https://www.linkedin.com/company/vayux-systems',
     github_url: 'https://github.com/vayux-systems',
     is_founder: false,
@@ -348,7 +342,7 @@ export default function AboutPage() {
             subtitle="The executive specialists engineering systems defense, threat heuristics, and sovereign governance."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
             {aboutData.team_members.map((member: any, idx: number) => (
               <ScrollReveal key={member.name + idx} delay={idx * 0.1}>
                 <Dribbble3DCard
@@ -365,17 +359,23 @@ export default function AboutPage() {
                             alt={member.name}
                             fill
                             sizes="72px"
-                            className="object-cover object-top hover:scale-105 transition-transform duration-300"
+                            className={`object-cover ${
+  member.name.toLowerCase().includes('ishan')
+    ? 'object-[50%_30%] scale-[1.65]'
+    : 'object-top'
+} hover:scale-105 transition-transform duration-300`}
                           />
                         ) : (
                           <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center text-primary">
-                            {member.role_designation.includes('Systems') && <Terminal className="w-7 h-7" />}
-                            {member.role_designation.includes('Threat') && <Eye className="w-7 h-7" />}
-                            {member.role_designation.includes('GRC') && <Scale className="w-7 h-7" />}
-                            {!member.role_designation.includes('Systems') &&
-                              !member.role_designation.includes('Threat') &&
-                              !member.role_designation.includes('GRC') && <Shield className="w-7 h-7" />}
-                          </div>
+  <span className="font-[var(--font-heading)] text-2xl sm:text-3xl font-bold tracking-wider">
+    {member.name
+      .split(' ')
+      .map((part: string) => part[0])
+      .join('')
+      .slice(0, 2)
+      .toUpperCase()}
+  </span>
+</div>
                         )}
                       </div>
 
