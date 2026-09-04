@@ -216,7 +216,7 @@ export function getGlobalSchemaGraph() {
             '@type': 'ContactPoint',
             telephone: '+91-8200677905',
             contactType: 'sales and consulting',
-            email: 'nexus@vayux.systems',
+            email: 'admin@vayux.systems.systems',
             availableLanguage: ['English', 'Hindi'],
           },
         ],

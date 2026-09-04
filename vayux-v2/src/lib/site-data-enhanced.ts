@@ -8,7 +8,7 @@ export const siteConfig = {
   tagline: 'Architecting a Safer, Self-Defending Online World',
   description: 'VayuX Systems is an innovation-driven cybersecurity R&D firm that channels operational insights into autonomous, adaptive security architectures. Operating as a dynamic laboratory where every engagement—SOC, VAPT, DFIR, GRC—fuels next-generation defense mechanisms.',
   url: 'https://vayux.systems',
-  email: 'nexus@vayux.systems',
+  email: 'admin@vayux.systems.systems',
   emergencyEmail: 'admin@vayux.systems',
   careersEmail: 'careers@vayux.systems',
   dpoEmail: 'dpo@vayux.systems',

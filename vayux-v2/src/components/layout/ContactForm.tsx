@@ -141,9 +141,9 @@ export default function ContactForm() {
             Direct Contact
           </p>
           <div className="space-y-3">
-            <a href="mailto:nexus@vayux.systems" className="flex items-center gap-3 text-on-surface hover:text-primary transition-colors">
+            <a href="mailto:admin@vayux.systems.systems" className="flex items-center gap-3 text-on-surface hover:text-primary transition-colors">
               <Mail className="w-4 h-4 text-primary" />
-              <span className="font-[var(--font-body)] text-sm">nexus@vayux.systems</span>
+              <span className="font-[var(--font-body)] text-sm">admin@vayux.systems.systems</span>
             </a>
             <a href="tel:+91-8200677905" className="flex items-center gap-3 text-on-surface hover:text-primary transition-colors">
               <Phone className="w-4 h-4 text-primary" />
