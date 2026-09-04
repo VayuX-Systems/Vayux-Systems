@@ -149,7 +149,7 @@ export default function CareersPage() {
           ))}
 
           {/* Open Application Card */}
-          <ScrollReveal delay={roles.length * 0.1}>
+          {/* <ScrollReveal delay={roles.length * 0.1}>
             <div className="glass-card rounded-2xl p-8 md:p-10 border border-primary/30 bg-gradient-to-br from-primary/5 to-transparent hover:shadow-[0_20px_60px_rgba(0,168,255,0.12)] transition-all duration-300 flex flex-col h-full">
               <div className="flex-shrink-0 mb-6">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/20 border border-primary/40 text-primary text-xl">
@@ -177,7 +177,7 @@ export default function CareersPage() {
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
-          </ScrollReveal>
+          </ScrollReveal> */}
         </div>
       </section>
 

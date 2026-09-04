@@ -291,7 +291,9 @@ export default function SolutionsPage() {
           {/* Key Benefits */}
           {service.appliedSolutions && (
             <ScrollFadeIn direction="right" delay={0.2}>
-              <div className="mb-12 glass-card rounded-2xl p-8 md:p-12 border border-white/80">
+              <div
+  className={`mb-12 glass-card rounded-2xl p-8 md:p-12 border ${SERVICE_THEMES[service.id]?.borderClass || 'border-white/80'}`}
+>
                 <h3 className="font-[var(--font-heading)] text-2xl font-bold text-on-surface mb-6">
                   Key Benefits &amp; Outcomes
                 </h3>
