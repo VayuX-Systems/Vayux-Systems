@@ -249,7 +249,7 @@ export default function InsightDetailPage() {
       <div className="max-w-4xl mx-auto mb-8 flex items-center justify-between text-xs font-mono text-on-surface-variant">
         <Link
           href="/insights"
-          className="inline-flex items-center gap-2 hover:text-primary transition-colors py-1.5 px-3 rounded-lg bg-slate-900/60 border border-white/10"
+          className="inline-flex items-center gap-2 hover:text-primary transition-colors py-1.5 px-3 rounded-lg bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300"
         >
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Insights Hub
         </Link>
@@ -273,7 +273,7 @@ export default function InsightDetailPage() {
         </p>
 
         {/* Metadata Strip */}
-        <div className="flex flex-wrap items-center gap-6 py-4 px-6 rounded-2xl bg-slate-900/70 border border-white/10 text-xs font-mono text-on-surface-variant">
+        <div className="flex flex-wrap items-center gap-6 py-4 px-6 rounded-2xl bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-slate-300">
           <div className="flex items-center gap-2">
             <User className="w-4 h-4 text-primary" />
             <span className="text-on-surface font-semibold">{article.author_name}</span>
@@ -353,7 +353,7 @@ export default function InsightDetailPage() {
             }
 
             return (
-              <p key={idx} className="text-base sm:text-lg font-light leading-relaxed text-slate-300">
+              <p key={idx} className="text-base sm:text-lg font-light leading-relaxed text-on-surface-variant">
                 {trimmed}
               </p>
             );
@@ -363,7 +363,7 @@ export default function InsightDetailPage() {
 
       {/* Author Spotlight */}
       <section className="max-w-4xl mx-auto mb-16">
-        <div className="glass-card rounded-2xl p-6 sm:p-8 border border-primary/30 bg-gradient-to-r from-slate-900/90 via-slate-950 to-primary/5 flex flex-col sm:flex-row items-center gap-6">
+        <div className="glass-card rounded-2xl p-6 sm:p-8 border border-slate-200/80 dark:border-primary/30 bg-white/80 dark:bg-gradient-to-r dark:from-slate-900/90 dark:via-slate-950 dark:to-primary/5 shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-none flex flex-col sm:flex-row items-center gap-6">
           <div className="w-20 h-20 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center flex-shrink-0 text-primary shadow-lg shadow-primary/20">
             <Cpu className="w-10 h-10" />
           </div>
