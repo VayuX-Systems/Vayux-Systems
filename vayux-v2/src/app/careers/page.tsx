@@ -60,7 +60,7 @@ export default function CareersPage() {
       try {
         setLoading(true);
         const res = await api.getJobRoles(true);
-        if (res?.results && res.results.length > 0) {
+        if (res && Array.isArray(res.results)) {
           const mapped = res.results.map((r: JobRole) => ({
             title: r.title,
             slug: r.slug,

@@ -1,109 +1,77 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { BookOpen, ArrowRight, Calendar, User } from 'lucide-react';
+import { BookOpen, ArrowRight, Calendar, User, RotateCw, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import ScrollReveal from '@/components/layout/ScrollReveal';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { api, Article } from '@/lib/api-client';
 
-// Initial fallback articles
-const initialArticles = [
-  {
-    id: 'autonomous-soc-evolution',
-    title: 'The Evolution of Autonomous SOC: From Alert Triage to Threat Prediction',
-    excerpt: 'Exploring how artificial intelligence and machine learning are transforming security operations centers from reactive alert handlers to proactive threat prediction engines.',
-    author: 'Pragnesh Kumar S.',
-    date: '2026-08-15',
-    category: 'Research',
-    featured: true,
-  },
-  {
-    id: 'dpdp-act-compliance',
-    title: 'DPDP Act 2023: Building Data Sovereignty Into Your Security Stack',
-    excerpt: 'A comprehensive guide to implementing the Digital Personal Data Protection Act requirements within enterprise cybersecurity infrastructure without compromising operational efficiency.',
-    author: 'VayuX Research Team',
-    date: '2026-08-08',
-    category: 'Compliance',
-    featured: false,
-  },
-  {
-    id: 'zero-trust-patterns',
-    title: 'Zero-Trust Architecture Patterns: Implementation Strategies for Indian Enterprises',
-    excerpt: 'Practical patterns and real-world case studies for implementing zero-trust security models tailored to Indian regulatory requirements and operational constraints.',
-    author: 'VayuX Systems',
-    date: '2026-07-25',
-    category: 'Architecture',
-    featured: false,
-  },
-  {
-    id: 'incident-response-playbooks',
-    title: 'DFIR Playbooks: Incident Response in the Age of Ransomware',
-    excerpt: 'Advanced forensic techniques and incident response frameworks for containing and eradicating modern ransomware attacks with minimal business disruption.',
-    author: 'VayuX DFIR Team',
-    date: '2026-07-12',
-    category: 'Incident Response',
-    featured: false,
-  },
-  {
-    id: 'threat-landscape-2026',
-    title: '2026 Threat Landscape Report: Emerging Vectors and Defensive Adaptations',
-    excerpt: 'Annual threat analysis based on real-world telemetry from our global SOC operations, highlighting emerging attack patterns and recommended defensive strategies.',
-    author: 'VayuX Intelligence Division',
-    date: '2026-06-30',
-    category: 'Threat Intelligence',
-    featured: false,
-  },
-  {
-    id: 'vapt-methodology',
-    title: 'Advanced VAPT Methodologies: Beyond OWASP Top 10',
-    excerpt: 'Deep dive into systemic vulnerability assessment techniques that go beyond standardized frameworks to uncover architectural weaknesses and supply chain risks.',
-    author: 'VayuX Offensive R&D',
-    date: '2026-06-15',
-    category: 'Security Research',
-    featured: false,
-  },
-];
-
-const categories = ['All', 'Research', 'Compliance', 'Architecture', 'Incident Response', 'Threat Intelligence', 'Security Research'];
+const defaultCategories = ['All', 'Research', 'Compliance', 'Architecture', 'Incident Response', 'Threat Intelligence', 'Security Research'];
 
 export default function InsightsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [articles, setArticles] = useState(initialArticles);
-  const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState<string[]>(defaultCategories);
+  const [articles, setArticles] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
+
+  async function loadBackendArticles(isManualRefresh = false) {
+    try {
+      if (isManualRefresh) setRefreshing(true);
+      else setLoading(true);
+
+      const [articlesRes, categoriesRes] = await Promise.allSettled([
+        api.getArticles(undefined, true),
+        api.getCategories(true),
+      ]);
+
+      // Process Dynamic Categories from Backend
+      if (
+        categoriesRes.status === 'fulfilled' &&
+        categoriesRes.value?.results &&
+        Array.isArray(categoriesRes.value.results) &&
+        categoriesRes.value.results.length > 0
+      ) {
+        const catNames = categoriesRes.value.results.map((c: any) => c.name);
+        // Deduplicate and ensure 'All' is first
+        setCategories(['All', ...Array.from(new Set(catNames))]);
+      }
+
+      // Process Live Articles from Backend
+      if (
+        articlesRes.status === 'fulfilled' &&
+        articlesRes.value &&
+        Array.isArray(articlesRes.value.results)
+      ) {
+        const mapped = articlesRes.value.results.map((art: Article) => ({
+          id: art.slug,
+          title: art.title,
+          excerpt: art.excerpt,
+          author: art.author_name,
+          date: art.published_at,
+          category: art.category_name,
+          featured: art.is_featured,
+        }));
+        setArticles(mapped);
+      }
+    } catch {
+      if (process.env.NODE_ENV === 'development') {
+        console.info('[VayuX CMS] Backend offline or unreachable.');
+      }
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
+  }
 
   useEffect(() => {
-    async function loadBackendArticles() {
-      try {
-        setLoading(true);
-        const res = await api.getArticles(undefined, true);
-        if (res?.results && res.results.length > 0) {
-          const mapped = res.results.map((art: Article) => ({
-            id: art.slug,
-            title: art.title,
-            excerpt: art.excerpt,
-            author: art.author_name,
-            date: art.published_at,
-            category: art.category_name,
-            featured: art.is_featured,
-          }));
-          setArticles(mapped);
-        }
-      } catch {
-        // Backend offline or unreachable — seamlessly preserve built-in static fallback
-        if (process.env.NODE_ENV === 'development') {
-          console.info('[VayuX CMS] Backend offline or unreachable — utilizing static fallback data.');
-        }
-      } finally {
-        setLoading(false);
-      }
-    }
     loadBackendArticles();
   }, []);
 
   const filteredArticles = selectedCategory === 'All'
     ? articles
-    : articles.filter(article => article.category.toLowerCase() === selectedCategory.toLowerCase());
+    : articles.filter(article => article.category?.toLowerCase() === selectedCategory.toLowerCase());
 
   return (
     <main className="relative overflow-hidden w-full">
@@ -136,7 +104,7 @@ export default function InsightsPage() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-lg font-[var(--font-heading)] font-semibold uppercase tracking-wide text-xs transition-all ${
                   selectedCategory === category
-                    ? 'bg-primary text-on-primary border border-primary'
+                    ? 'bg-primary text-on-primary border border-primary shadow-sm'
                     : 'border border-outline-variant/30 text-on-surface hover:border-primary/50'
                 }`}
               >
@@ -148,13 +116,20 @@ export default function InsightsPage() {
       </section>
 
       {/* Articles Grid */}
-      <section className="py-20 md:py-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto">
-        {filteredArticles.length > 0 ? (
+      <section className="py-12 md:py-24 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto">
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-24 text-center">
+            <RotateCw className="w-8 h-8 text-primary animate-spin mb-4" />
+            <p className="font-mono text-xs text-on-surface-variant uppercase tracking-widest">
+              Connecting to Sentinel Intelligence Vault...
+            </p>
+          </div>
+        ) : filteredArticles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {filteredArticles.map((article, idx) => (
-              <ScrollReveal key={article.id} delay={idx * 0.1}>
+              <ScrollReveal key={article.id} delay={idx * 0.05}>
                 <Link href={`/insights/${article.id}`} className="h-full block group">
-                  <article className="glass-card rounded-2xl overflow-hidden border border-white/80 hover:shadow-[0_20px_60px_rgba(0,168,255,0.12)] transition-all duration-300 h-full flex flex-col p-6 md:p-8">
+                  <article className="glass-card rounded-2xl overflow-hidden border border-white/80 dark:border-white/10 hover:shadow-[0_20px_60px_rgba(0,168,255,0.12)] transition-all duration-300 h-full flex flex-col p-6 md:p-8">
                     {/* Category Badge */}
                     <div className="flex items-start justify-between mb-4">
                       <span className="inline-flex px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wide">
@@ -198,8 +173,38 @@ export default function InsightsPage() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20">
-            <p className="text-on-surface-variant text-lg">No articles found in this category.</p>
+          <div className="text-center py-20 px-4 max-w-xl mx-auto glass-card rounded-3xl border border-outline-variant/20 p-8 md:p-12 shadow-xl">
+            <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-6 text-primary">
+              <BookOpen className="w-8 h-8" />
+            </div>
+            <h3 className="font-[var(--font-heading)] text-2xl md:text-3xl font-bold text-on-surface mb-3">
+              {selectedCategory === 'All'
+                ? 'No Research Publications Yet'
+                : `No Articles in "${selectedCategory}"`}
+            </h3>
+            <p className="font-[var(--font-body)] text-sm md:text-base text-on-surface-variant leading-relaxed mb-8">
+              {selectedCategory === 'All'
+                ? 'The VayuX Threat Research & Intelligence Division is actively compiling sovereign whitepapers, threat advisories, and architecture blueprints. New publications from the Sentinel Command Center will appear here in real-time.'
+                : `There are currently no active whitepapers or advisories published under the "${selectedCategory}" classification.`}
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              {selectedCategory !== 'All' && (
+                <button
+                  onClick={() => setSelectedCategory('All')}
+                  className="px-5 py-2.5 rounded-xl bg-primary text-on-primary text-xs font-semibold uppercase tracking-wider hover:opacity-90 transition-opacity"
+                >
+                  View All Classifications
+                </button>
+              )}
+              <button
+                onClick={() => loadBackendArticles(true)}
+                disabled={refreshing}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-outline-variant/40 text-on-surface text-xs font-semibold uppercase tracking-wider hover:border-primary/50 transition-colors disabled:opacity-50"
+              >
+                <RotateCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
+                <span>{refreshing ? 'Synchronizing...' : 'Refresh Feed'}</span>
+              </button>
+            </div>
           </div>
         )}
       </section>

@@ -163,7 +163,7 @@ export default function InsightDetailPage() {
   const router = useRouter();
   const slug = params?.slug as string;
 
-  const [article, setArticle] = useState<any>(fallbackArticles[slug] || null);
+  const [article, setArticle] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [notFoundState, setNotFoundState] = useState<boolean>(false);
 
@@ -188,17 +188,20 @@ export default function InsightDetailPage() {
             view_count: live.view_count,
           });
           setNotFoundState(false);
-        } else if (fallbackArticles[slug]) {
-          setArticle(fallbackArticles[slug]);
-          setNotFoundState(false);
         } else {
           setNotFoundState(true);
         }
-      } catch (err) {
-        if (fallbackArticles[slug]) {
+      } catch (err: any) {
+        const is404 = err?.message?.includes('404') || err?.message?.includes('not found');
+        if (is404) {
+          setArticle(null);
+          setNotFoundState(true);
+        } else if (fallbackArticles[slug] && process.env.NODE_ENV === 'development') {
+          // Offline development fallback if network is completely down
           setArticle(fallbackArticles[slug]);
           setNotFoundState(false);
         } else {
+          setArticle(null);
           setNotFoundState(true);
         }
       } finally {

@@ -4,7 +4,7 @@
  * Features Smart In-Memory & Session Caching (SWR) to eliminate database load.
  */
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://vayux-backend.onrender.com';
 
 export interface SiteConfig {
   company_name: string;
@@ -304,8 +304,14 @@ export const api = {
     apiFetch<{ results: Solution[] }>('/api/v1/content/solutions/', {}, forceRefresh),
   getSolutionBySlug: (slug: string, forceRefresh = false) =>
     apiFetch<Solution>(`/api/v1/content/solutions/${slug}/`, {}, forceRefresh),
+  getCategories: (forceRefresh = false) =>
+    apiFetch<{ results: { id: number; name: string; slug: string; description: string }[] }>(
+      '/api/v1/content/categories/',
+      {},
+      forceRefresh
+    ),
   getArticles: (category?: string, forceRefresh = false) => {
-    const query = category && category !== 'All' ? `?category=${category.toLowerCase()}` : '';
+    const query = category && category !== 'All' ? `?category=${encodeURIComponent(category.toLowerCase())}` : '';
     return apiFetch<{ results: Article[] }>(`/api/v1/content/articles/${query}`, {}, forceRefresh);
   },
   getArticleBySlug: (slug: string, forceRefresh = false) =>
