@@ -23,6 +23,9 @@ const SERVICE_THEMES: Record<string, {
   subtitleClass: string;
   checkClass: string;
   btnClass: string;
+  ctaPrimaryClass: string;
+  ctaOutlineClass: string;
+  cardGlow: string;
 }> = {
   soc: {
     Icon: Cpu,
@@ -34,6 +37,9 @@ const SERVICE_THEMES: Record<string, {
     subtitleClass: 'text-sky-600 dark:text-sky-400',
     checkClass: 'text-sky-500 dark:text-sky-400',
     btnClass: 'border-sky-500/40 text-sky-700 dark:text-sky-300 hover:bg-sky-500 hover:text-white dark:hover:bg-sky-400 dark:hover:text-black',
+    ctaPrimaryClass: 'bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-slate-950 font-bold shadow-[0_4px_25px_rgba(56,189,248,0.4)] border border-sky-400/60',
+    ctaOutlineClass: 'border-2 border-sky-500/50 text-sky-600 dark:text-sky-400 hover:bg-sky-500/10 hover:border-sky-400',
+    cardGlow: 'rgba(56,189,248,0.12)',
   },
   vapt: {
     Icon: Terminal,
@@ -45,6 +51,9 @@ const SERVICE_THEMES: Record<string, {
     subtitleClass: 'text-rose-600 dark:text-rose-400',
     checkClass: 'text-rose-500 dark:text-rose-400',
     btnClass: 'border-rose-500/40 text-rose-700 dark:text-rose-300 hover:bg-rose-500 hover:text-white dark:hover:bg-rose-400 dark:hover:text-black',
+    ctaPrimaryClass: 'bg-gradient-to-r from-rose-500 to-red-500 hover:from-rose-400 hover:to-red-400 text-white font-bold shadow-[0_4px_25px_rgba(244,63,94,0.4)] border border-rose-400/60',
+    ctaOutlineClass: 'border-2 border-rose-500/50 text-rose-600 dark:text-rose-400 hover:bg-rose-500/10 hover:border-rose-400',
+    cardGlow: 'rgba(244,63,94,0.12)',
   },
   dfir: {
     Icon: SearchCode,
@@ -56,6 +65,9 @@ const SERVICE_THEMES: Record<string, {
     subtitleClass: 'text-amber-600 dark:text-amber-400',
     checkClass: 'text-amber-500 dark:text-amber-400',
     btnClass: 'border-amber-500/40 text-amber-700 dark:text-amber-300 hover:bg-amber-500 hover:text-white dark:hover:bg-amber-400 dark:hover:text-black',
+    ctaPrimaryClass: 'bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-bold shadow-[0_4px_25px_rgba(245,158,11,0.4)] border border-amber-400/60',
+    ctaOutlineClass: 'border-2 border-amber-500/50 text-amber-600 dark:text-amber-400 hover:bg-amber-500/10 hover:border-amber-400',
+    cardGlow: 'rgba(245,158,11,0.12)',
   },
   grc: {
     Icon: FileCheck2,
@@ -67,6 +79,9 @@ const SERVICE_THEMES: Record<string, {
     subtitleClass: 'text-emerald-600 dark:text-emerald-400',
     checkClass: 'text-emerald-500 dark:text-emerald-400',
     btnClass: 'border-emerald-500/40 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-400 dark:hover:text-black',
+    ctaPrimaryClass: 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold shadow-[0_4px_25px_rgba(16,185,129,0.4)] border border-emerald-400/60',
+    ctaOutlineClass: 'border-2 border-emerald-500/50 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-400',
+    cardGlow: 'rgba(16,185,129,0.12)',
   },
 };
 
@@ -110,7 +125,7 @@ export default function SolutionsPage() {
       <section className="relative min-h-[70vh] md:min-h-[75vh] flex items-center justify-center pt-28 sm:pt-32 md:pt-40 pb-16 md:pb-20 px-4 sm:px-6 md:px-[80px]">
         {/* Soft Ambient Radiance in Background */}
         <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-primary-fixed-dim/15 dark:bg-primary/10 rounded-full blur-[130px] pointer-events-none -z-10" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-container/15 dark:bg-secondary/10 rounded-full blur-[150px] pointer-events-none -z-10" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-container/15 dark:secondary/10 rounded-full blur-[150px] pointer-events-none -z-10" />
 
         {/* Content Container */}
         <div className="relative z-10 max-w-4xl mx-auto text-center">
@@ -249,94 +264,103 @@ export default function SolutionsPage() {
       </section>
 
       {/* Service Detail Sections */}
-      {solutionsList.map((service) => (
-        <section
-          key={service.id}
-          id={service.id}
-          className="py-20 md:py-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto border-t border-outline-variant/20 scroll-mt-24"
-        >
-          <ScrollFadeIn direction="up" delay={0}>
-            <div className="mb-12">
-              <Badge className="mb-4">{service.badge}</Badge>
-              <h2 className="font-[var(--font-heading)] text-4xl md:text-5xl font-bold text-on-surface mb-6">
-                {service.title}
-              </h2>
-              <p className="font-[var(--font-body)] text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-3xl">
-                {service.fullDescription || service.shortDescription}
-              </p>
-            </div>
-          </ScrollFadeIn>
+      {solutionsList.map((service) => {
+        const theme = SERVICE_THEMES[service.id] || SERVICE_THEMES.soc;
+        const shortBadge = service.badge?.split(' ')[0] || service.id.toUpperCase();
 
-          {/* Includes Full List */}
-          {service.includes && (
-            <ScrollFadeIn direction="left" delay={0.1}>
+        return (
+          <section
+            key={service.id}
+            id={service.id}
+            className="py-20 md:py-32 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto border-t border-outline-variant/20 scroll-mt-24"
+          >
+            <ScrollFadeIn direction="up" delay={0}>
               <div className="mb-12">
-                <h3 className="font-[var(--font-heading)] text-2xl font-bold text-on-surface mb-6">
-                  What's Included
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {service.includes.map((item: string, idx: number) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: service.badgeColor }} />
-                      <span className="font-[var(--font-body)] text-base text-on-surface-variant">
-                        {item}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                <span className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-[var(--font-heading)] text-xs font-bold uppercase tracking-wider border shadow-sm mb-4 ${theme.badgeClass}`}>
+                  {service.badge}
+                </span>
+                <h2 className="font-[var(--font-heading)] text-4xl md:text-5xl font-bold text-on-surface mb-6">
+                  {service.title}
+                </h2>
+                <p className="font-[var(--font-body)] text-lg md:text-xl text-on-surface-variant leading-relaxed max-w-3xl">
+                  {service.fullDescription || service.shortDescription}
+                </p>
               </div>
             </ScrollFadeIn>
-          )}
 
-          {/* Key Benefits */}
-          {service.appliedSolutions && (
-            <ScrollFadeIn direction="right" delay={0.2}>
-              <div className="mb-12 glass-card rounded-2xl p-8 md:p-12 border border-white/80">
-                <h3 className="font-[var(--font-heading)] text-2xl font-bold text-on-surface mb-6">
-                  Key Benefits &amp; Outcomes
-                </h3>
-                <div className="space-y-4">
-                  {service.appliedSolutions.map((solution: string, idx: number) => (
-                    <div key={idx} className="flex items-start gap-4">
-                      <div
-                        className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white flex-shrink-0 mt-0.5"
-                        style={{ background: service.badgeColor }}
-                      >
-                        {idx + 1}
+            {/* Includes Full List */}
+            {service.includes && (
+              <ScrollFadeIn direction="left" delay={0.1}>
+                <div className="mb-12">
+                  <h3 className="font-[var(--font-heading)] text-2xl font-bold text-on-surface mb-6">
+                    What's Included
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {service.includes.map((item: string, idx: number) => (
+                      <div key={idx} className="flex items-start gap-3">
+                        <CheckCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 ${theme.checkClass}`} />
+                        <span className="font-[var(--font-body)] text-base text-on-surface-variant">
+                          {item}
+                        </span>
                       </div>
-                      <div>
-                        <p className="font-[var(--font-body)] text-base text-on-surface-variant">
-                          {solution}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
+              </ScrollFadeIn>
+            )}
+
+            {/* Key Benefits */}
+            {service.appliedSolutions && (
+              <ScrollFadeIn direction="right" delay={0.2}>
+                <div
+                  className="mb-12 glass-card rounded-2xl p-8 md:p-12 border border-outline-variant/20 dark:border-white/10"
+                  style={{ boxShadow: `0 12px 40px ${theme.cardGlow}` }}
+                >
+                  <h3 className="font-[var(--font-heading)] text-2xl font-bold text-on-surface mb-6">
+                    Key Benefits &amp; Outcomes
+                  </h3>
+                  <div className="space-y-4">
+                    {service.appliedSolutions.map((solution: string, idx: number) => (
+                      <div key={idx} className="flex items-start gap-4">
+                        <div
+                          className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white flex-shrink-0 mt-0.5 shadow-md"
+                          style={{ background: theme.accentColor }}
+                        >
+                          {idx + 1}
+                        </div>
+                        <div>
+                          <p className="font-[var(--font-body)] text-base text-on-surface-variant">
+                            {solution}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollFadeIn>
+            )}
+
+            {/* CTA — Well-structured, solution color matched */}
+            <ScrollFadeIn direction="up" delay={0.3}>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+                <Link
+                  href={`/solutions/${service.id}`}
+                  className={`inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-[var(--font-heading)] font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 group ${theme.ctaPrimaryClass}`}
+                >
+                  <span>Explore {shortBadge} Architecture</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-[var(--font-heading)] font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 backdrop-blur-sm ${theme.ctaOutlineClass}`}
+                >
+                  <span>Request Consultation</span>
+                </Link>
               </div>
             </ScrollFadeIn>
-          )}
-
-          {/* CTA */}
-          <ScrollFadeIn direction="up" delay={0.3}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <AnimatedButton
-                href={`/solutions/${service.id}`}
-                variant="primary"
-                size="lg"
-              >
-                View Full {service.title} Architecture <ArrowRight className="w-4 h-4" />
-              </AnimatedButton>
-              <AnimatedButton
-                href="/contact"
-                variant="outline"
-                size="lg"
-              >
-                Request Consultation
-              </AnimatedButton>
-            </div>
-          </ScrollFadeIn>
-        </section>
-      ))}
+          </section>
+        );
+      })}
     </main>
   );
 }

@@ -137,7 +137,7 @@ export default function JobRoleDetailPage() {
   const params = useParams();
   const slug = params?.slug as string;
 
-  const [role, setRole] = useState<any>(fallbackRoles[slug] || null);
+  const [role, setRole] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [notFoundState, setNotFoundState] = useState<boolean>(false);
 
@@ -169,17 +169,20 @@ export default function JobRoleDetailPage() {
         if (live) {
           setRole(live);
           setNotFoundState(false);
-        } else if (fallbackRoles[slug]) {
-          setRole(fallbackRoles[slug]);
-          setNotFoundState(false);
         } else {
           setNotFoundState(true);
         }
-      } catch (err) {
-        if (fallbackRoles[slug]) {
+      } catch (err: any) {
+        const is404 = err?.message?.includes('404') || err?.message?.includes('not found');
+        if (is404) {
+          setRole(null);
+          setNotFoundState(true);
+        } else if (fallbackRoles[slug] && process.env.NODE_ENV === 'development') {
+          // Offline fallback only
           setRole(fallbackRoles[slug]);
           setNotFoundState(false);
         } else {
+          setRole(null);
           setNotFoundState(true);
         }
       } finally {

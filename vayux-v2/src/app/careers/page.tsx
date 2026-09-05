@@ -52,8 +52,8 @@ const initialRoles = [
 ];
 
 export default function CareersPage() {
-  const [roles, setRoles] = useState(initialRoles);
-  const [loading, setLoading] = useState(false);
+  const [roles, setRoles] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadBackendRoles() {
@@ -73,7 +73,7 @@ export default function CareersPage() {
         }
       } catch {
         if (process.env.NODE_ENV === 'development') {
-          console.info('[VayuX Careers] Backend offline or unreachable — utilizing static careers fallback.');
+          console.info('[VayuX Careers] Backend offline or unreachable.');
         }
       } finally {
         setLoading(false);
@@ -106,47 +106,68 @@ export default function CareersPage() {
       {/* Career Roles Grid */}
       <section className="py-12 md:py-20 px-4 sm:px-6 md:px-[80px] max-w-[1440px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {roles.map((role, idx) => (
-            <ScrollReveal key={idx} delay={idx * 0.1}>
-              <div className="glass-card rounded-2xl p-8 md:p-10 border border-white/80 dark:border-white/10 hover:shadow-[0_20px_60px_rgba(0,168,255,0.12)] transition-all duration-300 flex flex-col h-full group">
-                {/* Icon */}
-                <div className="flex-shrink-0 mb-6">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 text-primary text-xl group-hover:scale-110 transition-transform">
-                    {role.icon === 'ShieldAlert' && '🛡️'}
-                    {role.icon === 'Search' && '🔍'}
-                    {role.icon === 'CheckSquare' && '✓'}
-                    {role.icon === 'Code2' && '💻'}
-                    {role.icon === 'PenTool' && '✍️'}
-                    {!['ShieldAlert', 'Search', 'CheckSquare', 'Code2', 'PenTool'].includes(role.icon) && '⚡'}
+          {loading ? (
+            <div className="col-span-full py-24 flex flex-col items-center justify-center text-center">
+              <div className="w-10 h-10 border-2 border-primary border-t-transparent rounded-full animate-spin mb-4" />
+              <p className="font-mono text-xs text-on-surface-variant uppercase tracking-widest">
+                Connecting to Sentinel Recruitment DB...
+              </p>
+            </div>
+          ) : roles.length > 0 ? (
+            roles.map((role, idx) => (
+              <ScrollReveal key={idx} delay={idx * 0.1}>
+                <div className="glass-card rounded-2xl p-8 md:p-10 border border-white/80 dark:border-white/10 hover:shadow-[0_20px_60px_rgba(0,168,255,0.12)] transition-all duration-300 flex flex-col h-full group">
+                  {/* Icon */}
+                  <div className="flex-shrink-0 mb-6">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 text-primary text-xl group-hover:scale-110 transition-transform">
+                      {role.icon === 'ShieldAlert' && '🛡️'}
+                      {role.icon === 'Search' && '🔍'}
+                      {role.icon === 'CheckSquare' && '✓'}
+                      {role.icon === 'Code2' && '💻'}
+                      {role.icon === 'PenTool' && '✍️'}
+                      {!['ShieldAlert', 'Search', 'CheckSquare', 'Code2', 'PenTool'].includes(role.icon) && '⚡'}
+                    </div>
                   </div>
+
+                  {/* Title */}
+                  <h3 className="font-[var(--font-heading)] text-xl font-bold text-on-surface mb-2 group-hover:text-primary transition-colors">
+                    {role.title}
+                  </h3>
+
+                  {/* Badge */}
+                  <Badge variant="secondary" className="mb-4 w-fit">
+                    {role.tag ? role.tag.split(' · ')[0] : 'ACTIVE OPENING'}
+                  </Badge>
+
+                  {/* Description */}
+                  <p className="font-[var(--font-body)] text-sm sm:text-base text-on-surface-variant leading-relaxed mb-6 flex-1 line-clamp-3">
+                    {role.description}
+                  </p>
+
+                  {/* CTA Link to Dedicated Role Detail Page */}
+                  <Link
+                    href={`/careers/${role.slug || 'soc-incident-analyst'}`}
+                    className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-primary/10 hover:bg-primary hover:text-black border border-primary/30 text-primary transition-all font-[var(--font-heading)] text-xs font-bold uppercase tracking-wider group"
+                  >
+                    <span>View Details &amp; Apply</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
-
-                {/* Title */}
-                <h3 className="font-[var(--font-heading)] text-xl font-bold text-on-surface mb-2 group-hover:text-primary transition-colors">
-                  {role.title}
-                </h3>
-
-                {/* Badge */}
-                <Badge variant="secondary" className="mb-4 w-fit">
-                  {role.tag.split(' · ')[0]}
-                </Badge>
-
-                {/* Description */}
-                <p className="font-[var(--font-body)] text-sm sm:text-base text-on-surface-variant leading-relaxed mb-6 flex-1 line-clamp-3">
-                  {role.description}
-                </p>
-
-                {/* CTA Link to Dedicated Role Detail Page */}
-                <Link
-                  href={`/careers/${role.slug || 'soc-incident-analyst'}`}
-                  className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-primary/10 hover:bg-primary hover:text-black border border-primary/30 text-primary transition-all font-[var(--font-heading)] text-xs font-bold uppercase tracking-wider group"
-                >
-                  <span>View Details &amp; Apply</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+              </ScrollReveal>
+            ))
+          ) : (
+            <div className="col-span-full py-16 px-6 text-center max-w-lg mx-auto glass-card rounded-2xl border border-outline-variant/20 p-8">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4 text-primary text-2xl">
+                📡
               </div>
-            </ScrollReveal>
-          ))}
+              <h3 className="font-[var(--font-heading)] text-xl font-bold text-on-surface mb-2">
+                No Active Roles Posted
+              </h3>
+              <p className="font-[var(--font-body)] text-sm text-on-surface-variant leading-relaxed mb-6">
+                The Sentinel HR Vault currently has no public vacancies listed. Exceptional talent is invited to submit a spontaneous dossier below.
+              </p>
+            </div>
+          )}
 
           {/* Open Application Card */}
           <ScrollReveal delay={roles.length * 0.1}>
