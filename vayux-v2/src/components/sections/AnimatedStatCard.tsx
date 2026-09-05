@@ -23,11 +23,14 @@ function AnimatedCounter({
   delay = 0,
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [count, setCount] = useState(from);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  // Start with target `to` value so search engine crawlers, SSR, and spiders immediately see real numbers instead of 0
+  const [count, setCount] = useState(to);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || hasAnimated) return;
+    setHasAnimated(true);
 
     let startTime: number;
     let animationFrameId: number;
@@ -37,15 +40,20 @@ function AnimatedCounter({
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / (duration * 1000), 1);
 
-      const currentCount = from + (to - from) * progress;
+      // Ease-out cubic for smooth deceleration
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      const currentCount = from + (to - from) * easeProgress;
       setCount(parseFloat(currentCount.toFixed(decimals)));
 
       if (progress < 1) {
         animationFrameId = requestAnimationFrame(animate);
+      } else {
+        setCount(to);
       }
     };
 
     const timeoutId = setTimeout(() => {
+      setCount(from);
       animationFrameId = requestAnimationFrame(animate);
     }, delay * 1000);
 
@@ -53,12 +61,21 @@ function AnimatedCounter({
       clearTimeout(timeoutId);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [isInView, from, to, duration, decimals, delay]);
+  }, [isInView, hasAnimated, from, to, duration, decimals, delay]);
+
+  const formattedValue = count.toLocaleString(undefined, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
 
   return (
-    <div ref={ref}>
+    <div
+      ref={ref}
+      aria-label={`${prefix}${to.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}${suffix}`}
+      data-metric-value={`${prefix}${to}${suffix}`}
+    >
       {prefix}
-      {count.toLocaleString()}
+      {formattedValue}
       {suffix}
     </div>
   );

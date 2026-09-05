@@ -155,7 +155,7 @@ export default function HomePageContent() {
     },
     {
       icon: <Target className="w-5 h-5 sm:w-6 sm:h-6" />,
-      value: 98,
+      value: 99.9,
       label: 'Detection Accuracy',
       suffix: '%',
       color: '#0284c7',
@@ -170,10 +170,11 @@ export default function HomePageContent() {
       delay: 0.2,
     },
     {
-      icon: <Lock className="w-5 h-5 sm:w-6 sm:h-6" />,
-      value: 0,
-      label: 'Data Breaches',
-      suffix: null,
+      icon: <Zap className="w-5 h-5 sm:w-6 sm:h-6" />,
+      value: 15,
+      label: 'Threat Mitigation SLA',
+      prefix: '< ',
+      suffix: 'ms',
       color: '#0284c7',
       delay: 0.3,
     },
@@ -199,14 +200,14 @@ export default function HomePageContent() {
           <section className="py-6 sm:py-10 md:py-12 px-4 sm:px-6 md:px-[80px] border-y border-slate-200/70 dark:border-white/10 bg-slate-50/50 dark:bg-[#09090b]/60 backdrop-blur-sm">
             <div className="max-w-[1440px] mx-auto">
               <p className="text-center font-[var(--font-heading)] text-[11px] sm:text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 mb-4 sm:mb-8 font-semibold">
-                Architectural Standards &amp; Certifications
+                Architectural Standards
               </p>
               <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-2.5 sm:gap-8 md:gap-16 transition-all duration-700">
                 <TiltCard className="rounded-lg">
                   <div className="flex items-center justify-center gap-2 sm:gap-3 px-3 py-2 sm:px-4 sm:py-2">
                     <ShieldCheck className="w-5 h-5 sm:w-7 sm:h-7 text-primary shrink-0" />
                     <span className="font-[var(--font-heading)] text-xs sm:text-sm font-semibold tracking-wider text-slate-800 dark:text-slate-200">
-                      ISO 27001
+                      ISO 27001 Aligned Controls
                     </span>
                   </div>
                 </TiltCard>
@@ -215,7 +216,7 @@ export default function HomePageContent() {
                   <div className="flex items-center justify-center gap-2 sm:gap-3 px-3 py-2 sm:px-4 sm:py-2">
                     <Lock className="w-5 h-5 sm:w-7 sm:h-7 text-primary shrink-0" />
                     <span className="font-[var(--font-heading)] text-xs sm:text-sm font-semibold tracking-wider text-slate-800 dark:text-slate-200">
-                      SOC 2 TYPE II
+                      SOC 2 Security Architecture
                     </span>
                   </div>
                 </TiltCard>
@@ -224,7 +225,7 @@ export default function HomePageContent() {
                   <div className="flex items-center justify-center gap-2 sm:gap-3 px-3 py-2 sm:px-4 sm:py-2">
                     <FileCheck className="w-5 h-5 sm:w-7 sm:h-7 text-primary shrink-0" />
                     <span className="font-[var(--font-heading)] text-xs sm:text-sm font-semibold tracking-wider text-slate-800 dark:text-slate-200">
-                      NIST CSF
+                      NIST CSF Framework Principles
                     </span>
                   </div>
                 </TiltCard>
@@ -233,7 +234,7 @@ export default function HomePageContent() {
                   <div className="flex items-center justify-center gap-2 sm:gap-3 px-3 py-2 sm:px-4 sm:py-2">
                     <Scale className="w-5 h-5 sm:w-7 sm:h-7 text-primary shrink-0" />
                     <span className="font-[var(--font-heading)] text-xs sm:text-sm font-semibold tracking-wider text-slate-800 dark:text-slate-200">
-                      GDPR COMPLIANT
+                      GDPR-Ready Data Practices
                     </span>
                   </div>
                 </TiltCard>
