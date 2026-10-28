@@ -4,8 +4,8 @@ export const siteConfig = {
   name: 'VayuX Systems',
   tagline: 'Celestial Security Research & Development',
   description: 'VayuX Systems is an innovation-driven R&D firm leveraging an operational feedback loop to channel real-world insights into next-generation autonomous security architectures.',
-  url: 'https://vayux.systems',
-  email: 'admin@vayux.systems',
+  url: 'https://vayuxsystems.com',
+  email: 'admin@vayuxsystems.com',
   phone: '+91 8200677905',
   address: 'Vadodara, Gujarat, India - 390019',
 };

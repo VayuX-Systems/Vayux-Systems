@@ -14,7 +14,7 @@ export const viewport: Viewport = {
 
 // Base metadata configuration
 const baseMetadata: Metadata = {
-  metadataBase: new URL('https://vayux.systems'),
+  metadataBase: new URL('https://vayuxsystems.com'),
   title: {
     default: 'VayuX Systems | Autonomous Cybersecurity R&D & Incident Response',
     template: '%s | VayuX Systems',
@@ -46,7 +46,7 @@ const baseMetadata: Metadata = {
     'VaayuX',
     'WayuX',
   ],
-  authors: [{ name: 'VayuX Systems R&D Team', url: 'https://vayux.systems' }],
+  authors: [{ name: 'VayuX Systems R&D Team', url: 'https://vayuxsystems.com' }],
   creator: 'VayuX Systems',
   publisher: 'VayuX Systems',
   formatDetection: {
@@ -57,7 +57,7 @@ const baseMetadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://vayux.systems',
+    url: 'https://vayuxsystems.com',
     siteName: 'VayuX Systems',
     title: 'VayuX Systems | Autonomous Cybersecurity R&D & Incident Response',
     description:
@@ -100,7 +100,7 @@ const baseMetadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   alternates: {
-    canonical: 'https://vayux.systems',
+    canonical: 'https://vayuxsystems.com',
   },
 };
 
@@ -124,7 +124,7 @@ export function generatePageMetadata(pageData: {
       : baseMetadata.keywords,
     openGraph: {
       ...baseMetadata.openGraph,
-      url: `https://vayux.systems${pageData.path}`,
+      url: `https://vayuxsystems.com${pageData.path}`,
       title: pageData.title,
       description: pageData.description,
       type: pageData.type || 'website',
@@ -138,7 +138,7 @@ export function generatePageMetadata(pageData: {
       description: pageData.description,
     },
     alternates: {
-      canonical: `https://vayux.systems${pageData.path}`,
+      canonical: `https://vayuxsystems.com${pageData.path}`,
     },
   };
 }
@@ -153,7 +153,7 @@ export function getGlobalSchemaGraph() {
     '@graph': [
       {
         '@type': 'Organization',
-        '@id': 'https://vayux.systems/#organization',
+        '@id': 'https://vayuxsystems.com/#organization',
         name: 'VayuX Systems',
         legalName: 'VayuX Systems',
         alternateName: [
@@ -172,14 +172,14 @@ export function getGlobalSchemaGraph() {
           'VUX Cyber',
           'Vayu-X',
         ],
-        url: 'https://vayux.systems',
+        url: 'https://vayuxsystems.com',
         logo: {
           '@type': 'ImageObject',
-          '@id': 'https://vayux.systems/#logo',
-          url: 'https://vayux.systems/images/logo-light.png',
+          '@id': 'https://vayuxsystems.com/#logo',
+          url: 'https://vayuxsystems.com/images/logo-light.png',
           caption: 'VayuX Systems Cybersecurity R&D Laboratory',
         },
-        image: 'https://vayux.systems/images/og-image.jpg',
+        image: 'https://vayuxsystems.com/images/og-image.jpg',
         description:
           'VayuX Systems is an enterprise cybersecurity R&D and Incident Response laboratory in Vadodara, Gujarat, providing Autonomous SOC services, VAPT security testing, Digital Forensics & Incident Response (DFIR), and GRC compliance architecture.',
         foundingDate: '2024',
@@ -187,7 +187,7 @@ export function getGlobalSchemaGraph() {
           '@type': 'Person',
           name: 'PragneshKumar S. Singh',
           jobTitle: 'Founder & Chief Technology Officer',
-          url: 'https://vayux.systems/about',
+          url: 'https://vayuxsystems.com/about',
           sameAs: [
             'https://www.linkedin.com/in/pragnesh-singh-rajput/',
             'https://github.com/pragnesh-singh-rajput',
@@ -215,7 +215,7 @@ export function getGlobalSchemaGraph() {
             '@type': 'ContactPoint',
             telephone: '+91-8200677905',
             contactType: 'emergency incident response',
-            email: 'admin@vayux.systems',
+            email: 'admin@vayuxsystems.com',
             availableLanguage: ['English', 'Hindi', 'Gujarati'],
             hoursAvailable: {
               '@type': 'OpeningHoursSpecification',
@@ -236,7 +236,7 @@ export function getGlobalSchemaGraph() {
             '@type': 'ContactPoint',
             telephone: '+91-8200677905',
             contactType: 'sales and consulting',
-            email: 'contact@vayux.systems',
+            email: 'contact@vayuxsystems.com',
             availableLanguage: ['English', 'Hindi', 'Gujarati'],
           },
         ],
@@ -271,7 +271,7 @@ export function getGlobalSchemaGraph() {
                 name: 'Autonomous SOC Services',
                 description:
                   '24/7 continuous threat telemetry ingestion, behavioral anomaly detection, sub-15ms event correlation, and automated incident containment.',
-                url: 'https://vayux.systems/solutions/soc',
+                url: 'https://vayuxsystems.com/solutions/soc',
               },
             },
             {
@@ -281,7 +281,7 @@ export function getGlobalSchemaGraph() {
                 name: 'VAPT Security Testing',
                 description:
                   'Automated vulnerability and penetration testing, offensive adversary simulation, cloud infrastructure audits, and zero-day neutralization.',
-                url: 'https://vayux.systems/solutions/vapt',
+                url: 'https://vayuxsystems.com/solutions/vapt',
               },
             },
             {
@@ -291,7 +291,7 @@ export function getGlobalSchemaGraph() {
                 name: 'Digital Forensics and Incident Response (DFIR)',
                 description:
                   '24/7 emergency breach containment, volatile memory forensics, root-cause investigation, and court-admissible chain-of-custody reports.',
-                url: 'https://vayux.systems/solutions/dfir',
+                url: 'https://vayuxsystems.com/solutions/dfir',
               },
             },
             {
@@ -301,7 +301,7 @@ export function getGlobalSchemaGraph() {
                 name: 'GRC Compliance Architecture',
                 description:
                   'Enterprise governance aligned with DPDP Act 2023, ISO 27001 Aligned Controls, SOC 2 Security Architecture, and NIST CSF Framework Principles.',
-                url: 'https://vayux.systems/solutions/grc',
+                url: 'https://vayuxsystems.com/solutions/grc',
               },
             },
           ],
@@ -309,13 +309,13 @@ export function getGlobalSchemaGraph() {
       },
       {
         '@type': ['ProfessionalService', 'LocalBusiness'],
-        '@id': 'https://vayux.systems/#localbusiness',
+        '@id': 'https://vayuxsystems.com/#localbusiness',
         name: 'VayuX Systems - Cybersecurity R&D Laboratory',
-        url: 'https://vayux.systems',
-        image: 'https://vayux.systems/images/og-image.jpg',
-        logo: 'https://vayux.systems/images/logo-light.png',
+        url: 'https://vayuxsystems.com',
+        image: 'https://vayuxsystems.com/images/og-image.jpg',
+        logo: 'https://vayuxsystems.com/images/logo-light.png',
         telephone: '+91-8200677905',
-        email: 'contact@vayux.systems',
+        email: 'contact@vayuxsystems.com',
         priceRange: '$$$$',
         currenciesAccepted: 'INR, USD, EUR, GBP',
         paymentAccepted: 'Bank Transfer, Corporate Invoice',
@@ -349,18 +349,18 @@ export function getGlobalSchemaGraph() {
           },
         ],
         parentOrganization: {
-          '@id': 'https://vayux.systems/#organization',
+          '@id': 'https://vayuxsystems.com/#organization',
         },
       },
       {
         '@type': 'Service',
-        '@id': 'https://vayux.systems/#service-soc',
+        '@id': 'https://vayuxsystems.com/#service-soc',
         name: 'Autonomous SOC Services',
         serviceType: 'Managed Detection and Response (MDR)',
         provider: {
-          '@id': 'https://vayux.systems/#organization',
+          '@id': 'https://vayuxsystems.com/#organization',
         },
-        url: 'https://vayux.systems/solutions/soc',
+        url: 'https://vayuxsystems.com/solutions/soc',
         description:
           '24/7 continuous threat telemetry ingestion, behavioral anomaly detection, sub-15ms event correlation, and automated incident containment.',
         areaServed: {
@@ -370,13 +370,13 @@ export function getGlobalSchemaGraph() {
       },
       {
         '@type': 'Service',
-        '@id': 'https://vayux.systems/#service-vapt',
+        '@id': 'https://vayuxsystems.com/#service-vapt',
         name: 'VAPT Security Testing',
         serviceType: 'Offensive Cybersecurity Testing & Penetration Testing',
         provider: {
-          '@id': 'https://vayux.systems/#organization',
+          '@id': 'https://vayuxsystems.com/#organization',
         },
-        url: 'https://vayux.systems/solutions/vapt',
+        url: 'https://vayuxsystems.com/solutions/vapt',
         description:
           'Automated vulnerability and penetration testing, offensive adversary emulation, API security audits, and zero-day threat neutralization architecture.',
         areaServed: {
@@ -386,13 +386,13 @@ export function getGlobalSchemaGraph() {
       },
       {
         '@type': 'Service',
-        '@id': 'https://vayux.systems/#service-dfir',
+        '@id': 'https://vayuxsystems.com/#service-dfir',
         name: 'Digital Forensics and Incident Response (DFIR)',
         serviceType: 'Emergency Cybersecurity Incident Response & Forensics',
         provider: {
-          '@id': 'https://vayux.systems/#organization',
+          '@id': 'https://vayuxsystems.com/#organization',
         },
-        url: 'https://vayux.systems/solutions/dfir',
+        url: 'https://vayuxsystems.com/solutions/dfir',
         description:
           '24/7 emergency breach response with guaranteed SLA, volatile memory analysis, root-cause investigation, and court-admissible chain-of-custody documentation.',
         areaServed: {
@@ -402,13 +402,13 @@ export function getGlobalSchemaGraph() {
       },
       {
         '@type': 'Service',
-        '@id': 'https://vayux.systems/#service-grc',
+        '@id': 'https://vayuxsystems.com/#service-grc',
         name: 'GRC Compliance Architecture',
         serviceType: 'Cybersecurity Governance, Risk, and Compliance Consulting',
         provider: {
-          '@id': 'https://vayux.systems/#organization',
+          '@id': 'https://vayuxsystems.com/#organization',
         },
-        url: 'https://vayux.systems/solutions/grc',
+        url: 'https://vayuxsystems.com/solutions/grc',
         description:
           'Continuous compliance engineering aligned with DPDP Act 2023, ISO 27001 Aligned Controls, SOC 2 Security Architecture, and NIST CSF Framework Principles.',
         areaServed: {
@@ -418,17 +418,17 @@ export function getGlobalSchemaGraph() {
       },
       {
         '@type': 'WebSite',
-        '@id': 'https://vayux.systems/#website',
-        url: 'https://vayux.systems',
+        '@id': 'https://vayuxsystems.com/#website',
+        url: 'https://vayuxsystems.com',
         name: 'VayuX Systems',
         publisher: {
-          '@id': 'https://vayux.systems/#organization',
+          '@id': 'https://vayuxsystems.com/#organization',
         },
         potentialAction: {
           '@type': 'SearchAction',
           target: {
             '@type': 'EntryPoint',
-            urlTemplate: 'https://vayux.systems/glossary?q={search_term_string}',
+            urlTemplate: 'https://vayuxsystems.com/glossary?q={search_term_string}',
           },
           'query-input': 'required name=search_term_string',
         },
@@ -498,12 +498,12 @@ export function getServiceSchema(serviceId: 'soc' | 'vapt' | 'dfir' | 'grc') {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    '@id': `https://vayux.systems${item.path}/#service`,
+    '@id': `https://vayuxsystems.com${item.path}/#service`,
     name: item.name,
     serviceType: item.serviceType,
     description: item.description,
     provider: {
-      '@id': 'https://vayux.systems/#organization',
+      '@id': 'https://vayuxsystems.com/#organization',
     },
     areaServed: [
       { '@type': 'Country', name: 'India' },
@@ -522,7 +522,7 @@ export function getServiceSchema(serviceId: 'soc' | 'vapt' | 'dfir' | 'grc') {
         },
       })),
     },
-    termsOfService: 'https://vayux.systems/legal/terms',
+    termsOfService: 'https://vayuxsystems.com/legal/terms',
   };
 }
 
@@ -550,11 +550,11 @@ export function getDefinedTermSchema(term: {
   return {
     '@context': 'https://schema.org',
     '@type': 'DefinedTerm',
-    '@id': `https://vayux.systems/glossary/${term.slug}/#defined-term`,
+    '@id': `https://vayuxsystems.com/glossary/${term.slug}/#defined-term`,
     name: term.term,
     description: term.shortDefinition,
-    inDefinedTermSet: 'https://vayux.systems/glossary/#glossary-set',
-    url: `https://vayux.systems/glossary/${term.slug}`,
+    inDefinedTermSet: 'https://vayuxsystems.com/glossary/#glossary-set',
+    url: `https://vayuxsystems.com/glossary/${term.slug}`,
   };
 }
 
@@ -562,14 +562,14 @@ export function getDefinedTermSetSchema(terms: { term: string; slug: string; sho
   return {
     '@context': 'https://schema.org',
     '@type': 'DefinedTermSet',
-    '@id': 'https://vayux.systems/glossary/#glossary-set',
+    '@id': 'https://vayuxsystems.com/glossary/#glossary-set',
     name: 'VayuX Systems Cybersecurity & R&D Knowledge Hub',
     description:
       'Authoritative technical glossary defining critical cybersecurity terminology, incident response standards, offensive security, and regulatory frameworks.',
     hasDefinedTerm: terms.map((t) => ({
       '@type': 'DefinedTerm',
       name: t.term,
-      url: `https://vayux.systems/glossary/${t.slug}`,
+      url: `https://vayuxsystems.com/glossary/${t.slug}`,
       description: t.shortDefinition,
     })),
   };

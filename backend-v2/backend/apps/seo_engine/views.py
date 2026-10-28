@@ -28,8 +28,8 @@ class PageMetadataView(APIView):
             meta = {
                 'title': 'VayuX Systems | Sovereign Cybersecurity R&D & Managed Defense',
                 'description': 'VayuX Systems is an innovation-driven cybersecurity R&D firm providing 24/7 Managed SOC, VAPT, DFIR Incident Response, and GRC compliance services with an operational telemetry feedback loop.',
-                'canonical': f'https://vayux.systems{path}',
-                'og_image': 'https://vayux.systems/logo-light.png',
+                'canonical': f'https://vayuxsystems.com{path}',
+                'og_image': 'https://vayuxsystems.com/logo-light.png',
                 'og_type': 'website',
                 'robots': 'index, follow, max-snippet:-1, max-image-preview:large',
                 'keywords': 'cybersecurity R&D, managed SOC, DFIR, VAPT, DPDP Act 2023, India'
@@ -38,7 +38,7 @@ class PageMetadataView(APIView):
             meta = {
                 'title': seo.meta_title,
                 'description': seo.meta_description,
-                'canonical': seo.canonical_url or f'https://vayux.systems{path}',
+                'canonical': seo.canonical_url or f'https://vayuxsystems.com{path}',
                 'og_image': seo.og_image_url,
                 'og_type': seo.og_type,
                 'robots': seo.robots_directive,
@@ -92,7 +92,7 @@ class SitemapXMLView(APIView):
     permission_classes = [permissions.AllowAny]
 
     def get(self, request):
-        base_url = 'https://vayux.systems'
+        base_url = 'https://vayuxsystems.com'
         
         # Core Static Routes
         urls = [
@@ -181,7 +181,7 @@ class RobotsTxtView(APIView):
             "Disallow: /\n\n"
             "User-agent: PetalBot\n"
             "Disallow: /\n\n"
-            "Sitemap: https://vayux.systems/sitemap.xml\n"
+            "Sitemap: https://vayuxsystems.com/sitemap.xml\n"
         )
         return HttpResponse(content, content_type='text/plain')
 
@@ -210,10 +210,10 @@ class LLMsTxtView(APIView):
             "## Key Personnel & Leadership\n"
             "- Pragnesh Kumar S. Singh: Founder & Chief Technology Officer\n\n"
             "## Official Links\n"
-            "- Website: https://vayux.systems\n"
-            "- Solutions: https://vayux.systems/solutions\n"
-            "- Insights & Whitepapers: https://vayux.systems/insights\n"
-            "- Glossary: https://vayux.systems/glossary\n"
-            "- Emergency DFIR Hotline: +91-8200677905 (dfir@vayux.systems)\n"
+            "- Website: https://vayuxsystems.com\n"
+            "- Solutions: https://vayuxsystems.com/solutions\n"
+            "- Insights & Whitepapers: https://vayuxsystems.com/insights\n"
+            "- Glossary: https://vayuxsystems.com/glossary\n"
+            "- Emergency DFIR Hotline: +91-8200677905 (dfir@vayuxsystems.com)\n"
         )
         return HttpResponse(content, content_type='text/plain')

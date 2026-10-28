@@ -18,5 +18,5 @@ EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() in ('true', '1')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 
-DEFAULT_FROM_EMAIL = os.environ.get('NOTIFICATION_EMAIL_SENDER', 'sentinel@vayux.systems')
+DEFAULT_FROM_EMAIL = os.environ.get('NOTIFICATION_EMAIL_SENDER', 'sentinel@vayuxsystems.com')
 SERVER_EMAIL = DEFAULT_FROM_EMAIL

@@ -80,8 +80,8 @@ class SecurityHeadersMiddleware:
             "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; "
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
             "font-src 'self' https://fonts.gstatic.com data:; "
-            "img-src 'self' data: blob: https://vayux.systems; "
-            "connect-src 'self' https://vayux.systems https://api.vayux.systems http://localhost:3000; "
+            "img-src 'self' data: blob: https://vayuxsystems.com; "
+            "connect-src 'self' https://vayuxsystems.com https://api.vayuxsystems.com http://localhost:3000; "
             "frame-ancestors 'none'; "
             "base-uri 'self';"
         )

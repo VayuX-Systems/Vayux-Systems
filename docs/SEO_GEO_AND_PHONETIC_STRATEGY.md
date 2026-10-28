@@ -25,13 +25,13 @@ Without an intentional phonetic capture strategy, users searching for these hear
                     │                                               │
                     ▼                                               ▼
      DIRECT TYPO NAVIGATION                             GOOGLE / VOICE SEARCH
-  (e.g., vayux.systems/why-ux)                   (e.g., "yux cybersecurity india")
+  (e.g., vayuxsystems.com/why-ux)                   (e.g., "yux cybersecurity india")
                     │                                               │
                     ▼                                               ▼
 ┌──────────────────────────────────────┐        ┌──────────────────────────────────────┐
 │ NEXT.JS PERMANENT 308 REDIRECTS      │        │ GOOGLE BOT & SCHEMA ENGINE           │
 │ 11 phonetic URL variations routed to │        │ • Organization alternateName array   │
-│ vayux.systems/yux                    │        │ • FAQPage Rich Snippet SERP schema   │
+│ vayuxsystems.com/yux                    │        │ • FAQPage Rich Snippet SERP schema   │
 └──────────────────┬───────────────────┘        └──────────────────┬───────────────────┘
                    │                                               │
                    └───────────────────────┬───────────────────────┘
@@ -81,7 +81,7 @@ Search engines are explicitly instructed that "Yux", "Why-UX", and "VaayuX" are 
   "@type": "Organization",
   "name": "VayuX Systems",
   "legalName": "VayuX Systems Private Limited",
-  "url": "https://vayux.systems",
+  "url": "https://vayuxsystems.com",
   "alternateName": [
     "Yux",
     "Why-UX",
@@ -192,11 +192,11 @@ Both `src/app/page.tsx` and `src/app/about/page.tsx` generate schema script tags
 The system serves multi-modal discovery feeds across both Next.js and Django:
 
 ### 4.1 Dynamic Sitemap Feeds
-* **Frontend Feed**: `https://vayux.systems/sitemap.xml` generated dynamically via `src/app/sitemap.ts`.
-* **Backend Feed**: `https://api.vayux.systems/sitemap.xml` generated via `apps.seo_engine.views.SitemapXMLView`.
+* **Frontend Feed**: `https://vayuxsystems.com/sitemap.xml` generated dynamically via `src/app/sitemap.ts`.
+* **Backend Feed**: `https://api.vayuxsystems.com/sitemap.xml` generated via `apps.seo_engine.views.SitemapXMLView`.
 * All routes (including `/yux`, `/solutions`, `/insights`, `/careers`) are declared with change frequencies (`daily` or `weekly`) and priority ratings (`0.8` to `1.0`).
 
 ### 4.2 Machine & LLM Feeds (`llms.txt`)
 Conforming to modern AI crawler specifications (OpenAI, Anthropic, Gemini, Perplexity):
-* Route: `https://vayux.systems/llms.txt` and `https://api.vayux.systems/llms.txt`
+* Route: `https://vayuxsystems.com/llms.txt` and `https://api.vayuxsystems.com/llms.txt`
 * Provides clean, Markdown-formatted architectural summaries of VayuX capabilities without HTML baggage, ensuring accurate AI summaries when users prompt AI engines regarding VayuX services.

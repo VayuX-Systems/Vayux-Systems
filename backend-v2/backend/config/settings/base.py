@@ -38,7 +38,7 @@ def get_env_list(key, default='*'):
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'vayux-insecure-dev-secret-key-sentinel-2026-fallback')
 DEBUG = get_env_bool('DEBUG', True)
-ALLOWED_HOSTS = get_env_list('ALLOWED_HOSTS', 'localhost,127.0.0.1,vayux.systems,api.vayux.systems,0.0.0.0,.onrender.com,vayuxsystems.com,api.vayuxsystems.com,.vayuxsystems.com')
+ALLOWED_HOSTS = get_env_list('ALLOWED_HOSTS', 'localhost,127.0.0.1,api.vayuxsystems.com,portal.vayuxsystems.com,0.0.0.0,.onrender.com,.vayuxsystems.com')
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME and RENDER_EXTERNAL_HOSTNAME not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -209,7 +209,7 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10 MB maximum resume/attachmen
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 100             # Max 100 form fields
 
 # CORS Configuration
-CORS_ALLOWED_ORIGINS = get_env_list('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000,https://vayux.systems')
+CORS_ALLOWED_ORIGINS = get_env_list('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000,https://vayuxsystems.com,https://portal.vayuxsystems.com')
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https:\/\/.*\.vercel\.app$",
     r"^https:\/\/.*\.onrender\.com$",
@@ -232,7 +232,7 @@ CORS_ALLOW_HEADERS = [
 # CSRF Trusted Origins (Mandatory for Django 4.x+ on Render / Vercel / Custom Domains)
 CSRF_TRUSTED_ORIGINS = get_env_list(
     'CSRF_TRUSTED_ORIGINS',
-    'http://localhost:3000,http://127.0.0.1:3000,https://vayux.systems,https://*.onrender.com,https://*.vercel.app'
+    'http://localhost:3000,http://127.0.0.1:3000,https://vayuxsystems.com,https://portal.vayuxsystems.com,https://*.onrender.com,https://*.vercel.app'
 )
 if RENDER_EXTERNAL_HOSTNAME:
     full_render_origin = f'https://{RENDER_EXTERNAL_HOSTNAME}'

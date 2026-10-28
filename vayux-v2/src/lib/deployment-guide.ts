@@ -476,7 +476,7 @@ export const maintenanceDocumentation = {
     'git commit with descriptive message',
     'git push origin main',
     'Vercel automatically deploys',
-    'Verify at https://vayux.systems',
+    'Verify at https://vayuxsystems.com',
   ],
 
   rollbackProcedure: [
@@ -486,7 +486,7 @@ export const maintenanceDocumentation = {
     'Click "Redeploy" button',
   ],
 
-  contactSupport: 'For technical issues: admin@vayux.systems',
+  contactSupport: 'For technical issues: admin@vayuxsystems.com',
 };
 
 export default {

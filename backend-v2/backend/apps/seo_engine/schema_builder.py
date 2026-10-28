@@ -22,13 +22,13 @@ def build_organization_schema():
     schema = {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "@id": "https://vayux.systems/#organization",
+        "@id": "https://vayuxsystems.com/#organization",
         "name": config.company_name,
         "legalName": config.legal_name,
-        "url": "https://vayux.systems",
+        "url": "https://vayuxsystems.com",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://vayux.systems/logo-light.png",
+            "url": "https://vayuxsystems.com/logo-light.png",
             "width": 512,
             "height": 512
         },
@@ -97,17 +97,17 @@ def build_website_schema():
     return {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "@id": "https://vayux.systems/#website",
+        "@id": "https://vayuxsystems.com/#website",
         "name": "VayuX Systems",
-        "url": "https://vayux.systems",
+        "url": "https://vayuxsystems.com",
         "publisher": {
-            "@id": "https://vayux.systems/#organization"
+            "@id": "https://vayuxsystems.com/#organization"
         },
         "potentialAction": {
             "@type": "SearchAction",
             "target": {
                 "@type": "EntryPoint",
-                "urlTemplate": "https://vayux.systems/glossary?q={search_term_string}"
+                "urlTemplate": "https://vayuxsystems.com/glossary?q={search_term_string}"
             },
             "query-input": "required name=search_term_string"
         }
@@ -136,12 +136,12 @@ def build_service_schema(solution_slug: str):
     return {
         "@context": "https://schema.org",
         "@type": "Service",
-        "@id": f"https://vayux.systems/solutions/{solution.slug}/#service",
+        "@id": f"https://vayuxsystems.com/solutions/{solution.slug}/#service",
         "name": solution.name,
         "serviceType": f"Cybersecurity {solution.name}",
         "description": solution.lead_definition or solution.full_description[:250],
         "provider": {
-            "@id": "https://vayux.systems/#organization"
+            "@id": "https://vayuxsystems.com/#organization"
         },
         "areaServed": [
             {"@type": "Country", "name": "India"},
@@ -153,10 +153,10 @@ def build_service_schema(solution_slug: str):
             "name": f"{solution.name} Capabilities",
             "itemListElement": offers
         },
-        "termsOfService": "https://vayux.systems/legal/terms",
+        "termsOfService": "https://vayuxsystems.com/legal/terms",
         "availableChannel": {
             "@type": "ServiceChannel",
-            "serviceUrl": "https://vayux.systems/contact",
+            "serviceUrl": "https://vayuxsystems.com/contact",
             "servicePhone": config.emergency_phone if solution_slug == 'dfir' else config.primary_phone
         }
     }

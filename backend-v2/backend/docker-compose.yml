@@ -31,8 +31,8 @@ services:
       - DEBUG=False
       - SECRET_KEY=prod-vayux-secret-key-2026-sentinel-ultra-secure
       - DATABASE_URL=postgres://vayux_admin:vayux_secure_prod_password_2026@db:5432/vayux_db
-      - ALLOWED_HOSTS=vayux.systems,api.vayux.systems,localhost,127.0.0.1
-      - CORS_ALLOWED_ORIGINS=https://vayux.systems,https://www.vayux.systems,http://localhost:3000
+      - ALLOWED_HOSTS=vayuxsystems.com,api.vayuxsystems.com,portal.vayuxsystems.com,localhost,127.0.0.1
+      - CORS_ALLOWED_ORIGINS=https://vayuxsystems.com,https://portal.vayuxsystems.com,http://localhost:3000
     depends_on:
       - db
     restart: unless-stopped

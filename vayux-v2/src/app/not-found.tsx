@@ -89,10 +89,10 @@ export default function NotFoundPage() {
                 Still having trouble? Contact our team.
               </p>
               <a
-                href="mailto:admin@vayux.systems"
+                href="mailto:admin@vayuxsystems.com"
                 className="inline-flex items-center gap-2 text-primary hover:text-primary-container transition-colors font-[var(--font-heading)] text-sm font-semibold"
               >
-                admin@vayux.systems
+                admin@vayuxsystems.com
               </a>
             </div>
           </div>

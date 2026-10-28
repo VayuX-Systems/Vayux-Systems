@@ -183,10 +183,10 @@ DEBUG=True
 SECRET_KEY=vayux-sentinel-core-production-secret-key-replace-in-cloud
 
 # Whitelisted Domains for Host Header Protection
-ALLOWED_HOSTS=localhost,127.0.0.1,vayux.systems,api.vayux.systems,0.0.0.0
+ALLOWED_HOSTS=localhost,127.0.0.1,vayuxsystems.com,api.vayuxsystems.com,0.0.0.0
 
 # CORS Whitelist for Frontend Access
-CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,https://vayux.systems
+CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,https://vayuxsystems.com
 
 # Database Connection (Leave empty for SQLite, provide URI for PostgreSQL)
 DATABASE_URL=
