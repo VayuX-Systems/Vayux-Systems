@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vayux.systems'),
+  metadataBase: new URL('https://vayuxsystems.com'),
   title: {
     default: `${siteConfig.name} | Autonomous Cybersecurity R&D & Incident Response`,
     template: `%s | ${siteConfig.name}`,
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://vayux.systems',
+    canonical: 'https://vayuxsystems.com',
   },
 };
 

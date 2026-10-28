@@ -191,7 +191,7 @@ export default function CareersPage() {
               </p>
 
               <a
-                href="mailto:careers@vayux.systems?subject=Open Application - Sovereign Technical Alignment"
+                href="mailto:careers@vayuxsystems.com?subject=Open Application - Sovereign Technical Alignment"
                 className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-primary text-on-primary hover:bg-primary-container transition-all font-[var(--font-heading)] text-xs font-bold uppercase tracking-wider"
               >
                 <span>Submit Direct Alignment</span>
@@ -253,7 +253,7 @@ export default function CareersPage() {
               Our recruitment team is ready to discuss opportunities, answer your questions, and help you find the right fit within VayuX.
             </p>
             <a
-              href="mailto:careers@vayux.systems"
+              href="mailto:careers@vayuxsystems.com"
               className="btn-glow px-8 py-3 rounded-full text-on-primary font-[var(--font-heading)] tracking-widest uppercase text-sm inline-flex items-center gap-2"
             >
               <Mail className="w-4 h-4" />

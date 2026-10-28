@@ -7,7 +7,7 @@ class SiteConfigurationAPITests(TestCase):
         self.client = Client()
         self.config = SiteConfiguration.objects.create(
             company_name='VayuX Systems Testing',
-            support_email='support@vayux.systems',
+            support_email='support@vayuxsystems.com',
             primary_phone='+91-8200677905',
         )
         self.privacy_doc = LegalDocument.objects.create(
@@ -26,7 +26,7 @@ class SiteConfigurationAPITests(TestCase):
         self.assertEqual(response.status_code, 200)
         data = response.json()
         self.assertEqual(data['company_name'], 'VayuX Systems Testing')
-        self.assertEqual(data['support_email'], 'support@vayux.systems')
+        self.assertEqual(data['support_email'], 'support@vayuxsystems.com')
 
     def test_list_legal_documents(self):
         """Verify GET /api/v1/site/legal/ returns active legal documents."""

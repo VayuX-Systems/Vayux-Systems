@@ -203,9 +203,9 @@ VayuX v2 is engineered from the ground up for search engine dominance and AI sea
 **VayuX Systems R&D Laboratories**  
 *Sector 7G, Cyber District, Vadodara, Gujarat, India*
 
-📧 **Nexus Inquiries**: [admin@vayux.systems.systems](mailto:admin@vayux.systems.systems)  
+📧 **Nexus Inquiries**: [admin@vayuxsystems.com.systems](mailto:admin@vayuxsystems.com.systems)  
 🛡️ **Incident Response Hotline**: `+91-8200677905`  
-🌐 **Website**: [https://vayux.systems](https://vayux.systems)
+🌐 **Website**: [https://vayuxsystems.com](https://vayuxsystems.com)
 
 ---
 

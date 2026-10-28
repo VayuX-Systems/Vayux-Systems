@@ -216,7 +216,7 @@ npm run dev
 
 - **256-Bit PII Encryption**: Sensitive customer parameters, emergency DFIR telemetry, and applicant contact details are encrypted at rest using AES-256 (Fernet) keys before saving into PostgreSQL.
 - **Strict Content Security Policy (CSP)**: Hardened headers blocking XSS, object injection, clickjacking (`frame-ancestors 'none'`), and whitelisting only authorized APIs (`https://vayux-backend.onrender.com`).
-- **Dynamic CORS & CSRF Protection**: Strict regex-based origin whitelisting matching enterprise production domains (`https://*.vercel.app`, `https://*.onrender.com`, `https://vayux.systems`).
+- **Dynamic CORS & CSRF Protection**: Strict regex-based origin whitelisting matching enterprise production domains (`https://*.vercel.app`, `https://*.onrender.com`, `https://vayuxsystems.com`).
 - **WhiteNoise Static Serving**: Zero dependency on external storage buckets for administrative staticfiles; compressed and hashed assets served directly with immutable cache-control headers.
 - **24/7 Automated Keep-Alive Cron**: A scheduled GitHub Actions workflow pinging `/health/` every 12 minutes to keep free-tier instances permanently warm without cold starts.
 
@@ -231,7 +231,7 @@ npm run dev
 | `SECRET_KEY` | Backend (Render) | Cryptographic Django secret key | *Random 64-char string* |
 | `FIELD_ENCRYPTION_KEY` | Backend (Render) | 32-byte Fernet encryption key | *32-byte URL-safe base64 key* |
 | `DJANGO_SETTINGS_MODULE` | Backend (Render) | Settings module path | `config.settings.production` |
-| `ALLOWED_HOSTS` | Backend (Render) | Comma-separated hostnames | `.onrender.com,vayux.systems` |
+| `ALLOWED_HOSTS` | Backend (Render) | Comma-separated hostnames | `.onrender.com,vayuxsystems.com` |
 
 ---
 
@@ -249,9 +249,9 @@ npm run dev
 ## 📞 Sovereign Contact & Emergency DFIR Dispatch
 
 - **Corporate Headquarters**: Sector 7G, Cyber District, Vadodara, Gujarat - 390001, India
-- **Primary Telemetry Link**: `nexus@vayux.systems`
-- **24/7 Emergency DFIR Hotline**: `+91-8200677905` / `admin@vayux.systems`
-- **Official Portal**: [https://vayux.systems](https://vayux.systems)
+- **Primary Telemetry Link**: `nexus@vayuxsystems.com`
+- **24/7 Emergency DFIR Hotline**: `+91-8200677905` / `admin@vayuxsystems.com`
+- **Official Portal**: [https://vayuxsystems.com](https://vayuxsystems.com)
 
 ---
 

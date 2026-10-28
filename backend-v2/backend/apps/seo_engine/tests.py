@@ -9,7 +9,7 @@ class SEOEngineAPITests(TestCase):
             route_path='/solutions/dfir',
             meta_title='DFIR Emergency Response | VayuX Systems',
             meta_description='Sub-4-hour emergency SLA deployment.',
-            canonical_url='https://vayux.systems/solutions/dfir'
+            canonical_url='https://vayuxsystems.com/solutions/dfir'
         )
         FAQItem.objects.create(
             category='dfir',

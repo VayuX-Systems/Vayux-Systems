@@ -1,6 +1,6 @@
 # VayuX Systems — Enterprise SEO & Generative Engine Optimization (GEO) Blueprint
 
-> **Company**: VayuX Systems (`https://vayux.systems`)
+> **Company**: VayuX Systems (`https://vayuxsystems.com`)
 > **Stack**: Next.js 16 / React 19 / Tailwind v4 / Vercel
 > **Pillars**: Cybersecurity R&D · SOC · VAPT · DFIR · GRC
 > **Existing SEO Foundation**: [seo-config.ts](file:///c:/Users/Rohit/Downloads/vayux-systems/vayux-v2/src/lib/seo-config.ts) · [site-data.ts](file:///c:/Users/Rohit/Downloads/vayux-systems/vayux-v2/src/lib/site-data.ts)
@@ -99,7 +99,7 @@ STRUCTURE:
     and Incident Response (DFIR) services with sub-4-hour 
     emergency SLA, memory forensics, TTP mapping, and 
     court-admissible evidence preservation."
-  canonical: https://vayux.systems/solutions/dfir
+  canonical: https://vayuxsystems.com/solutions/dfir
   JSON-LD: Service schema (see Section 3.3)
 </head>
 
@@ -417,7 +417,7 @@ User-agent: GPTBot
 # ══════════════════════════════════════════════════
 # SITEMAP
 # ══════════════════════════════════════════════════
-Sitemap: https://vayux.systems/sitemap.xml
+Sitemap: https://vayuxsystems.com/sitemap.xml
 ```
 
 > [!IMPORTANT]
@@ -462,7 +462,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Bytespider', disallow: '/' },
       { userAgent: 'DataForSeoBot', disallow: '/' },
     ],
-    sitemap: 'https://vayux.systems/sitemap.xml',
+    sitemap: 'https://vayuxsystems.com/sitemap.xml',
   };
 }
 ```
@@ -476,13 +476,13 @@ Your existing [organizationSchema](file:///c:/Users/Rohit/Downloads/vayux-system
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://vayux.systems/#organization",
+  "@id": "https://vayuxsystems.com/#organization",
   "name": "VayuX Systems",
   "legalName": "VayuX Systems Private Limited",
-  "url": "https://vayux.systems",
+  "url": "https://vayuxsystems.com",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://vayux.systems/images/logo-light.png",
+    "url": "https://vayuxsystems.com/images/logo-light.png",
     "width": 512,
     "height": 512
   },
@@ -502,14 +502,14 @@ Your existing [organizationSchema](file:///c:/Users/Rohit/Downloads/vayux-system
     {
       "@type": "ContactPoint",
       "contactType": "Sales",
-      "email": "admin@vayux.systems",
+      "email": "admin@vayuxsystems.com",
       "telephone": "+91-8200677905",
       "availableLanguage": ["English", "Hindi"]
     },
     {
       "@type": "ContactPoint",
       "contactType": "Emergency Incident Response",
-      "email": "dfir@vayux.systems",
+      "email": "dfir@vayuxsystems.com",
       "telephone": "+91-8200677905",
       "hoursAvailable": {
         "@type": "OpeningHoursSpecification",
@@ -557,7 +557,7 @@ Your existing [organizationSchema](file:///c:/Users/Rohit/Downloads/vayux-system
       "@type": "Person",
       "name": "Pragnesh Kumar S. Singh",
       "jobTitle": "Founder & CTO",
-      "email": "pragnesh.s@vayux.systems"
+      "email": "pragnesh.s@vayuxsystems.com"
     }
   ]
 }
@@ -569,12 +569,12 @@ Your existing [organizationSchema](file:///c:/Users/Rohit/Downloads/vayux-system
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": "https://vayux.systems/solutions/dfir/#service",
+  "@id": "https://vayuxsystems.com/solutions/dfir/#service",
   "name": "Digital Forensics & Incident Response (DFIR)",
   "serviceType": "Cybersecurity Incident Response",
   "description": "Enterprise-grade DFIR services including 24/7 emergency response with sub-4-hour SLA, volatile memory extraction, MITRE ATT&CK TTP mapping, court-admissible evidence preservation, and post-incident architecture hardening.",
   "provider": {
-    "@id": "https://vayux.systems/#organization"
+    "@id": "https://vayuxsystems.com/#organization"
   },
   "areaServed": {
     "@type": "Country",
@@ -610,10 +610,10 @@ Your existing [organizationSchema](file:///c:/Users/Rohit/Downloads/vayux-system
       }
     ]
   },
-  "termsOfService": "https://vayux.systems/legal/terms",
+  "termsOfService": "https://vayuxsystems.com/legal/terms",
   "availableChannel": {
     "@type": "ServiceChannel",
-    "serviceUrl": "https://vayux.systems/contact",
+    "serviceUrl": "https://vayuxsystems.com/contact",
     "servicePhone": "+91-8200677905"
   }
 }
@@ -624,17 +624,17 @@ Your existing [organizationSchema](file:///c:/Users/Rohit/Downloads/vayux-system
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://vayux.systems/#website",
+  "@id": "https://vayuxsystems.com/#website",
   "name": "VayuX Systems",
-  "url": "https://vayux.systems",
+  "url": "https://vayuxsystems.com",
   "publisher": {
-    "@id": "https://vayux.systems/#organization"
+    "@id": "https://vayuxsystems.com/#organization"
   },
   "potentialAction": {
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "https://vayux.systems/glossary?q={search_term_string}"
+      "urlTemplate": "https://vayuxsystems.com/glossary?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   }
@@ -650,7 +650,7 @@ Your current [sitemapConfig](file:///c:/Users/Rohit/Downloads/vayux-systems/vayu
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://vayux.systems';
+  const baseUrl = 'https://vayuxsystems.com';
   
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
@@ -707,7 +707,7 @@ graph LR
 |---|---|---|
 | **Create a public org profile** | `github.com/vayux-systems` with complete bio, website link, and pinned repos | Week 1 |
 | **Open-source 2–3 security tools** | E.g., a DPDP Act compliance checker, a log parser, a MITRE ATT&CK mapping tool | Weeks 2–6 |
-| **README.md optimization** | Every repo README must contain: "Built by VayuX Systems, a cybersecurity R&D firm..." with link to `vayux.systems` | Ongoing |
+| **README.md optimization** | Every repo README must contain: "Built by VayuX Systems, a cybersecurity R&D firm..." with link to `vayuxsystems.com` | Ongoing |
 | **Publish security advisories** | Use GitHub Security Advisories for any CVEs your team discovers | Ongoing |
 | **Contribute to existing projects** | PRs to OWASP projects, Sigma rules, YARA rules, Atomic Red Team | Ongoing |
 
@@ -902,9 +902,9 @@ graph LR
     ISO 27001, SOC 2, DPDP Act, CERT-In
   
   ## Links
-  - Website: https://vayux.systems
-  - Solutions: https://vayux.systems/solutions
-  - Contact: https://vayux.systems/contact
+  - Website: https://vayuxsystems.com
+  - Solutions: https://vayuxsystems.com/solutions
+  - Contact: https://vayuxsystems.com/contact
   - GitHub: https://github.com/vayux-systems
   ```
 

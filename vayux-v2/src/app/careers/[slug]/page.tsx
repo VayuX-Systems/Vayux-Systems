@@ -327,7 +327,7 @@ export default function JobRoleDetailPage() {
       if (err.message && err.message.includes('429')) {
         setSubmitError('Rate Limit Exceeded: Maximum 10 applications permitted per hour. Please standby before retrying.');
       } else {
-        setSubmitError(err.message || 'Transmission failed. Please check your parameters or email careers@vayux.systems directly.');
+        setSubmitError(err.message || 'Transmission failed. Please check your parameters or email careers@vayuxsystems.com directly.');
       }
     } finally {
       setSubmitting(false);
@@ -760,12 +760,12 @@ export default function JobRoleDetailPage() {
                   <span className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
                     Prefer direct email?{' '}
                     <a
-                      href={`mailto:careers@vayux.systems?subject=${encodeURIComponent(
+                      href={`mailto:careers@vayuxsystems.com?subject=${encodeURIComponent(
                         role.subject || `Application for ${role.title}`
                       )}`}
                       className="text-primary hover:underline font-bold"
                     >
-                      Email careers@vayux.systems
+                      Email careers@vayuxsystems.com
                     </a>
                   </span>
                 </div>

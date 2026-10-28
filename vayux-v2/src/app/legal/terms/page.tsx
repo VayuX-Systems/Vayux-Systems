@@ -188,7 +188,7 @@ export default function TermsPage() {
                   To resolve disputes or receive clarification on these terms:
                 </p>
                 <div className="space-y-2 ml-4">
-                  <p><strong>Email:</strong> <a href="mailto:admin@vayux.systems" className="text-primary hover:underline">admin@vayux.systems</a></p>
+                  <p><strong>Email:</strong> <a href="mailto:admin@vayuxsystems.com" className="text-primary hover:underline">admin@vayuxsystems.com</a></p>
                   <p><strong>Address:</strong> Vadodara, Gujarat, India</p>
                   <p><strong>Response Time:</strong> Within 24 hours</p>
                 </div>

@@ -49,8 +49,8 @@ Prevents Cross-Site Scripting (XSS), code injection, clickjacking, and unauthori
 * `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net`: Permits Next.js client bundles and approved CDNs; completely blocks unauthorized external scripts.
 * `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`: Restricts styling to internal CSS and Google Fonts.
 * `font-src 'self' https://fonts.gstatic.com data:`: Whitelists Google Fonts assets.
-* `img-src 'self' data: blob: https://vayux.systems https://lh3.googleusercontent.com`: Blocks image-based tracking pixels.
-* `connect-src 'self' http://localhost:8000 https://api.vayux.systems https://vayux.systems`: Restricts AJAX/fetch requests strictly to VayuX API endpoints.
+* `img-src 'self' data: blob: https://vayuxsystems.com https://lh3.googleusercontent.com`: Blocks image-based tracking pixels.
+* `connect-src 'self' http://localhost:8000 https://api.vayuxsystems.com https://vayuxsystems.com`: Restricts AJAX/fetch requests strictly to VayuX API endpoints.
 * `frame-ancestors 'none'`: Completely disables embedding inside `<iframe>`, `<frame>`, `<embed>`, or `<object>` tags anywhere on the web.
 * `base-uri 'self'`, `form-action 'self'`: Restricts form POST targets to the local origin.
 
@@ -109,7 +109,7 @@ If any pattern matches, the middleware immediately returns `HTTP 403 Forbidden`,
 ### 5.1 Host Header Poisoning Defense (`ALLOWED_HOSTS`)
 Insecure deployments often set `ALLOWED_HOSTS = ['*']`, exposing the system to cache poisoning and password reset hijacking. We strictly whitelisted authorized domains:
 ```python
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'vayux.systems', 'api.vayux.systems', '0.0.0.0']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'vayuxsystems.com', 'api.vayuxsystems.com', '0.0.0.0']
 ```
 
 ### 5.2 Zero-Trust Read-Only Public API Endpoints

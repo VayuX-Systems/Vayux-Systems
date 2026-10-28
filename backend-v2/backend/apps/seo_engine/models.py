@@ -12,8 +12,8 @@ class PageSEO(models.Model):
     )
     meta_title = models.CharField(max_length=200, help_text="SERP Title (<60 chars)")
     meta_description = models.TextField(help_text="SERP Description (150-160 chars)")
-    canonical_url = models.URLField(blank=True, help_text="e.g. https://vayux.systems/solutions/dfir")
-    og_image_url = models.URLField(blank=True, default="https://vayux.systems/og-image.png")
+    canonical_url = models.URLField(blank=True, help_text="e.g. https://vayuxsystems.com/solutions/dfir")
+    og_image_url = models.URLField(blank=True, default="https://vayuxsystems.com/og-image.png")
     og_type = models.CharField(max_length=50, default="website")
     twitter_card = models.CharField(max_length=50, default="summary_large_image")
     robots_directive = models.CharField(

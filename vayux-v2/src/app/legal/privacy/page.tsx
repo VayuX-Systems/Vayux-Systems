@@ -174,7 +174,7 @@ export default function PrivacyPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-primary font-bold">•</span>
-                    <span>File a grievance with our Data Protection Officer at <a href="mailto:dpo@vayux.systems" className="text-primary hover:underline">dpo@vayux.systems</a></span>
+                    <span>File a grievance with our Data Protection Officer at <a href="mailto:dpo@vayuxsystems.com" className="text-primary hover:underline">dpo@vayuxsystems.com</a></span>
                   </li>
                 </ul>
               </div>
@@ -204,8 +204,8 @@ export default function PrivacyPage() {
                   For privacy-related inquiries, data requests, or to exercise your rights:
                 </p>
                 <div className="space-y-2 ml-4">
-                  <p><strong>Data Protection Officer:</strong> <a href="mailto:dpo@vayux.systems" className="text-primary hover:underline">dpo@vayux.systems</a></p>
-                  <p><strong>General Inquiries:</strong> <a href="mailto:admin@vayux.systems" className="text-primary hover:underline">admin@vayux.systems</a></p>
+                  <p><strong>Data Protection Officer:</strong> <a href="mailto:dpo@vayuxsystems.com" className="text-primary hover:underline">dpo@vayuxsystems.com</a></p>
+                  <p><strong>General Inquiries:</strong> <a href="mailto:admin@vayuxsystems.com" className="text-primary hover:underline">admin@vayuxsystems.com</a></p>
                   <p><strong>Location:</strong> Vadodara, Gujarat, India</p>
                 </div>
               </div>

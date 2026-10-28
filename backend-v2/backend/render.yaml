@@ -21,11 +21,11 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: ALLOWED_HOSTS
-        value: "localhost,127.0.0.1,.onrender.com,vayux.systems,api.vayux.systems"
+        value: "localhost,127.0.0.1,.onrender.com,vayuxsystems.com,api.vayuxsystems.com,portal.vayuxsystems.com"
       - key: CORS_ALLOWED_ORIGINS
-        value: "http://localhost:3000,https://vayux.systems"
+        value: "http://localhost:3000,https://vayuxsystems.com,https://portal.vayuxsystems.com"
       - key: CSRF_TRUSTED_ORIGINS
-        value: "https://*.onrender.com,https://vayux.systems,https://*.vercel.app"
+        value: "https://*.onrender.com,https://vayuxsystems.com,https://portal.vayuxsystems.com,https://*.vercel.app"
       - key: FIELD_ENCRYPTION_KEY
         value: "r0h1tV4yuX53nt1n3lK3y32Byt35L0ngS3cur3=="
       - key: DATABASE_URL
@@ -39,4 +39,4 @@ services:
       - key: EMAIL_USE_TLS
         value: "True"
       - key: NOTIFICATION_EMAIL_SENDER
-        value: sentinel@vayux.systems
+        value: sentinel@vayuxsystems.com

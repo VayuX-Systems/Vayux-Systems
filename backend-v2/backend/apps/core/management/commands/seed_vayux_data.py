@@ -25,7 +25,7 @@ class Command(BaseCommand):
         admin_user, created = User.objects.get_or_create(
             username='admin',
             defaults={
-                'email': 'admin@vayux.systems',
+                'email': 'admin@vayuxsystems.com',
                 'is_staff': True,
                 'is_superuser': True,
                 'role': 'ADMIN',
@@ -46,9 +46,9 @@ class Command(BaseCommand):
         config.company_name = "VayuX Systems"
         config.legal_name = "VayuX Systems Private Limited"
         config.tagline = "Architecting a Safer, Self-Defending Online World"
-        config.support_email = "nexus@vayux.systems"
-        config.emergency_dfir_email = "admin@vayux.systems"
-        config.careers_email = "careers@vayux.systems"
+        config.support_email = "nexus@vayuxsystems.com"
+        config.emergency_dfir_email = "admin@vayuxsystems.com"
+        config.careers_email = "careers@vayuxsystems.com"
         config.primary_phone = "+91-8200677905"
         config.emergency_phone = "+91-8200677905"
         config.headquarters_city = "Vadodara"
@@ -194,7 +194,7 @@ Our DFIR protocols are engineered to satisfy the mandatory CERT-In 6-hour incide
                 'summary': 'Guidelines for ethical researchers discovering vulnerabilities in VayuX infrastructure.',
                 'content': '''# Responsible Security Disclosure Policy
 
-VayuX Systems welcomes security researchers to test our public perimeters in good faith. Please report any potential vulnerabilities to security@vayux.systems with reproducible proof-of-concept steps. We guarantee safe harbor for researchers adhering to our disclosure guidelines.''',
+VayuX Systems welcomes security researchers to test our public perimeters in good faith. Please report any potential vulnerabilities to security@vayuxsystems.com with reproducible proof-of-concept steps. We guarantee safe harbor for researchers adhering to our disclosure guidelines.''',
             }
         ]
         for l_doc in legal_docs:
@@ -777,67 +777,67 @@ Standard compliance scanners identify known CVEs. True offensive research models
                 'route_path': '/',
                 'meta_title': 'VayuX Systems | Sovereign Cybersecurity R&D & Managed Defense',
                 'meta_description': 'VayuX Systems is an innovation-driven cybersecurity R&D firm headquartered in Vadodara, India, providing 24/7 Managed SOC, VAPT, DFIR, and GRC services with an operational telemetry feedback loop.',
-                'canonical_url': 'https://vayux.systems',
+                'canonical_url': 'https://vayuxsystems.com',
             },
             {
                 'route_path': '/about',
                 'meta_title': 'About VayuX Systems | Architects of Sovereign Defense',
                 'meta_description': 'Learn about the genesis of VayuX Systems, our leadership, core principles, and our proprietary R&D laboratory based in Vadodara, Gujarat.',
-                'canonical_url': 'https://vayux.systems/about',
+                'canonical_url': 'https://vayuxsystems.com/about',
             },
             {
                 'route_path': '/solutions',
                 'meta_title': 'Cybersecurity Solutions & Defense Pillars | VayuX Systems',
                 'meta_description': 'Explore VayuX enterprise security pillars: 24/7 Managed SOC, VAPT penetration testing, DFIR incident response, and GRC compliance consulting.',
-                'canonical_url': 'https://vayux.systems/solutions',
+                'canonical_url': 'https://vayuxsystems.com/solutions',
             },
             {
                 'route_path': '/solutions/soc',
                 'meta_title': '24/7 Managed SOC Operations & Autonomous Response | VayuX Systems',
                 'meta_description': 'Sub-15ms threat event correlation and automated incident containment powered by continuous frontline R&D telemetry.',
-                'canonical_url': 'https://vayux.systems/solutions/soc',
+                'canonical_url': 'https://vayuxsystems.com/solutions/soc',
             },
             {
                 'route_path': '/solutions/vapt',
                 'meta_title': 'Enterprise VAPT Services & Penetration Testing | VayuX Systems',
                 'meta_description': 'Adversarial simulation, attack surface reduction, and zero-day vulnerability discovery across web, API, and cloud infrastructure.',
-                'canonical_url': 'https://vayux.systems/solutions/vapt',
+                'canonical_url': 'https://vayuxsystems.com/solutions/vapt',
             },
             {
                 'route_path': '/solutions/dfir',
                 'meta_title': 'DFIR Incident Response Services | Sub-4-Hour SLA | VayuX Systems',
                 'meta_description': 'Guaranteed sub-4-hour emergency deployment for ransomware and active cyber breaches with memory forensics and court-admissible evidence preservation.',
-                'canonical_url': 'https://vayux.systems/solutions/dfir',
+                'canonical_url': 'https://vayuxsystems.com/solutions/dfir',
             },
             {
                 'route_path': '/solutions/grc',
                 'meta_title': 'GRC Compliance Consulting | DPDP Act 2023 & ISO 27001 | VayuX Systems',
                 'meta_description': 'Sovereign compliance roadmaps for DPDP Act 2023, CERT-In mandatory directives, ISO 27001, and SOC 2 Type II assurance.',
-                'canonical_url': 'https://vayux.systems/solutions/grc',
+                'canonical_url': 'https://vayuxsystems.com/solutions/grc',
             },
             {
                 'route_path': '/insights',
                 'meta_title': 'Research Insights & Whitepapers | VayuX Defense Lab',
                 'meta_description': 'Deep dives into autonomous threat detection, post-quantum cryptography, DPDP Act 2023 compliance, and ransomware response playbooks.',
-                'canonical_url': 'https://vayux.systems/insights',
+                'canonical_url': 'https://vayuxsystems.com/insights',
             },
             {
                 'route_path': '/careers',
                 'meta_title': 'Careers at VayuX Systems | Build the Future of Defense',
                 'meta_description': 'Join the sovereign cybersecurity grid in Vadodara or remote. Open roles for offensive researchers, SOC analysts, and systems engineers.',
-                'canonical_url': 'https://vayux.systems/careers',
+                'canonical_url': 'https://vayuxsystems.com/careers',
             },
             {
                 'route_path': '/contact',
                 'meta_title': 'Contact Sentinel Command | VayuX Systems',
                 'meta_description': 'Initiate encrypted contact with VayuX Systems defense commanders for SOC onboarding, penetration testing, or emergency DFIR response.',
-                'canonical_url': 'https://vayux.systems/contact',
+                'canonical_url': 'https://vayuxsystems.com/contact',
             },
             {
                 'route_path': '/glossary',
                 'meta_title': 'Cybersecurity Knowledge Base & Technical Glossary | VayuX Systems',
                 'meta_description': 'Authoritative technical definitions and frameworks for DFIR, MITRE ATT&CK, Zero Trust, and the DPDP Act 2023.',
-                'canonical_url': 'https://vayux.systems/glossary',
+                'canonical_url': 'https://vayuxsystems.com/glossary',
             },
         ]
         for s_entry in seo_routes:

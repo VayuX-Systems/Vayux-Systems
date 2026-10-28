@@ -11,9 +11,9 @@ class SiteConfiguration(models.Model):
     tagline = models.CharField(max_length=255, default="Sovereign Cybersecurity R&D · Autonomous Defense")
     
     # Contact Points
-    support_email = models.EmailField(default="admin@vayux.systems")
-    emergency_dfir_email = models.EmailField(default="dfir@vayux.systems")
-    careers_email = models.EmailField(default="careers@vayux.systems")
+    support_email = models.EmailField(default="admin@vayuxsystems.com")
+    emergency_dfir_email = models.EmailField(default="dfir@vayuxsystems.com")
+    careers_email = models.EmailField(default="careers@vayuxsystems.com")
     primary_phone = models.CharField(max_length=40, default="+91-8200677905")
     emergency_phone = models.CharField(max_length=40, default="+91-8200677905")
     

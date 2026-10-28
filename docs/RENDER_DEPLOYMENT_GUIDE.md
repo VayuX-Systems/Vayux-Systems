@@ -55,9 +55,9 @@ If you prefer to configure the Web Service manually from the Render dashboard:
 | `DEBUG` | `False` | Disables debug mode in production |
 | `SECRET_KEY` | *(Click "Generate" in Render)* | Random secure Django secret key |
 | `DATABASE_URL` | `postgres://...` | PostgreSQL connection string (Aiven / Neon / Render) |
-| `ALLOWED_HOSTS` | `*` or `.onrender.com,vayux.systems,localhost` | Allowed request hostnames |
-| `CORS_ALLOWED_ORIGINS` | `https://vayux.systems,http://localhost:3000` | Frontend origins allowed for API requests |
-| `CSRF_TRUSTED_ORIGINS` | `https://*.onrender.com,https://vayux.systems` | Trusted CSRF domains for forms & admin |
+| `ALLOWED_HOSTS` | `*` or `.onrender.com,vayuxsystems.com,localhost` | Allowed request hostnames |
+| `CORS_ALLOWED_ORIGINS` | `https://vayuxsystems.com,http://localhost:3000` | Frontend origins allowed for API requests |
+| `CSRF_TRUSTED_ORIGINS` | `https://*.onrender.com,https://vayuxsystems.com` | Trusted CSRF domains for forms & admin |
 | `FIELD_ENCRYPTION_KEY` | `r0h1tV4yuX53nt1n3lK3y32Byt35L0ngS3cur3==` | 32-byte Fernet key for encrypted audit fields |
 
 5. Click **Create Web Service**.

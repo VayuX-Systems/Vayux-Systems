@@ -57,7 +57,7 @@ const fallbackLeadership = [
     avatar_image: '/images/pragnesh-singh.jpg',
     linkedin_url: 'https://www.linkedin.com/in/pragnesh-singh-rajput/',
     github_url: 'https://github.com/pragnesh-singh-rajput',
-    email: 'pragnesh.s@vayux.systems',
+    email: 'pragnesh.s@vayuxsystems.com',
     is_founder: true,
     display_order: 1,
   },
@@ -69,7 +69,7 @@ const fallbackLeadership = [
     avatar_image: '/images/aarav-patel.jpg',
     linkedin_url: 'https://www.linkedin.com/company/vayux-systems',
     github_url: 'https://github.com/vayux-systems',
-    email: 'contact@vayux.systems',
+    email: 'contact@vayuxsystems.com',
     is_founder: true,
     display_order: 2,
   },
@@ -81,7 +81,7 @@ const fallbackLeadership = [
     avatar_image: '/images/ishan-manoj.jpeg',
     linkedin_url: 'https://www.linkedin.com/in/ishanmanoj29',
     github_url: 'https://github.com/ishanmanoj29',
-    email: 'ishan.m@vayux.systems',
+    email: 'ishan.m@vayuxsystems.com',
     is_founder: false,
     display_order: 3,
   },
@@ -168,10 +168,10 @@ const getMemberLinks = (member: any) => {
   const email =
     member.email ||
     (lower.includes('pragnesh')
-      ? 'mailto:pragnesh.s@vayux.systems'
+      ? 'mailto:pragnesh.s@vayuxsystems.com'
       : lower.includes('ishan')
-      ? 'mailto:ishan.m@vayux.systems'
-      : 'mailto:contact@vayux.systems');
+      ? 'mailto:ishan.m@vayuxsystems.com'
+      : 'mailto:contact@vayuxsystems.com');
 
   return { linkedin, github, email };
 };
@@ -208,10 +208,10 @@ export default function AboutPage() {
             ...m,
             avatar_image: getMemberAvatar(m.name, m.avatar_image),
             email: m.name.toLowerCase().includes('pragnesh')
-              ? 'pragnesh.s@vayux.systems'
+              ? 'pragnesh.s@vayuxsystems.com'
               : m.name.toLowerCase().includes('ishan')
-              ? 'ishan.m@vayux.systems'
-              : 'contact@vayux.systems',
+              ? 'ishan.m@vayuxsystems.com'
+              : 'contact@vayuxsystems.com',
           }));
 
           const founder =

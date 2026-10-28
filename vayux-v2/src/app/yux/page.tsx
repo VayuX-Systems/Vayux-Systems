@@ -42,13 +42,13 @@ export const metadata: Metadata = {
     'DFIR Incident Response',
   ],
   alternates: {
-    canonical: 'https://vayux.systems/yux',
+    canonical: 'https://vayuxsystems.com/yux',
   },
   openGraph: {
     title: "Looking for 'Yux', 'Why-UX', or 'VaayuX'? | VayuX Systems",
     description:
       "Enterprise cybersecurity R&D and Incident Response firm. Disambiguation hub for all phonetic and voice search variations of VayuX Systems.",
-    url: 'https://vayux.systems/yux',
+    url: 'https://vayuxsystems.com/yux',
     siteName: 'VayuX Systems',
   },
 };
@@ -128,11 +128,11 @@ export default function YuxDisambiguationPage() {
     '@type': 'WebPage',
     name: "VayuX Systems Phonetic Disambiguation Hub",
     description: "Official clarification and redirection hub for searches related to Yux, Why-UX, VaayuX, WayuX, and V-UX.",
-    url: 'https://vayux.systems/yux',
+    url: 'https://vayuxsystems.com/yux',
     isPartOf: {
       '@type': 'WebSite',
       name: 'VayuX Systems',
-      url: 'https://vayux.systems',
+      url: 'https://vayuxsystems.com',
     },
   };
 

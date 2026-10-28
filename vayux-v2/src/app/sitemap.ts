@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { glossaryTerms } from '@/lib/glossary-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://vayux.systems';
+  const baseUrl = 'https://vayuxsystems.com';
   const currentDate = new Date();
 
   // Static core routes
